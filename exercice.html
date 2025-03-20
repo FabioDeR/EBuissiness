@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Externalisation des Services</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+        }
+        h1, h2 {
+            color: #333;
+        }
+        p {
+            margin: 1em 0;
+        }
+        .section {
+            background: #fff;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        nav {
+            background: #0056b3;
+            color: #fff;
+            padding: 10px 0;
+        }
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+        }
+        nav ul li {
+            margin: 0 15px;
+        }
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        nav ul li a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="#paiements">Paiements</a></li>
+            <li><a href="#support">Support Technique</a></li>
+            <li><a href="#logistique">Logistique</a></li>
+            <li><a href="#hebergement">Hébergement</a></li>
+            <li><a href="#fraude">Fraude</a></li>
+            <li><a href="exercice.html">Exercice</a></li>
+            <li><a href="index.html">Retour à l'Index</a></li>
+        </ul>
+    </nav>
+    <div class="container">
+        <h1>Externalisation des Services</h1>
+        
+        <div class="section" id="paiements">
+            <h2>Traitement des paiements</h2>
+            <p>Concrètement, imagine que tu gères une boutique en ligne. Plutôt que de concevoir ton propre système pour accepter les paiements par carte bancaire, tu externalises cette tâche à un prestataire comme PayPal ou Stripe. Par exemple, un client achète un produit sur ton site : il entre ses coordonnées bancaires sur une interface sécurisée (fournie par PayPal), et PayPal s’occupe de vérifier, autoriser et finaliser le paiement. Toi, tu n’as pas à te soucier des données sensibles !</p>
+        </div>
+
+        <div class="section" id="support">
+            <h2>Support technique</h2>
+            <p>Prenons un exemple : un client ne parvient pas à passer une commande et contacte l’assistance. Si tu externalises ce service, un centre d'appel ou une plateforme de support technique (comme Zendesk) s'occupe de répondre en ton nom. Cela inclut les chats en direct, emails ou appels pour résoudre les problèmes rapidement. Ainsi, tu gardes tes clients satisfaits sans gérer chaque requête toi-même.</p>
+        </div>
+
+        <div class="section" id="logistique">
+            <h2>Gestion de la logistique</h2>
+            <p>Supposons que tu vendes des vêtements en ligne. Au lieu de gérer toi-même l’emballage et l’envoi des commandes, tu fais appel à un partenaire comme Amazon FBA (Fulfillment by Amazon). Une fois que tu leur envoies ton stock, ils s’occupent de tout : stockage dans leurs entrepôts, emballage et expédition des commandes. Si un client à Paris commande un t-shirt, Amazon gère toute la logistique.</p>
+        </div>
+
+        <div class="section" id="hebergement">
+            <h2>Hébergement de sites Web</h2>
+            <p>Ton site e-commerce doit être en ligne 24/7 et fonctionner sans interruption. Plutôt que d’héberger ton site sur un serveur que tu dois surveiller toi-même, tu utilises une plateforme comme AWS ou Google Cloud. Par exemple, si ton site reçoit un pic de trafic pendant les soldes, ces services adaptent automatiquement les ressources pour éviter qu’il plante.</p>
+        </div>
+
+        <div class="section" id="fraude">
+            <h2>Protection contre la fraude</h2>
+            <p>Imagine qu’un client essaie d’utiliser une carte bancaire volée pour faire un achat sur ton site. En externalisant ce service à des spécialistes comme Riskified, leur système analyse les transactions en temps réel, identifie les comportements suspects et bloque les paiements frauduleux avant qu’ils ne soient validés. Cela te protège contre les pertes financières.</p>
+        </div>
+    </div>
+</body>
+</html>
