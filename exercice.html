@@ -31,7 +31,7 @@
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
         nav {
-            background: #0056b3;
+            background: #00b336;
             color: #fff;
             padding: 10px 0;
         }
@@ -53,20 +53,46 @@
         nav ul li a:hover {
             text-decoration: underline;
         }
+        .sub-nav {
+            background: #007bff;
+            color: #fff;
+            padding: 5px 0;
+        }
+        .sub-nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+        }
+        .sub-nav ul li {
+            margin: 0 10px;
+        }
+        .sub-nav ul li a {
+            color: #fff;
+            text-decoration: none;
+        }
+        .sub-nav ul li a:hover {
+            text-decoration: underline;
+        }
     </style>
 </head>
 <body>
     <nav>
+        <ul>
+            <li><a href="index.html">Index</a></li>
+            <li><a href="exercice.html">Exercice</a></li>
+        </ul>
+    </nav>
+    <div class="sub-nav">
         <ul>
             <li><a href="#paiements">Paiements</a></li>
             <li><a href="#support">Support Technique</a></li>
             <li><a href="#logistique">Logistique</a></li>
             <li><a href="#hebergement">Hébergement</a></li>
             <li><a href="#fraude">Fraude</a></li>
-            <li><a href="exercice.html">Exercice</a></li>
-            <li><a href="index.html">Retour à l'Index</a></li>
         </ul>
-    </nav>
+    </div>
     <div class="container">
         <h1>Externalisation des Services</h1>
         

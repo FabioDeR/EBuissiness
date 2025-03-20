@@ -11,7 +11,6 @@
             background-color: #f4f4f9;
             color: #333;
             margin: 0;
-            padding: 20px;
         }
         h1, h2 {
             color: #0056b3;
@@ -61,10 +60,38 @@
         nav ul li a:hover {
             text-decoration: underline;
         }
+        .sub-nav {
+            background: #007bff;
+            color: #fff;
+            padding: 5px 0;
+        }
+        .sub-nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+        }
+        .sub-nav ul li {
+            margin: 0 10px;
+        }
+        .sub-nav ul li a {
+            color: #fff;
+            text-decoration: none;
+        }
+        .sub-nav ul li a:hover {
+            text-decoration: underline;
+        }
     </style>
 </head>
 <body>
     <nav>
+        <ul>
+            <li><a href="index.html">Index</a></li>
+            <li><a href="exercice.html">Exercice</a></li>
+        </ul>
+    </nav>
+    <div class="sub-nav">
         <ul>
             <li><a href="#definition">Définition</a></li>
             <li><a href="#evolution">Évolution</a></li>
@@ -72,10 +99,8 @@
             <li><a href="#modeles">Modèles</a></li>
             <li><a href="#adoption">Adoption</a></li>
             <li><a href="#facteurs-succes">Facteurs de Succès</a></li>
-            <li><a href="exercice.html">Exercice</a></li>
-            <li><a href="index.html">Retour à l'index</a></li>
         </ul>
-    </nav>
+    </div>
     <h1>Synthèse Approfondie - Notions de e-Business (Cours 3)</h1>
     
     <section id="definition">
