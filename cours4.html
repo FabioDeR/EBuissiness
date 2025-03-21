@@ -1,104 +1,134 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" data-theme="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cours 4 - Stratégies de e-Business</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f9;
-            color: #333;
-            margin: 0;
-        }
-        h1, h2 {
-            color: #0056b3;
-        }
-        section {
-            background: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            margin-bottom: 20px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        nav {
-            background: #0056b3;
-            color: #fff;
-            padding: 10px 0;
-        }
-        nav ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-            display: flex;
-            justify-content: center;
-        }
-        nav ul li {
-            margin: 0 15px;
-        }
-        nav ul li a {
-            color: #fff;
-            text-decoration: none;
-            font-weight: bold;
-        }
-        nav ul li a:hover {
-            text-decoration: underline;
-        }
-        .sub-nav {
-            background: #007bff;
-            color: #fff;
-            padding: 5px 0;
-        }
-        .sub-nav ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-            display: flex;
-            justify-content: center;
-        }
-        .sub-nav ul li {
-            margin: 0 10px;
-        }
-        .sub-nav ul li a {
-            color: #fff;
-            text-decoration: none;
-        }
-        .sub-nav ul li a:hover {
-            text-decoration: underline;
-        }
-    </style>
+    <title>Cours 4 - Sécurité et Aspects Légaux</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <nav>
-        <ul>
-            <li><a href="index.html">Cours3</a></li>
-            <li><a href="cours5.html">Cours5</a></li>
-            <li><a href="exercice.html">Exercice</a></li>
-            <li><a href="projet.html">Projet</a></li>
-        </ul>
+    <nav class="navbar">
+        <div class="nav-container">
+            <h1>E-Business</h1>
+            <ul class="nav-links">
+                <li><a href="index.html"><i class="fas fa-home"></i> Accueil</a></li>
+                <li><a href="cours1.html"><i class="fas fa-book"></i> Cours 1</a></li>
+                <li><a href="cours2.html"><i class="fas fa-book"></i> Cours 2</a></li>
+                <li><a href="cours4.html"><i class="fas fa-book"></i> Cours 4</a></li>
+                <li><a href="cours5.html"><i class="fas fa-book"></i> Cours 5</a></li>
+                <li><a href="exercice.html"><i class="fas fa-tasks"></i> Exercices</a></li>
+                <li><a href="projet.html"><i class="fas fa-project-diagram"></i> Projet</a></li>
+                <li><a href="business-plan.html"><i class="fas fa-file-alt"></i> Business Plan</a></li>
+            </ul>
+            <button class="theme-toggle" id="theme-toggle">
+                <i class="fas fa-moon"></i>
+            </button>
+        </div>
     </nav>
-    <div class="sub-nav">
-        <ul>
-            <li><a href="#strategies">Stratégies</a></li>
-            <li><a href="#marketing">Marketing</a></li>
-            <li><a href="#optimisation">Optimisation</a></li>
-        </ul>
-    </div>
-    <h1>Cours 4 - Stratégies de e-Business</h1>
-    
-    <section id="strategies">
-        <h2>Stratégies</h2>
-        <p>Les stratégies de e-Business incluent la transformation numérique, l'innovation continue, et l'optimisation des processus.</p>
-    </section>
-    
-    <section id="marketing">
-        <h2>Marketing</h2>
-        <p>Le marketing digital est essentiel pour attirer et fidéliser les clients dans le e-Business.</p>
-    </section>
 
-    <section id="optimisation">
-        <h2>Optimisation</h2>
-        <p>L'optimisation des processus et des ressources est cruciale pour améliorer l'efficacité et la rentabilité des entreprises en ligne.</p>
-    </section>
+    <main>
+        <div class="card">
+            <h1><i class="fas fa-book icon"></i>Cours 4 - Sécurité et Aspects Légaux</h1>
+            <p>Ce cours aborde les aspects essentiels de la sécurité et de la conformité légale dans le e-business.</p>
+        </div>
+
+        <section class="card">
+            <h2><i class="fas fa-shield-alt icon"></i>Sécurité des transactions</h2>
+            <div class="course-content">
+                <p>La sécurité des transactions est un élément crucial pour la confiance des clients et le succès d'une entreprise en ligne.</p>
+                
+                <div class="key-points">
+                    <h3>Points clés</h3>
+                    <ul>
+                        <li>Protection des données personnelles</li>
+                        <li>Sécurisation des paiements</li>
+                        <li>Authentification et autorisation</li>
+                        <li>Prévention des fraudes</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="card">
+            <h2><i class="fas fa-gavel icon"></i>Cadre légal</h2>
+            <div class="course-content">
+                <div class="business-models">
+                    <div class="model-card">
+                        <h4>RGPD</h4>
+                        <p>Protection des données personnelles</p>
+                    </div>
+                    <div class="model-card">
+                        <h4>CGV</h4>
+                        <p>Conditions générales de vente</p>
+                    </div>
+                    <div class="model-card">
+                        <h4>Cookies</h4>
+                        <p>Règlementation des cookies</p>
+                    </div>
+                    <div class="model-card">
+                        <h4>E-commerce</h4>
+                        <p>Lois sur le commerce électronique</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="card">
+            <h2><i class="fas fa-user-shield icon"></i>Protection des consommateurs</h2>
+            <div class="course-content">
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <h4>Droit d'information</h4>
+                        <p>Transparence des prix et conditions</p>
+                    </div>
+                    <div class="timeline-item">
+                        <h4>Droit de rétractation</h4>
+                        <p>Délai de 14 jours pour les achats en ligne</p>
+                    </div>
+                    <div class="timeline-item">
+                        <h4>Garanties légales</h4>
+                        <p>Protection contre les produits défectueux</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="card">
+            <h2><i class="fas fa-tasks icon"></i>Exercices pratiques</h2>
+            <div class="course-content">
+                <div class="exercise-list">
+                    <a href="exercice.html" class="btn">Voir les exercices</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // Theme toggle functionality
+        const themeToggle = document.getElementById('theme-toggle');
+        const html = document.documentElement;
+        
+        // Check for saved theme preference
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme) {
+            html.setAttribute('data-theme', savedTheme);
+            updateThemeIcon(savedTheme);
+        }
+
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = html.getAttribute('data-theme');
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+            
+            html.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            updateThemeIcon(newTheme);
+        });
+
+        function updateThemeIcon(theme) {
+            const icon = themeToggle.querySelector('i');
+            icon.className = theme === 'light' ? 'fas fa-moon' : 'fas fa-sun';
+        }
+    </script>
 </body>
 </html>

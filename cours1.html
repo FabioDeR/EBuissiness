@@ -1,110 +1,133 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" data-theme="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cours 1 - Introduction au e-Business</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f9;
-            color: #333;
-            margin: 0;
-        }
-        h1, h2 {
-            color: #0056b3;
-        }
-        section {
-            background: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            margin-bottom: 20px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        nav {
-            background: #0056b3;
-            color: #fff;
-            padding: 10px 0;
-        }
-        nav ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-            display: flex;
-            justify-content: center;
-        }
-        nav ul li {
-            margin: 0 15px;
-        }
-        nav ul li a {
-            color: #fff;
-            text-decoration: none;
-            font-weight: bold;
-        }
-        nav ul li a:hover {
-            text-decoration: underline;
-        }
-        .sub-nav {
-            background: #007bff;
-            color: #fff;
-            padding: 5px 0;
-        }
-        .sub-nav ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-            display: flex;
-            justify-content: center;
-        }
-        .sub-nav ul li {
-            margin: 0 10px;
-        }
-        .sub-nav ul li a {
-            color: #fff;
-            text-decoration: none;
-        }
-        .sub-nav ul li a:hover {
-            text-decoration: underline;
-        }
-    </style>
+    <title>Cours 1 - Introduction au E-Business</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <nav>
-        <ul>
-            <li><a href="index.html">Cours3</a></li>
-            <li><a href="cours5.html">Cours5</a></li>
-            <li><a href="exercice.html">Exercice</a></li>
-            <li><a href="projet.html">Projet</a></li>
-        </ul>
+    <nav class="navbar">
+        <div class="nav-container">
+            <h1>E-Business</h1>
+            <ul class="nav-links">
+                <li><a href="index.html"><i class="fas fa-home"></i> Accueil</a></li>
+                <li><a href="cours1.html"><i class="fas fa-book"></i> Cours 1</a></li>
+                <li><a href="cours2.html"><i class="fas fa-book"></i> Cours 2</a></li>
+                <li><a href="cours4.html"><i class="fas fa-book"></i> Cours 4</a></li>
+                <li><a href="cours5.html"><i class="fas fa-book"></i> Cours 5</a></li>
+                <li><a href="exercice.html"><i class="fas fa-tasks"></i> Exercices</a></li>
+                <li><a href="projet.html"><i class="fas fa-project-diagram"></i> Projet</a></li>
+                <li><a href="business-plan.html"><i class="fas fa-file-alt"></i> Business Plan</a></li>
+            </ul>
+            <button class="theme-toggle" id="theme-toggle">
+                <i class="fas fa-moon"></i>
+            </button>
+        </div>
     </nav>
-    <div class="sub-nav">
-        <ul>
-            <li><a href="#introduction">Introduction</a></li>
-            <li><a href="#historique">Historique</a></li>
-            <li><a href="#avantages">Avantages</a></li>
-        </ul>
-    </div>
-    <h1>Cours 1 - Introduction au e-Business</h1>
-    
-    Cours 1 : Introduction au e-Business
-1. Qu’est-ce que le e-Business ?
-Le e-Business désigne l’ensemble des activités commerciales effectuées via Internet et les outils numériques. Ce n'est pas seulement vendre en ligne, mais aussi gérer l’ensemble des opérations commerciales avec des outils informatiques.
 
-👉 Exemple : Amazon gère non seulement un site de vente en ligne (eCommerce), mais aussi son stock, sa logistique et ses relations clients grâce à des outils numériques (eBusiness).
+    <main>
+        <div class="card">
+            <h1><i class="fas fa-book icon"></i>Cours 1 - Introduction au E-Business</h1>
+            <p>Ce cours introduit les concepts fondamentaux du e-business et son importance dans le monde numérique actuel.</p>
+        </div>
 
-2. Différence entre e-Commerce et e-Business
-e-Commerce	e-Business
-Achat/vente de produits ou services en ligne	Gestion globale des activités commerciales en ligne
-Exemple : Vendre un produit sur un site web	Gestion des stocks, paiements, service client
-Basé sur les transactions	Basé sur l’organisation de l’entreprise
-💡 Retenir : Toutes les entreprises qui font du e-Commerce font aussi du e-Business, mais l’inverse n’est pas forcément vrai !
+        <section class="card">
+            <h2><i class="fas fa-lightbulb icon"></i>Définition et concepts de base</h2>
+            <div class="course-content">
+                <p>Le eBusiness désigne l'ensemble des processus d'une entreprise intégrant les technologies numériques pour optimiser la gestion, la communication et la production. Il ne se limite pas uniquement à la vente en ligne, contrairement au eCommerce.</p>
+                
+                <div class="key-points">
+                    <h3>Points clés</h3>
+                    <ul>
+                        <li>Différence entre eBusiness et eCommerce</li>
+                        <li>Intégration des technologies numériques</li>
+                        <li>Optimisation des processus</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
 
-3. La loi de l’offre et de la demande
-Quand le prix augmente → L’offre (produits disponibles) augmente, mais la demande (les achats) diminue.
-Quand le prix diminue → La demande augmente, mais l’offre diminue.
-👉 Exemple : Si un iPhone devient trop cher, moins de gens l’achètent. Si le prix baisse, plus de personnes voudront l’acheter.
+        <section class="card">
+            <h2><i class="fas fa-history icon"></i>Évolution historique</h2>
+            <div class="course-content">
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <h4>Années 1990</h4>
+                        <p>Apparition des premiers sites web commerciaux</p>
+                    </div>
+                    <div class="timeline-item">
+                        <h4>Années 2000</h4>
+                        <p>Développement du e-commerce et des plateformes en ligne</p>
+                    </div>
+                    <div class="timeline-item">
+                        <h4>Années 2010</h4>
+                        <p>Explosion du mobile et des réseaux sociaux</p>
+                    </div>
+                    <div class="timeline-item">
+                        <h4>Années 2020</h4>
+                        <p>Intelligence artificielle et transformation digitale</p>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-4. Mindmapping : Un outil pour organiser les idées
-Le mindmapping est une technique qui aide à mieux mémoriser et organiser l’information en utilisant des schémas visuels.
+        <section class="card">
+            <h2><i class="fas fa-chart-line icon"></i>Modèles d'affaires en ligne</h2>
+            <div class="course-content">
+                <div class="business-models">
+                    <div class="model-card">
+                        <h4>B2B (Business to Business)</h4>
+                        <p>Transactions entre entreprises</p>
+                    </div>
+                    <div class="model-card">
+                        <h4>B2C (Business to Consumer)</h4>
+                        <p>Vente aux consommateurs finaux</p>
+                    </div>
+                    <div class="model-card">
+                        <h4>C2C (Consumer to Consumer)</h4>
+                        <p>Transactions entre particuliers</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="card">
+            <h2><i class="fas fa-tasks icon"></i>Exercices pratiques</h2>
+            <div class="course-content">
+                <div class="exercise-list">
+                    <a href="exercice.html" class="btn">Voir les exercices</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // Theme toggle functionality
+        const themeToggle = document.getElementById('theme-toggle');
+        const html = document.documentElement;
+        
+        // Check for saved theme preference
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme) {
+            html.setAttribute('data-theme', savedTheme);
+            updateThemeIcon(savedTheme);
+        }
+
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = html.getAttribute('data-theme');
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+            
+            html.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            updateThemeIcon(newTheme);
+        });
+
+        function updateThemeIcon(theme) {
+            const icon = themeToggle.querySelector('i');
+            icon.className = theme === 'light' ? 'fas fa-moon' : 'fas fa-sun';
+        }
+    </script>
 </body>
 </html>

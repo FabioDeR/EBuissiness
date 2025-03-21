@@ -1,126 +1,102 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" data-theme="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Principe de l'Exercice - Externalisation des Services</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-        }
-        .container {
-            width: 80%;
-            margin: auto;
-            overflow: hidden;
-        }
-        h1, h2 {
-            color: #333;
-        }
-        p {
-            margin: 1em 0;
-        }
-        .section {
-            background: #fff;
-            padding: 20px;
-            margin: 20px 0;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        nav {
-            background: #00b336;
-            color: #fff;
-            padding: 10px 0;
-        }
-        nav ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-            display: flex;
-            justify-content: center;
-        }
-        nav ul li {
-            margin: 0 15px;
-        }
-        nav ul li a {
-            color: #fff;
-            text-decoration: none;
-            font-weight: bold;
-        }
-        nav ul li a:hover {
-            text-decoration: underline;
-        }
-        .sub-nav {
-            background: #007bff;
-            color: #fff;
-            padding: 5px 0;
-        }
-        .sub-nav ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-            display: flex;
-            justify-content: center;
-        }
-        .sub-nav ul li {
-            margin: 0 10px;
-        }
-        .sub-nav ul li a {
-            color: #fff;
-            text-decoration: none;
-        }
-        .sub-nav ul li a:hover {
-            text-decoration: underline;
-        }
-    </style>
+    <title>Exercices E-Business</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <nav>
-        <ul>
-            <li><a href="index.html">Index</a></li>
-            <li><a href="exercice.html">Exercice</a></li>
-            <li><a href="cours5.html">Résumé Cours 5</a></li>
-        </ul>
+    <nav class="navbar">
+        <div class="nav-container">
+            <h1>E-Business</h1>
+            <ul class="nav-links">
+                <li><a href="index.html"><i class="fas fa-home"></i> Accueil</a></li>
+                <li><a href="cours1.html"><i class="fas fa-book"></i> Cours 1</a></li>
+                <li><a href="cours2.html"><i class="fas fa-book"></i> Cours 2</a></li>
+                <li><a href="cours4.html"><i class="fas fa-book"></i> Cours 4</a></li>
+                <li><a href="cours5.html"><i class="fas fa-book"></i> Cours 5</a></li>
+                <li><a href="exercice.html"><i class="fas fa-tasks"></i> Exercices</a></li>
+                <li><a href="projet.html"><i class="fas fa-project-diagram"></i> Projet</a></li>
+            </ul>
+            <button class="theme-toggle" id="theme-toggle">
+                <i class="fas fa-moon"></i>
+            </button>
+        </div>
     </nav>
-    <div class="sub-nav">
-        <ul>
-            <li><a href="#paiements">Paiements</a></li>
-            <li><a href="#support">Support Technique</a></li>
-            <li><a href="#logistique">Logistique</a></li>
-            <li><a href="#hebergement">Hébergement</a></li>
-            <li><a href="#fraude">Fraude</a></li>
-        </ul>
-    </div>
-    <div class="container">
-        <h1>Principe de l'Exercice - Externalisation des Services</h1>
+
+    <main>
+        <div class="card">
+            <h1><i class="fas fa-tasks icon"></i>Exercices E-Business</h1>
+            <p>Cette section contient les exercices pratiques pour mettre en application les concepts appris dans les cours.</p>
+        </div>
+
+        <section class="card">
+            <h2><i class="fas fa-external-link-alt icon"></i>Externalisation des services</h2>
+            <div class="exercise-content">
+                <h3>Introduction</h3>
+                <p>L'externalisation des services est une stratégie courante dans le e-business qui permet aux entreprises de se concentrer sur leurs compétences principales tout en déléguant certaines tâches à des experts externes.</p>
+
+                <h3>Objectifs de l'exercice</h3>
+                <ul>
+                    <li>Comprendre les avantages et inconvénients de l'externalisation</li>
+                    <li>Identifier les services qui peuvent être externalisés</li>
+                    <li>Analyser les critères de choix d'un prestataire</li>
+                    <li>Évaluer les risques et les solutions</li>
+                </ul>
+
+                <h3>Exercices pratiques</h3>
+                <div class="exercise-grid">
+                    <div class="exercise-card">
+                        <h4><i class="fas fa-check-circle icon"></i>Exercice 1</h4>
+                        <p>Listez les services que vous pourriez externaliser dans votre entreprise et justifiez votre choix.</p>
+                    </div>
+                    <div class="exercise-card">
+                        <h4><i class="fas fa-check-circle icon"></i>Exercice 2</h4>
+                        <p>Analysez les critères de sélection d'un prestataire pour un service spécifique.</p>
+                    </div>
+                    <div class="exercise-card">
+                        <h4><i class="fas fa-check-circle icon"></i>Exercice 3</h4>
+                        <p>Évaluez les risques potentiels et proposez des solutions pour les mitiger.</p>
+                    </div>
+                </div>
+
+                <h3>Ressources complémentaires</h3>
+                <ul>
+                    <li><a href="#">Guide de l'externalisation</a></li>
+                    <li><a href="#">Modèles de contrats</a></li>
+                    <li><a href="#">Études de cas</a></li>
+                </ul>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // Theme toggle functionality
+        const themeToggle = document.getElementById('theme-toggle');
+        const html = document.documentElement;
         
-        <div class="section" id="paiements">
-            <h2>Traitement des paiements</h2>
-            <p>Concrètement, imagine que tu gères une boutique en ligne. Plutôt que de concevoir ton propre système pour accepter les paiements par carte bancaire, tu externalises cette tâche à un prestataire comme PayPal ou Stripe. Par exemple, un client achète un produit sur ton site : il entre ses coordonnées bancaires sur une interface sécurisée (fournie par PayPal), et PayPal s’occupe de vérifier, autoriser et finaliser le paiement. Toi, tu n’as pas à te soucier des données sensibles !</p>
-        </div>
+        // Check for saved theme preference
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme) {
+            html.setAttribute('data-theme', savedTheme);
+            updateThemeIcon(savedTheme);
+        }
 
-        <div class="section" id="support">
-            <h2>Support technique</h2>
-            <p>Prenons un exemple : un client ne parvient pas à passer une commande et contacte l’assistance. Si tu externalises ce service, un centre d'appel ou une plateforme de support technique (comme Zendesk) s'occupe de répondre en ton nom. Cela inclut les chats en direct, emails ou appels pour résoudre les problèmes rapidement. Ainsi, tu gardes tes clients satisfaits sans gérer chaque requête toi-même.</p>
-        </div>
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = html.getAttribute('data-theme');
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+            
+            html.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            updateThemeIcon(newTheme);
+        });
 
-        <div class="section" id="logistique">
-            <h2>Gestion de la logistique</h2>
-            <p>Supposons que tu vendes des vêtements en ligne. Au lieu de gérer toi-même l’emballage et l’envoi des commandes, tu fais appel à un partenaire comme Amazon FBA (Fulfillment by Amazon). Une fois que tu leur envoies ton stock, ils s’occupent de tout : stockage dans leurs entrepôts, emballage et expédition des commandes. Si un client à Paris commande un t-shirt, Amazon gère toute la logistique.</p>
-        </div>
-
-        <div class="section" id="hebergement">
-            <h2>Hébergement de sites Web</h2>
-            <p>Ton site e-commerce doit être en ligne 24/7 et fonctionner sans interruption. Plutôt que d’héberger ton site sur un serveur que tu dois surveiller toi-même, tu utilises une plateforme comme AWS ou Google Cloud. Par exemple, si ton site reçoit un pic de trafic pendant les soldes, ces services adaptent automatiquement les ressources pour éviter qu’il plante.</p>
-        </div>
-
-        <div class="section" id="fraude">
-            <h2>Protection contre la fraude</h2>
-            <p>Imagine qu’un client essaie d’utiliser une carte bancaire volée pour faire un achat sur ton site. En externalisant ce service à des spécialistes comme Riskified, leur système analyse les transactions en temps réel, identifie les comportements suspects et bloque les paiements frauduleux avant qu’ils ne soient validés. Cela te protège contre les pertes financières.</p>
-        </div>
-    </div>
+        function updateThemeIcon(theme) {
+            const icon = themeToggle.querySelector('i');
+            icon.className = theme === 'light' ? 'fas fa-moon' : 'fas fa-sun';
+        }
+    </script>
 </body>
 </html>
