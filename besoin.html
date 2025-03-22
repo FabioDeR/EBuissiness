@@ -319,3 +319,52 @@ Politique de remboursement, délais, moyens de paiement, etc.
 
 Données : settings
 
+🛡️ AUTHENTIFICATION & CONNEXION — Fonctionnalités frontend + logiques
+
+📄 Page : Connexion
+Objectif : Permettre à l’utilisateur de se connecter avec les identifiants reçus
+
+Affichage :
+- Email
+- Mot de passe
+- Bouton se connecter
+
+Logique :
+- Authentification via API (token JWT ou session)
+- Gestion des erreurs (mauvais identifiants, compte désactivé)
+- Redirection vers la bonne interface selon le rôle (employé / restaurateur / admin)
+
+Données : `users`, middleware auth
+
+---
+
+📄 Page : Réinitialisation du mot de passe (1ère connexion obligatoire)
+Objectif : Forcer l’utilisateur à changer son mot de passe si `must_reset_password` est activé
+
+Affichage :
+- Nouveau mot de passe
+- Confirmation
+- Bouton « Enregistrer »
+
+Logique :
+- Lecture de `must_reset_password` après connexion
+- Si true → redirection automatique vers cette page
+- Mise à jour du mot de passe + désactivation du flag
+
+Données : `users.must_reset_password`, route sécurisée
+
+---
+
+📄 Gestion par l’admin
+- Création des comptes utilisateurs avec mot de passe initial par l’admin ✅
+- `must_reset_password` est mis à `true` automatiquement ✅
+- L’utilisateur reçoit ses identifiants (via email ou autre moyen prévu hors app)
+
+---
+
+Sécurité :
+- Hash du mot de passe ✅
+- Protection CSRF (si frontend form)
+- Middleware `auth` et `role:{admin|restaurateur|employé}`
+
+Tu peux maintenant implémenter ces écrans sereinement avec les hooks d’auth standard en Laravel 
