@@ -1,0 +1,173 @@
+﻿📌 Fonctionnalités de l'Admin Panel — Version mise à jour
+1️⃣ Gestion des utilisateurs & rôles
+✅ Créer, modifier et supprimer des utilisateurs
+✅ Activer/désactiver des comptes utilisateurs
+✅ Gérer les rôles des utilisateurs via Spatie Laravel Permission
+✅ Forcer la réinitialisation du mot de passe à la première connexion
+✅ Suivre les actions critiques via les logs admin (admin_logs)
+
+2️⃣ Gestion des entreprises (Organisations)
+✅ Créer, modifier et supprimer des entreprises
+✅ Lier les utilisateurs à une entreprise
+✅ Visualiser les restaurants disponibles pour une entreprise
+✅ Affecter des créateurs/modificateurs à chaque entité
+
+3️⃣ Gestion des restaurants
+✅ Ajouter, modifier et supprimer des restaurants
+✅ Associer un restaurant à une entreprise
+✅ Gérer les disponibilités hebdomadaires (restaurant_schedules)
+✅ Lier un utilisateur de type restaurateur à un restaurant
+✅ Visualiser les commandes associées
+
+4️⃣ Gestion des plats & suppléments
+✅ Ajouter, modifier et supprimer des plats
+✅ Gérer les descriptions, images, et tags (à implémenter via front)
+✅ Lier des suppléments à un plat
+✅ Définir les prix des plats et suppléments par restaurant (restaurant_dish_prices, restaurant_supplement_prices)
+
+5️⃣ Gestion des commandes
+✅ Suivre toutes les commandes passées
+✅ Filtrer par statut (order_statuses)
+✅ Modifier le statut d’une commande
+✅ Consulter l’historique des commandes par utilisateur
+✅ Ajouter des notes/commentaires aux commandes (à ajouter si besoin)
+
+6️⃣ Gestion des paiements
+✅ Suivre les paiements des employés (payments)
+✅ Suivre les versements aux restaurants (restaurant_payouts)
+✅ Gérer les méthodes et statuts de paiement
+✅ Exporter les données (à faire côté back ou via admin UI)
+
+7️⃣ Gestion des évaluations
+✅ Voir les avis et notes laissés sur les plats ou restaurants (reviews)
+✅ Modérer ou supprimer les avis inappropriés
+✅ Identifier les restaurants ou plats les mieux notés
+
+8️⃣ Gestion des logs administratifs
+✅ Historiser toutes les actions importantes des admins (admin_logs)
+✅ Capturer l’IP et l’agent utilisateur pour chaque action
+✅ Suivre les interventions manuelles sur les comptes, commandes ou paiements
+🧠 Modules à venir (non encore migrés mais utiles)
+
+
+🔔 Système de notifications (envoi ciblé + rappels auto)
+⚙️ Table settings pour la configuration globale (paiement, délais, politiques)
+📬 Journal des notifications envoyées
+📝 Historique des actions utilisateurs (audit global)
+
+-----
+
+🍽️ Fonctionnalités du Panel Restaurateur
+1️⃣ Gestion du menu
+✅ Associer le restaurant à plusieurs catégories de cuisine (Asiatique, Italien, etc.)
+✅ Modifier la description du restaurant (présentation, infos utiles)
+✅ Créer, modifier, supprimer des plats
+✅ Ajouter une description, une image et des tags (mots-clés)
+✅ Associer un plat à une catégorie (ex: Plat, Dessert, Vegan…) pour faciliter la recherche
+✅ Lier des suppléments à un plat
+✅ Définir les prix des plats et des suppléments par restaurant
+
+2️⃣ Gestion de la disponibilité
+✅ Définir les jours d’ouverture par défaut et les modifier à tout moment
+✅ Définir une heure limite de commande pour chaque jour
+✅ Marquer un jour comme indisponible (ex: congé, fermeture exceptionnelle)
+✅ Ajouter une note obligatoire en cas d’indisponibilité (ex: "Fermé pour congé")
+✅ Lier une disponibilité à une ou plusieurs entreprises clientes
+
+3️⃣ Suivi des commandes
+✅ Voir les commandes reçues par jour
+✅ Modifier le statut des commandes (En attente, Acceptée, En préparation, Livrée)
+✅ Consulter le détail de chaque commande : utilisateur, plat, suppléments, montant
+
+4️⃣ Paiements & versements
+✅ Voir les paiements reçus (par commande)
+✅ Suivre les versements versés par l’admin (payouts)
+✅ Vérifier l’historique des paiements avec leur statut (en attente, validé, etc.)
+
+5️⃣ Statistiques & évaluations
+✅ Consulter les avis laissés par les clients (plats ou restaurant)
+✅ Identifier les plats les plus populaires selon l’historique des commandes
+
+6️⃣ Compte restaurateur
+✅ Modifier les informations de son profil (nom, contact, adresse)
+✅ Changer son mot de passe
+
+---------
+
+👨‍💼 Fonctionnalités du Panel Employé
+1️⃣ Consultation des restaurants et menus
+✅ Voir les restaurants disponibles chaque jour
+✅ Consulter les menus avec plats, suppléments, catégories, images et tags
+✅ Visualiser les horaires limites de commande
+
+2️⃣ Commandes & planification
+✅ Créer un panier pour composer son repas
+✅ Programmer des commandes à l’avance (par jour de la semaine)
+✅ Modifier ou valider son panier avant la deadline
+✅ Passer commande et recevoir une confirmation
+✅ Historique des commandes consultable à tout moment
+
+3️⃣ Paiements
+✅ Payer avec son solde utilisateur
+✅ Utiliser différents moyens de paiement (préconfigurés par admin)
+✅ Consulter l’historique de ses paiements
+
+4️⃣ Compte utilisateur
+✅ Modifier ses informations personnelles
+✅ Définir ses préférences alimentaires ou allergies (JSON libre)
+✅ Recharger son solde (prochainement via intégration)
+
+5️⃣ Notifications & rappels (en cours)
+🔧 Recevoir un email ou message de rappel si aucune commande n’est passée avant l’heure limite
+🔧 Être notifié lorsqu’un plat favori revient au menu (à développer)
+
+6️⃣ Évaluations & retours
+✅ Laisser une note ou un avis sur un plat ou un restaurant
+✅ Consulter ses évaluations précédentes
+
+---------
+
+🧑‍💼 PANEL EMPLOYÉ
+Fonctionnalité	État	Détails techniques
+Voir les restaurants du jour	✅	restaurant_schedules, days
+Voir le menu et les suppléments	✅	dishes, dish_supplements, categories
+Créer un panier	✅	cart_drafts
+Programmer des commandes à l'avance	✅	cart_drafts.delivery_date
+Valider le panier en commande	✅	transition vers orders
+Respecter une heure limite	✅	restaurant_schedules.order_deadline
+Payer une commande	✅	payments, payment_methods, balance
+Voir ses commandes passées	✅	orders, filtré par user_id
+Laisser un avis (plat ou restaurant)	✅	reviews
+Voir/modifier son profil	✅	users
+Gérer ses préférences (ex : allergies)	✅	users.preferences (champ JSON)
+Recevoir un rappel avant la deadline (email)	🔧	À faire via notification_reminders
+Recharger son solde	🔧	À faire via intégration ou admin panel
+🍽️ PANEL RESTAURATEUR
+Fonctionnalité	État	Détails techniques
+Gérer ses plats (nom, description, image, tags)	✅	dishes, image_url, tags, category_id
+Gérer les suppléments liés à un plat	✅	dish_supplements
+Définir les prix (plats + suppléments)	✅	restaurant_dish_prices, restaurant_supplement_prices
+Gérer ses disponibilités (jours, horaires, exceptions)	✅	restaurant_schedules + is_default, note
+Indiquer une fermeture avec raison	✅	restaurant_schedules.note + is_available
+Voir ses commandes	✅	orders
+Modifier le statut d’une commande	✅	orders.order_status_id
+Voir les paiements et versements	✅	payments, restaurant_payouts
+Consulter les évaluations	✅	reviews
+Modifier ses infos de profil	✅	users.restaurant_id
+Associer son restaurant à des catégories de cuisine	✅	restaurant_categories, restaurant_category_pivot
+Ajouter une description personnalisée du restaurant	✅	restaurants.description
+
+🛠️ PANEL ADMINISTRATEUR
+Fonctionnalité	État	Détails techniques
+Gérer les utilisateurs, rôles et permissions	✅	users, Spatie roles, permissions
+Gérer les entreprises	✅	organizations
+Gérer les restaurants	✅	restaurants
+Associer restaurants à entreprises	✅	restaurant_schedules.organization_id
+Gérer les plats, suppléments et prix	✅	dishes, supplements, restaurant_dish_prices
+Suivre toutes les commandes	✅	orders, order_statuses
+Gérer les paiements employés + versements restaurants	✅	payments, restaurant_payouts
+Voir/modérer les avis	✅	reviews
+Suivre les logs administratifs	✅	admin_logs
+Voir les statistiques (via dashboard)	✅	calculable via orders, users, restaurants
+Envoyer des notifications/rappels	🔧	notification_reminders (à intégrer)
+Gérer les paramètres globaux	🔧	settings (non encore implémenté)

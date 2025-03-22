@@ -621,4 +621,309 @@ ul li::before {
     .document-list .btn {
         width: 100%;
     }
+}
+
+/* Styles pour le Kanban */
+.kanban-board {
+    display: flex;
+    gap: 20px;
+    margin: 30px 0;
+    overflow-x: auto;
+    padding: 10px 0;
+}
+
+.kanban-column {
+    background-color: var(--card-bg);
+    border-radius: 10px;
+    box-shadow: var(--card-shadow);
+    flex: 1;
+    min-width: 280px;
+    padding: 15px;
+    transition: transform 0.2s ease;
+}
+
+.kanban-column:hover {
+    transform: translateY(-5px);
+}
+
+.kanban-column h3 {
+    border-bottom: 2px solid var(--primary);
+    color: var(--text);
+    font-size: 1.2rem;
+    margin-top: 0;
+    padding-bottom: 10px;
+    text-align: center;
+}
+
+.kanban-column h3 i {
+    margin-right: 8px;
+}
+
+.kanban-column:nth-child(1) h3 i {
+    color: #ff5252;
+}
+
+.kanban-column:nth-child(2) h3 i {
+    color: #ffb142;
+}
+
+.kanban-column:nth-child(3) h3 i {
+    color: #2ed573;
+}
+
+.kanban-task {
+    background-color: var(--background);
+    border-left: 4px solid var(--primary);
+    border-radius: 6px;
+    color: var(--text);
+    margin: 10px 0;
+    padding: 12px;
+    transition: all 0.2s ease;
+}
+
+.kanban-task:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transform: translateX(3px);
+}
+
+.progress-container {
+    background-color: rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    height: 8px;
+    margin-top: 10px;
+    overflow: hidden;
+    position: relative;
+}
+
+.progress-bar {
+    background: linear-gradient(to right, var(--primary), var(--secondary));
+    border-radius: 10px;
+    height: 100%;
+    transition: width 0.3s ease;
+}
+
+.progress-text {
+    color: var(--text);
+    font-size: 0.8rem;
+    margin-top: 5px;
+    opacity: 0.7;
+    text-align: right;
+}
+
+/* Media queries pour le Kanban en responsive */
+@media (max-width: 768px) {
+    .kanban-board {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .kanban-column {
+        min-width: 100%;
+    }
+}
+
+/* Styles pour les tableaux */
+.prioritization-table, .feature-table {
+    width: 100%;
+    overflow-x: auto;
+    margin: 20px 0;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: var(--card-bg);
+    box-shadow: var(--card-shadow);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+th, td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+th {
+    background-color: var(--primary);
+    color: white;
+    font-weight: bold;
+}
+
+tr:hover {
+    background-color: rgba(0, 0, 0, 0.03);
+}
+
+/* Couleurs de priorité */
+.priority-high {
+    color: #2ecc71;
+    font-weight: bold;
+}
+
+.priority-medium {
+    color: #f39c12;
+    font-weight: bold;
+}
+
+.priority-low {
+    color: #3498db;
+    font-weight: bold;
+}
+
+/* Responsive pour les tableaux */
+@media (max-width: 768px) {
+    table {
+        font-size: 0.85rem;
+    }
+    
+    th, td {
+        padding: 8px 10px;
+    }
+}
+
+/* Styles pour le sous-menu */
+.sub-menu {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 1.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.sub-menu-label {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 0.4rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+.sub-menu-link {
+    color: var(--primary-color);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 500;
+    transition: var(--transition);
+}
+
+.sub-menu-link:hover {
+    color: var(--secondary-color);
+    transform: translateX(-3px);
+}
+
+@media (max-width: 768px) {
+    .sub-menu {
+        flex-direction: column;
+        gap: 1rem;
+        align-items: flex-start;
+    }
+}
+
+/* Style pour les liens dans le texte */
+.inline-link {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 500;
+    border-bottom: 1px dashed var(--primary-color);
+    padding-bottom: 1px;
+    transition: var(--transition);
+}
+
+.inline-link:hover {
+    color: var(--secondary-color);
+    border-bottom-color: var(--secondary-color);
+}
+
+/* Styles pour la page de spécifications */
+.spec-page {
+    background-color: var(--card-bg);
+    border-left: 4px solid var(--primary-color);
+    border-radius: 0.5rem;
+    padding: 1.5rem;
+    margin: 2rem 0;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+}
+
+.spec-page:hover {
+    transform: translateX(5px);
+}
+
+.spec-page h3 {
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1.4rem;
+}
+
+.spec-section {
+    margin-bottom: 1.5rem;
+}
+
+.spec-section h4 {
+    margin-bottom: 0.5rem;
+    color: var(--text-color);
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+.spec-list {
+    list-style: none;
+    padding-left: 1.5rem;
+}
+
+.spec-list li {
+    position: relative;
+    padding-left: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.spec-list li::before {
+    content: "•";
+    color: var(--primary-color);
+    position: absolute;
+    left: -1rem;
+}
+
+@media (max-width: 768px) {
+    .spec-page {
+        padding: 1rem;
+    }
+    
+    .spec-page h3 {
+        font-size: 1.2rem;
+    }
+}
+
+/* Styles pour les notes et alertes */
+.note {
+    background-color: rgba(var(--primary-rgb), 0.1);
+    border-left: 4px solid var(--primary-color);
+    border-radius: 0.3rem;
+    padding: 1rem;
+    margin: 1.5rem 0;
+}
+
+.note p {
+    margin: 0;
+    font-size: 0.95rem;
+}
+
+.course-content ol {
+    padding-left: 1.5rem;
+}
+
+.course-content ol li {
+    margin-bottom: 0.8rem;
+    line-height: 1.5;
+}
+
+.course-content ol strong {
+    color: var(--primary-color);
 } 

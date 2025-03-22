@@ -19,6 +19,8 @@
                 <li><a href="cours5.html"><i class="fas fa-book"></i> Cours 5</a></li>
                 <li><a href="exercice.html"><i class="fas fa-tasks"></i> Exercices</a></li>
                 <li><a href="projet.html"><i class="fas fa-project-diagram"></i> Projet</a></li>
+                <li><a href="business-plan.html"><i class="fas fa-file-alt"></i> Business Plan</a></li>
+                <li><a href="kanban.html"><i class="fas fa-clipboard-list"></i> Kanban</a></li>
             </ul>
             <button class="theme-toggle" id="theme-toggle">
                 <i class="fas fa-moon"></i>
@@ -56,6 +58,7 @@
                         <li><span class="status completed">✅</span> Gestion des paiements</li>
                         <li><span class="status completed">✅</span> Gestion des évaluations</li>
                         <li><span class="status completed">✅</span> Gestion des logs administratifs</li>
+                        <li><span class="status completed">✅</span> Gestion des allergènes</li>
                     </ul>
                 </div>
                 <div class="feature-card">
@@ -67,6 +70,8 @@
                         <li><span class="status completed">✅</span> Paiements & versements</li>
                         <li><span class="status completed">✅</span> Statistiques & évaluations</li>
                         <li><span class="status completed">✅</span> Compte restaurateur</li>
+                        <li><span class="status completed">✅</span> Gestion des allergènes par plat</li>
+                        <li><span class="status completed">✅</span> Association à des catégories de cuisine</li>
                     </ul>
                 </div>
                 <div class="feature-card">
@@ -78,6 +83,8 @@
                         <li><span class="status completed">✅</span> Compte utilisateur</li>
                         <li><span class="status in-progress">🔧</span> Notifications & rappels</li>
                         <li><span class="status completed">✅</span> Évaluations & retours</li>
+                        <li><span class="status completed">✅</span> Déclaration d'allergies</li>
+                        <li><span class="status completed">✅</span> Alertes allergènes sur les plats</li>
                     </ul>
                 </div>
             </div>
@@ -91,6 +98,8 @@
                     <li><span class="status in-progress">🔧</span> Table settings pour la configuration globale</li>
                     <li><span class="status in-progress">🔧</span> Journal des notifications envoyées</li>
                     <li><span class="status in-progress">🔧</span> Historique des actions utilisateurs (audit global)</li>
+                    <li><span class="status in-progress">🔧</span> Recharge de solde utilisateur via intégration</li>
+                    <li><span class="status in-progress">🔧</span> Notification lorsqu'un plat favori revient au menu</li>
                 </ul>
             </div>
         </section>
@@ -126,6 +135,75 @@
                         <div class="progress" style="width: 80%"></div>
                     </div>
                 </div>
+                <div class="progress-item">
+                    <span>Système d'allergènes</span>
+                    <div class="progress-bar">
+                        <div class="progress" style="width: 100%"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="card">
+            <h2><i class="fas fa-clipboard-list icon"></i>Planification du Projet</h2>
+            <p>Nous avons organisé le développement de notre projet en utilisant une méthodologie agile avec priorisation des fonctionnalités.</p>
+            <div class="document-list">
+                <a href="kanban.html" class="btn"><i class="fas fa-clipboard-list"></i> Voir le tableau Kanban</a>
+                <a href="business-plan.html" class="btn"><i class="fas fa-file-alt"></i> Voir le Business Plan</a>
+            </div>
+        </section>
+
+        <section class="card">
+            <h2><i class="fas fa-tasks icon"></i>Étapes du projet</h2>
+            <div class="exercise-list">
+                <a href="besoin.html" class="btn">Besoins du projet</a>
+                <a href="business-plan.html" class="btn">Business Plan</a>
+                <a href="kanban.html" class="btn">Kanban</a>
+                <a href="pages-specification.html" class="btn">Spécifications des pages</a>
+            </div>
+        </section>
+
+        <section class="card">
+            <h2><i class="fas fa-allergies icon"></i>Système de gestion des allergènes</h2>
+            <p>Une fonctionnalité clé de notre plateforme est la gestion des allergènes, assurant une expérience sécurisée pour tous les utilisateurs, notamment ceux souffrant d'allergies alimentaires.</p>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <h3><i class="fas fa-user-shield icon"></i>Panel Admin</h3>
+                    <ul>
+                        <li><span class="status completed">✅</span> Gérer une liste standardisée d'allergènes</li>
+                        <li><span class="status completed">✅</span> Catégoriser les allergènes</li>
+                        <li><span class="status completed">✅</span> Visualiser les utilisateurs et leurs allergies</li>
+                        <li><span class="status completed">✅</span> Suivre les plats par allergène</li>
+                        <li><span class="status completed">✅</span> Statistiques d'allergènes déclarés</li>
+                    </ul>
+                </div>
+                <div class="feature-card">
+                    <h3><i class="fas fa-utensils icon"></i>Panel Restaurateur</h3>
+                    <ul>
+                        <li><span class="status completed">✅</span> Associer des allergènes aux plats</li>
+                        <li><span class="status completed">✅</span> Interface de sélection des allergènes</li>
+                        <li><span class="status completed">✅</span> Validation et confirmation des ingrédients à risque</li>
+                        <li><span class="status completed">✅</span> Voir tous les plats par allergène</li>
+                    </ul>
+                </div>
+                <div class="feature-card">
+                    <h3><i class="fas fa-user icon"></i>Panel Employé</h3>
+                    <ul>
+                        <li><span class="status completed">✅</span> Déclarer ses allergies personnelles</li>
+                        <li><span class="status completed">✅</span> Recevoir des alertes sur les plats contenant des allergènes</li>
+                        <li><span class="status completed">✅</span> Filtrer les plats sans allergènes</li>
+                        <li><span class="status completed">✅</span> Formulaire de déclaration d'allergies</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="note">
+                <p><i class="fas fa-info-circle"></i> <strong>Architecture technique :</strong> Le système utilise les tables <code>allergens</code>, <code>allergen_categories</code>, <code>dish_allergen</code> et <code>user_allergen</code> pour gérer les relations entre allergènes, plats et utilisateurs.</p>
+            </div>
+            
+            <div class="note">
+                <p><i class="fas fa-exclamation-triangle"></i> <strong>Note importante :</strong> Les restaurateurs sont légalement responsables de déclarer correctement les allergènes présents dans leurs plats.</p>
             </div>
         </section>
     </main>
