@@ -11,17 +11,33 @@
     <nav class="navbar">
         <div class="nav-container">
             <h1>E-Business</h1>
-            <ul class="nav-links">
-                <li><a href="index.html"><i class="fas fa-home"></i> Accueil</a></li>
-                <li><a href="cours1.html"><i class="fas fa-book"></i> Cours 1</a></li>
-                <li><a href="cours2.html"><i class="fas fa-book"></i> Cours 2</a></li>
-                <li><a href="cours4.html"><i class="fas fa-book"></i> Cours 4</a></li>
-                <li><a href="cours5.html"><i class="fas fa-book"></i> Cours 5</a></li>
-                <li><a href="exercice.html"><i class="fas fa-tasks"></i> Exercices</a></li>
-                <li><a href="projet.html"><i class="fas fa-project-diagram"></i> Projet</a></li>
-                <li><a href="business-plan.html"><i class="fas fa-file-alt"></i> Business Plan</a></li>
-                <li><a href="kanban.html"><i class="fas fa-clipboard-list"></i> Kanban</a></li>
-            </ul>
+            <button class="mobile-toggle" id="mobile-toggle">
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="two-tier-nav" id="two-tier-nav">
+                <div class="nav-top-tier">
+                    <div class="nav-category">Cours</div>
+                    <ul class="nav-links">
+                        <li><a href="index.html"><i class="fas fa-home"></i> Accueil</a></li>
+                        <li><a href="cours1.html"><i class="fas fa-book"></i> Cours 1</a></li>
+                        <li><a href="cours2.html"><i class="fas fa-book"></i> Cours 2</a></li>
+                        <li><a href="cours4.html"><i class="fas fa-book"></i> Cours 4</a></li>
+                        <li><a href="cours5.html"><i class="fas fa-book"></i> Cours 5</a></li>
+                        <li><a href="exercice.html"><i class="fas fa-tasks"></i> Exercices</a></li>
+                    </ul>
+                </div>
+                <div class="nav-bottom-tier">
+                    <div class="nav-category">Projet</div>
+                    <ul class="nav-links">
+                        <li><a href="projet.html"><i class="fas fa-project-diagram"></i> Projet</a></li>
+                        <li><a href="business-plan.html"><i class="fas fa-file-alt"></i> Business Plan</a></li>
+                        <li><a href="kanban.html" class="active"><i class="fas fa-clipboard-list"></i> Kanban</a></li>
+                        <li><a href="PtitGamelle_Kanban.html"><i class="fas fa-clipboard-list"></i> Kanban Technique</a></li>
+                        <li><a href="pages-specification.html"><i class="fas fa-file-code"></i> Spécifications</a></li>
+                        <li><a href="allergenes.html"><i class="fas fa-allergies"></i> Allergènes</a></li>
+                    </ul>
+                </div>
+            </div>
             <button class="theme-toggle" id="theme-toggle">
                 <i class="fas fa-moon"></i>
             </button>
@@ -194,13 +210,14 @@
         </div>
 
         <section class="card">
-            <h2><i class="fas fa-tasks icon"></i>Voir le projet complet</h2>
+            <h2><i class="fas fa-tasks icon"></i>Liens rapides</h2>
             <div class="course-content">
                 <div class="exercise-list">
-                    <a href="projet.html" class="btn">Retour au projet</a>
+                    <a href="projet.html" class="btn">Voir le projet</a>
                     <a href="business-plan.html" class="btn">Voir le Business Plan</a>
-                    <a href="PtitGamelle_Kanban.html" class="btn">Voir le Kanban technique détaillé</a>
+                    <a href="PtitGamelle_Kanban.html" class="btn">Voir le Kanban détaillé</a>
                     <a href="pages-specification.html" class="btn">Voir les spécifications des pages</a>
+                    <a href="allergenes.html" class="btn">Système d'allergènes</a>
                 </div>
             </div>
         </section>
@@ -231,6 +248,27 @@
             const icon = themeToggle.querySelector('i');
             icon.className = theme === 'light' ? 'fas fa-moon' : 'fas fa-sun';
         }
+        
+        // Mobile menu toggle
+        const mobileToggle = document.getElementById('mobile-toggle');
+        const navLinks = document.getElementById('two-tier-nav');
+        
+        mobileToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('show');
+        });
+        
+        // Active link functionality
+        document.addEventListener('DOMContentLoaded', () => {
+            const currentPage = window.location.pathname.split('/').pop();
+            const navLinks = document.querySelectorAll('.nav-links li a');
+            
+            navLinks.forEach(link => {
+                const linkHref = link.getAttribute('href');
+                if (linkHref === currentPage || (currentPage === '' && linkHref === 'index.html')) {
+                    link.classList.add('active');
+                }
+            });
+        });
     </script>
 </body>
 </html> 

@@ -11,17 +11,33 @@
     <nav class="navbar">
         <div class="nav-container">
             <h1>E-Business</h1>
-            <ul class="nav-links">
-                <li><a href="index.html"><i class="fas fa-home"></i> Accueil</a></li>
-                <li><a href="cours1.html"><i class="fas fa-book"></i> Cours 1</a></li>
-                <li><a href="cours2.html"><i class="fas fa-book"></i> Cours 2</a></li>
-                <li><a href="cours4.html"><i class="fas fa-book"></i> Cours 4</a></li>
-                <li><a href="cours5.html"><i class="fas fa-book"></i> Cours 5</a></li>
-                <li><a href="exercice.html"><i class="fas fa-tasks"></i> Exercices</a></li>
-                <li><a href="projet.html"><i class="fas fa-project-diagram"></i> Projet</a></li>
-                <li><a href="business-plan.html"><i class="fas fa-file-alt"></i> Business Plan</a></li>
-                <li><a href="kanban.html"><i class="fas fa-clipboard-list"></i> Kanban</a></li>
-            </ul>
+            <button class="mobile-toggle" id="mobile-toggle">
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="two-tier-nav" id="two-tier-nav">
+                <div class="nav-top-tier">
+                    <div class="nav-category">Cours</div>
+                    <ul class="nav-links">
+                        <li><a href="index.html"><i class="fas fa-home"></i> Accueil</a></li>
+                        <li><a href="cours1.html"><i class="fas fa-book"></i> Cours 1</a></li>
+                        <li><a href="cours2.html"><i class="fas fa-book"></i> Cours 2</a></li>
+                        <li><a href="cours4.html"><i class="fas fa-book"></i> Cours 4</a></li>
+                        <li><a href="cours5.html"><i class="fas fa-book"></i> Cours 5</a></li>
+                        <li><a href="exercice.html"><i class="fas fa-tasks"></i> Exercices</a></li>
+                    </ul>
+                </div>
+                <div class="nav-bottom-tier">
+                    <div class="nav-category">Projet</div>
+                    <ul class="nav-links">
+                        <li><a href="projet.html"><i class="fas fa-project-diagram"></i> Projet</a></li>
+                        <li><a href="business-plan.html"><i class="fas fa-file-alt"></i> Business Plan</a></li>
+                        <li><a href="kanban.html"><i class="fas fa-clipboard-list"></i> Kanban</a></li>
+                        <li><a href="PtitGamelle_Kanban.html"><i class="fas fa-clipboard-list"></i> Kanban Technique</a></li>
+                        <li><a href="pages-specification.html" class="active"><i class="fas fa-file-code"></i> Spécifications</a></li>
+                        <li><a href="allergenes.html"><i class="fas fa-allergies"></i> Allergènes</a></li>
+                    </ul>
+                </div>
+            </div>
             <button class="theme-toggle" id="theme-toggle">
                 <i class="fas fa-moon"></i>
             </button>
@@ -545,6 +561,150 @@
                 </div>
             </div>
         </section>
+
+        <section class="card">
+            <h2><i class="fas fa-allergies icon"></i>Pages du système d'allergènes</h2>
+            <div class="specification-content">
+                <div class="page-spec">
+                    <h3>Gestion des allergènes (Admin)</h3>
+                    <div class="spec-details">
+                        <h4>Objectif</h4>
+                        <p>Permettre à l'administrateur de gérer la liste complète des allergènes disponibles dans le système.</p>
+                        
+                        <h4>Composants</h4>
+                        <ul>
+                            <li>Tableau CRUD des allergènes</li>
+                            <li>Formulaire d'ajout/modification</li>
+                            <li>Système de catégorisation des allergènes</li>
+                            <li>Gestionnaire d'icônes pour allergènes</li>
+                        </ul>
+                        
+                        <h4>Actions utilisateur</h4>
+                        <ul>
+                            <li>Ajouter un nouvel allergène</li>
+                            <li>Modifier un allergène existant</li>
+                            <li>Supprimer un allergène (avec vérification des dépendances)</li>
+                            <li>Filtrer et rechercher des allergènes</li>
+                            <li>Consulter les allergènes déclarés par utilisateur</li>
+                        </ul>
+                        
+                        <h4>Données affichées</h4>
+                        <ul>
+                            <li>Nom de l'allergène</li>
+                            <li>Description</li>
+                            <li>Catégorie</li>
+                            <li>Niveau de danger</li>
+                            <li>Icône associée</li>
+                            <li>Statistiques d'utilisation</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="page-spec">
+                    <h3>Déclaration d'allergènes par plat (Restaurateur)</h3>
+                    <div class="spec-details">
+                        <h4>Objectif</h4>
+                        <p>Permettre au restaurateur d'associer les allergènes pertinents à chacun de ses plats.</p>
+                        
+                        <h4>Composants</h4>
+                        <ul>
+                            <li>Interface de sélection multiple d'allergènes</li>
+                            <li>Prévisualisation du plat avec allergènes</li>
+                            <li>Formulaire de confirmation de responsabilité</li>
+                            <li>Historique des modifications d'allergènes</li>
+                        </ul>
+                        
+                        <h4>Actions utilisateur</h4>
+                        <ul>
+                            <li>Sélectionner/désélectionner des allergènes pour un plat</li>
+                            <li>Confirmer la présence d'allergènes</li>
+                            <li>Consulter l'historique des modifications</li>
+                            <li>Filtrer les plats par allergène</li>
+                        </ul>
+                        
+                        <h4>Données affichées</h4>
+                        <ul>
+                            <li>Liste des allergènes disponibles</li>
+                            <li>Allergènes actuellement associés au plat</li>
+                            <li>Informations sur les allergènes (danger, description)</li>
+                            <li>Message de responsabilité légale</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="page-spec">
+                    <h3>Profil allergènes (Employé)</h3>
+                    <div class="spec-details">
+                        <h4>Objectif</h4>
+                        <p>Permettre à l'employé de déclarer ses allergies alimentaires et de configurer les alertes.</p>
+                        
+                        <h4>Composants</h4>
+                        <ul>
+                            <li>Formulaire de déclaration d'allergies</li>
+                            <li>Options de niveaux de sensibilité</li>
+                            <li>Configuration des alertes</li>
+                            <li>Historique des déclarations</li>
+                        </ul>
+                        
+                        <h4>Actions utilisateur</h4>
+                        <ul>
+                            <li>Ajouter/supprimer des allergènes personnels</li>
+                            <li>Définir un niveau de sensibilité pour chaque allergène</li>
+                            <li>Configurer les préférences d'affichage des alertes</li>
+                            <li>Consulter l'historique des modifications</li>
+                        </ul>
+                        
+                        <h4>Données affichées</h4>
+                        <ul>
+                            <li>Liste des allergènes disponibles</li>
+                            <li>Allergènes actuellement déclarés</li>
+                            <li>Niveau de sensibilité par allergène</li>
+                            <li>Options de configuration des alertes</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="page-spec">
+                    <h3>Alerte allergènes (Interface de commande Employé)</h3>
+                    <div class="spec-details">
+                        <h4>Objectif</h4>
+                        <p>Afficher clairement les alertes d'allergènes lors de la consultation des menus et de la commande.</p>
+                        
+                        <h4>Composants</h4>
+                        <ul>
+                            <li>Indicateurs visuels sur les plats à risque</li>
+                            <li>Filtres de plats sans allergènes déclarés</li>
+                            <li>Popups d'alerte pour confirmation</li>
+                            <li>Options d'affichage détaillé des allergènes</li>
+                        </ul>
+                        
+                        <h4>Actions utilisateur</h4>
+                        <ul>
+                            <li>Consulter les détails des allergènes présents dans un plat</li>
+                            <li>Filtrer les plats sans ses allergènes</li>
+                            <li>Confirmer une commande malgré les alertes</li>
+                            <li>Demander des alternatives</li>
+                        </ul>
+                        
+                        <h4>Données affichées</h4>
+                        <ul>
+                            <li>Marquage visuel des plats contenant des allergènes</li>
+                            <li>Liste détaillée des allergènes par plat</li>
+                            <li>Niveau de risque personnalisé</li>
+                            <li>Options de filtrage</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="note">
+                <p><i class="fas fa-info-circle"></i> <strong>Note importante:</strong> Le système d'allergènes est intégré dans l'ensemble des interfaces de l'application, au-delà des pages spécifiques mentionnées ci-dessus.</p>
+            </div>
+            
+            <div class="exercise-list">
+                <a href="allergenes.html" class="btn">Voir la documentation complète du système d'allergènes</a>
+            </div>
+        </section>
     </main>
 
     <script>
@@ -572,6 +732,27 @@
             const icon = themeToggle.querySelector('i');
             icon.className = theme === 'light' ? 'fas fa-moon' : 'fas fa-sun';
         }
+        
+        // Mobile menu toggle
+        const mobileToggle = document.getElementById('mobile-toggle');
+        const navLinks = document.getElementById('two-tier-nav');
+        
+        mobileToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('show');
+        });
+        
+        // Active link functionality
+        document.addEventListener('DOMContentLoaded', () => {
+            const currentPage = window.location.pathname.split('/').pop();
+            const navLinks = document.querySelectorAll('.nav-links li a');
+            
+            navLinks.forEach(link => {
+                const linkHref = link.getAttribute('href');
+                if (linkHref === currentPage || (currentPage === '' && linkHref === 'index.html')) {
+                    link.classList.add('active');
+                }
+            });
+        });
     </script>
 </body>
 </html> 
