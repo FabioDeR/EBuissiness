@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Planification des fonctionnalités PtitGamelle</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <h1>E-Business</h1>
+            <ul class="nav-links">
+                <li><a href="index.html"><i class="fas fa-home"></i> Accueil</a></li>
+                <li><a href="cours1.html"><i class="fas fa-book"></i> Cours 1</a></li>
+                <li><a href="cours2.html"><i class="fas fa-book"></i> Cours 2</a></li>
+                <li><a href="cours4.html"><i class="fas fa-book"></i> Cours 4</a></li>
+                <li><a href="cours5.html"><i class="fas fa-book"></i> Cours 5</a></li>
+                <li><a href="exercice.html"><i class="fas fa-tasks"></i> Exercices</a></li>
+                <li><a href="projet.html"><i class="fas fa-project-diagram"></i> Projet</a></li>
+                <li><a href="business-plan.html"><i class="fas fa-file-alt"></i> Business Plan</a></li>
+                <li><a href="kanban.html"><i class="fas fa-clipboard-list"></i> Kanban</a></li>
+            </ul>
+            <button class="theme-toggle" id="theme-toggle">
+                <i class="fas fa-moon"></i>
+            </button>
+        </div>
+    </nav>
+
+    <main>
+        <div class="card">
+            <h1><i class="fas fa-clipboard-list icon"></i>Tableau de priorisation des fonctionnalités - PtitGamelle</h1>
+            <p>Ce tableau organise les fonctionnalités prioritaires pour le développement de notre plateforme de commande de repas en entreprise.</p>
+            <div class="sub-menu">
+                <span class="sub-menu-label">Vue technique détaillée</span>
+                <a href="kanban.html" class="sub-menu-link"><i class="fas fa-arrow-left"></i> Retour au Kanban principal</a>
+            </div>
+        </div>
+
+        <section class="card">
+            <h2><i class="fas fa-filter icon"></i>Étape 1 - Priorisation des panels à développer</h2>
+            <div class="prioritization-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Panel / Interface</th>
+                            <th>Priorité</th>
+                            <th>Justification rapide</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><i class="fas fa-utensils"></i> Restaurateur</td>
+                            <td class="priority-high">🟢 Must have</td>
+                            <td>Il doit gérer les plats, recevoir les commandes</td>
+                        </tr>
+                        <tr>
+                            <td><i class="fas fa-user-tie"></i> Employé</td>
+                            <td class="priority-high">🟢 Must have</td>
+                            <td>C'est l'utilisateur final qui passe commande</td>
+                        </tr>
+                        <tr>
+                            <td><i class="fas fa-cogs"></i> Admin</td>
+                            <td class="priority-medium">🟡 Should have</td>
+                            <td>Nécessaire pour gérer les comptes & suivi global</td>
+                        </tr>
+                        <tr>
+                            <td><i class="fas fa-allergies"></i> Gestion allergènes</td>
+                            <td class="priority-medium">🟡 Should have</td>
+                            <td>Important pour la sécurité alimentaire des utilisateurs</td>
+                        </tr>
+                        <tr>
+                            <td><i class="fas fa-chart-line"></i> Dashboard / Stats</td>
+                            <td class="priority-medium">🟡 Should have</td>
+                            <td>Utile mais peut arriver plus tard</td>
+                        </tr>
+                        <tr>
+                            <td><i class="fas fa-bell"></i> Notifications</td>
+                            <td class="priority-low">🔵 Nice to have</td>
+                            <td>Super important mais pas bloquant au début</td>
+                        </tr>
+                        <tr>
+                            <td><i class="fas fa-gift"></i> Fidélité / Avancées</td>
+                            <td class="priority-low">🔵 Nice to have</td>
+                            <td>Bonus marketing, une fois le cœur en place</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section class="card">
+            <h2><i class="fas fa-utensils icon"></i>Panel Restaurateur (Must Have)</h2>
+            <div class="feature-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Feature</th>
+                            <th>Backend</th>
+                            <th>Frontend</th>
+                            <th>Progression</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Gérer les plats (CRUD)</td>
+                            <td>✅ DishController, Dish model, API REST</td>
+                            <td>Formulaire de gestion + liste dynamique</td>
+                            <td>
+                                <div class="progress-container">
+                                    <div class="progress-bar" style="width: 20%"></div>
+                                    <div class="progress-text">20%</div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Gérer les prix</td>
+                            <td>restaurant_dish_prices</td>
+                            <td>Champ prix dans le formulaire plat</td>
+                            <td>
+                                <div class="progress-container">
+                                    <div class="progress-bar" style="width: 0%"></div>
+                                    <div class="progress-text">0%</div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Associer suppléments</td>
+                            <td>dish_supplements, API assignation</td>
+                            <td>UI de sélection de suppléments</td>
+                            <td>
+                                <div class="progress-container">
+                                    <div class="progress-bar" style="width: 0%"></div>
+                                    <div class="progress-text">0%</div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Gérer les allergènes</td>
+                            <td>allergens, dish_allergen</td>
+                            <td>UI de sélection d'allergènes par plat</td>
+                            <td>
+                                <div class="progress-container">
+                                    <div class="progress-bar" style="width: 100%"></div>
+                                    <div class="progress-text">100%</div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Gérer les disponibilités</td>
+                            <td>restaurant_schedules CRUD</td>
+                            <td>Interface jours dispo + heure limite</td>
+                            <td>
+                                <div class="progress-container">
+                                    <div class="progress-bar" style="width: 0%"></div>
+                                    <div class="progress-text">0%</div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Voir les commandes du jour</td>
+                            <td>orders + order_items API</td>
+                            <td>Liste des commandes avec filtres</td>
+                            <td>
+                                <div class="progress-container">
+                                    <div class="progress-bar" style="width: 0%"></div>
+                                    <div class="progress-text">0%</div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Modifier le statut d'une commande</td>
+                            <td>API PUT orders/{id}/status</td>
+                            <td>Dropdown ou bouton d'action dans la liste</td>
+                            <td>
+                                <div class="progress-container">
+                                    <div class="progress-bar" style="width: 0%"></div>
+                                    <div class="progress-text">0%</div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Voir les paiements reçus</td>
+                            <td>API payments, restaurant_payouts</td>
+                            <td>Tableau des paiements</td>
+                            <td>
+                                <div class="progress-container">
+                                    <div class="progress-bar" style="width: 0%"></div>
+                                    <div class="progress-text">0%</div>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section class="card">
+            <h2><i class="fas fa-user-tie icon"></i>Panel Employé (Must Have)</h2>
+            <div class="feature-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Feature</th>
+                            <th>Backend</th>
+                            <th>Frontend</th>
+                            <th>Progression</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Voir les restaurants du jour</td>
+                            <td>restaurant_schedules + filtres date</td>
+                            <td>Liste de cards ou table</td>
+                            <td>
+                                <div class="progress-container">
+                                    <div class="progress-bar" style="width: 0%"></div>
+                                    <div class="progress-text">0%</div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Voir le menu d'un resto</td>
+                            <td>dishes + supplements</td>
+                            <td>Détails par plat, UI riche</td>
+                            <td>
+                                <div class="progress-container">
+                                    <div class="progress-bar" style="width: 0%"></div>
+                                    <div class="progress-text">0%</div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Créer un panier</td>
+                            <td>cart_drafts, API POST</td>
+                            <td>Formulaire interactif (sélection + quantité)</td>
+                            <td>
+                                <div class="progress-container">
+                                    <div class="progress-bar" style="width: 0%"></div>
+                                    <div class="progress-text">0%</div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Programmer une commande</td>
+                            <td>cart_drafts.delivery_date</td>
+                            <td>Sélection calendrier dans UI panier</td>
+                            <td>
+                                <div class="progress-container">
+                                    <div class="progress-bar" style="width: 0%"></div>
+                                    <div class="progress-text">0%</div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Passer commande</td>
+                            <td>API POST orders</td>
+                            <td>Confirmation + affichage résumé</td>
+                            <td>
+                                <div class="progress-container">
+                                    <div class="progress-bar" style="width: 0%"></div>
+                                    <div class="progress-text">0%</div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Paiement commande</td>
+                            <td>payments, balance, API POST</td>
+                            <td>Confirmation + débit solde</td>
+                            <td>
+                                <div class="progress-container">
+                                    <div class="progress-bar" style="width: 0%"></div>
+                                    <div class="progress-text">0%</div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Historique des commandes</td>
+                            <td>API GET orders filtré par user</td>
+                            <td>Tableau ou liste historique</td>
+                            <td>
+                                <div class="progress-container">
+                                    <div class="progress-bar" style="width: 0%"></div>
+                                    <div class="progress-text">0%</div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Laisser un avis</td>
+                            <td>reviews, API POST</td>
+                            <td>Formulaire court + rating UI</td>
+                            <td>
+                                <div class="progress-container">
+                                    <div class="progress-bar" style="width: 0%"></div>
+                                    <div class="progress-text">0%</div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Gérer ses préférences (ex : allergies)</td>
+                            <td>users.preferences (champ JSON)</td>
+                            <td>Formulaire préférences utilisateur</td>
+                            <td>
+                                <div class="progress-container">
+                                    <div class="progress-bar" style="width: 0%"></div>
+                                    <div class="progress-text">0%</div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Déclarer ses allergies alimentaires</td>
+                            <td>user_allergen (relation utilisateur ↔ allergènes)</td>
+                            <td>Formulaire sélection d'allergènes</td>
+                            <td>
+                                <div class="progress-container">
+                                    <div class="progress-bar" style="width: 100%"></div>
+                                    <div class="progress-text">100%</div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Voir les alertes allergènes sur les plats</td>
+                            <td>dish_allergen + comparaison avec user_allergen</td>
+                            <td>Marquage visuel des plats à risque</td>
+                            <td>
+                                <div class="progress-container">
+                                    <div class="progress-bar" style="width: 100%"></div>
+                                    <div class="progress-text">100%</div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Recevoir un rappel avant la deadline (email)</td>
+                            <td>reminders, API POST</td>
+                            <td>Formulaire sélection de rappel</td>
+                            <td>
+                                <div class="progress-container">
+                                    <div class="progress-bar" style="width: 0%"></div>
+                                    <div class="progress-text">0%</div>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section class="card">
+            <h2><i class="fas fa-cogs icon"></i>Panel Admin (Should Have)</h2>
+            <div class="feature-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Feature</th>
+                            <th>Backend</th>
+                            <th>Frontend</th>
+                            <th>Progression</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Gérer utilisateurs</td>
+                            <td>UserController, rôles via Spatie</td>
+                            <td>Interface CRUD utilisateurs</td>
+                            <td>
+                                <div class="progress-container">
+                                    <div class="progress-bar" style="width: 0%"></div>
+                                    <div class="progress-text">0%</div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Gérer organisations</td>
+                            <td>OrganizationController</td>
+                            <td>Formulaire + liste orga</td>
+                            <td>
+                                <div class="progress-container">
+                                    <div class="progress-bar" style="width: 0%"></div>
+                                    <div class="progress-text">0%</div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Voir toutes les commandes</td>
+                            <td>API admin orders + filtres</td>
+                            <td>Tableau avec actions</td>
+                            <td>
+                                <div class="progress-container">
+                                    <div class="progress-bar" style="width: 0%"></div>
+                                    <div class="progress-text">0%</div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Gérer restaurants & lier à orga</td>
+                            <td>RestaurantController, assignation</td>
+                            <td>Interface relation orga/resto</td>
+                            <td>
+                                <div class="progress-container">
+                                    <div class="progress-bar" style="width: 0%"></div>
+                                    <div class="progress-text">0%</div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Voir évaluations</td>
+                            <td>API reviews</td>
+                            <td>Tableau ou carte d'avis</td>
+                            <td>
+                                <div class="progress-container">
+                                    <div class="progress-bar" style="width: 0%"></div>
+                                    <div class="progress-text">0%</div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Gérer les allergènes disponibles</td>
+                            <td>allergens</td>
+                            <td>Interface CRUD des allergènes</td>
+                            <td>
+                                <div class="progress-container">
+                                    <div class="progress-bar" style="width: 100%"></div>
+                                    <div class="progress-text">100%</div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Voir les allergies des utilisateurs</td>
+                            <td>user_allergen</td>
+                            <td>Tableau des allergies par utilisateur</td>
+                            <td>
+                                <div class="progress-container">
+                                    <div class="progress-bar" style="width: 100%"></div>
+                                    <div class="progress-text">100%</div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Voir logs admin</td>
+                            <td>admin_logs</td>
+                            <td>Tableau logs avec IP et actions</td>
+                            <td>
+                                <div class="progress-container">
+                                    <div class="progress-bar" style="width: 0%"></div>
+                                    <div class="progress-text">0%</div>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section class="card">
+            <h2><i class="fas fa-tasks icon"></i>Liens rapides</h2>
+            <div class="course-content">
+                <div class="exercise-list">
+                    <a href="projet.html" class="btn">Voir le projet</a>
+                    <a href="business-plan.html" class="btn">Voir le Business Plan</a>
+                    <a href="kanban.html" class="btn">Voir le Kanban interactif</a>
+                    <a href="pages-specification.html" class="btn">Voir les spécifications des pages</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // Theme toggle functionality
+        const themeToggle = document.getElementById('theme-toggle');
+        const html = document.documentElement;
+        
+        // Check for saved theme preference
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme) {
+            html.setAttribute('data-theme', savedTheme);
+            updateThemeIcon(savedTheme);
+        }
+
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = html.getAttribute('data-theme');
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+            
+            html.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            updateThemeIcon(newTheme);
+        });
+
+        function updateThemeIcon(theme) {
+            const icon = themeToggle.querySelector('i');
+            icon.className = theme === 'light' ? 'fas fa-moon' : 'fas fa-sun';
+        }
+    </script>
+</body>
+</html>

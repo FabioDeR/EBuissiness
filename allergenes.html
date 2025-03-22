@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestion des Allergènes - PtitGamelle</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <h1>E-Business</h1>
+            <ul class="nav-links">
+                <li><a href="index.html"><i class="fas fa-home"></i> Accueil</a></li>
+                <li><a href="cours1.html"><i class="fas fa-book"></i> Cours 1</a></li>
+                <li><a href="cours2.html"><i class="fas fa-book"></i> Cours 2</a></li>
+                <li><a href="cours4.html"><i class="fas fa-book"></i> Cours 4</a></li>
+                <li><a href="cours5.html"><i class="fas fa-book"></i> Cours 5</a></li>
+                <li><a href="exercice.html"><i class="fas fa-tasks"></i> Exercices</a></li>
+                <li><a href="projet.html"><i class="fas fa-project-diagram"></i> Projet</a></li>
+                <li><a href="business-plan.html"><i class="fas fa-file-alt"></i> Business Plan</a></li>
+                <li><a href="kanban.html"><i class="fas fa-clipboard-list"></i> Kanban</a></li>
+                <li><a href="allergenes.html"><i class="fas fa-allergies"></i> Allergènes</a></li>
+            </ul>
+            <button class="theme-toggle" id="theme-toggle">
+                <i class="fas fa-moon"></i>
+            </button>
+        </div>
+    </nav>
+
+    <main>
+        <div class="card">
+            <h1><i class="fas fa-allergies icon"></i>Gestion des Allergènes - PtitGamelle</h1>
+            <p>Cette section présente le module de gestion des allergènes, une fonctionnalité importante pour la sécurité et la santé des utilisateurs de notre plateforme de commande de repas.</p>
+        </div>
+
+        <section class="card">
+            <h2><i class="fas fa-info-circle icon"></i>Présentation du système d'allergènes</h2>
+            <p>Notre système de gestion des allergènes est conçu pour garantir une expérience sécurisée pour tous les utilisateurs, notamment ceux souffrant d'allergies alimentaires. Il permet :</p>
+            <ul>
+                <li>Aux administrateurs de gérer une liste standardisée d'allergènes</li>
+                <li>Aux restaurateurs d'identifier les allergènes présents dans leurs plats</li>
+                <li>Aux utilisateurs de déclarer leurs allergies personnelles</li>
+                <li>D'afficher des alertes automatiques lorsqu'un plat contient un allergène déclaré par l'utilisateur</li>
+            </ul>
+        </section>
+
+        <section class="card">
+            <h2><i class="fas fa-user-shield icon"></i>Fonctionnalités côté Administration</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <h3><i class="fas fa-list icon"></i>Gestion des allergènes</h3>
+                    <ul>
+                        <li><span class="status completed">✅</span> Créer une liste globale d'allergènes</li>
+                        <li><span class="status completed">✅</span> Modifier ou supprimer des allergènes</li>
+                        <li><span class="status completed">✅</span> Catégoriser les allergènes</li>
+                        <li><span class="status completed">✅</span> Associer des icônes standardisées</li>
+                    </ul>
+                </div>
+                <div class="feature-card">
+                    <h3><i class="fas fa-database icon"></i>Gestion des données</h3>
+                    <ul>
+                        <li><span class="status completed">✅</span> Visualiser les utilisateurs et leurs allergies</li>
+                        <li><span class="status completed">✅</span> Suivi des plats par allergène</li>
+                        <li><span class="status completed">✅</span> Reporting et statistiques</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="card">
+            <h2><i class="fas fa-utensils icon"></i>Fonctionnalités côté Restaurateur</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <h3><i class="fas fa-tags icon"></i>Marquage des plats</h3>
+                    <ul>
+                        <li><span class="status completed">✅</span> Ajouter/modifier les allergènes liés à un plat</li>
+                        <li><span class="status completed">✅</span> Interface intuitive de sélection des allergènes</li>
+                        <li><span class="status completed">✅</span> Vue globale des allergènes par plat</li>
+                    </ul>
+                </div>
+                <div class="feature-card">
+                    <h3><i class="fas fa-check-circle icon"></i>Vérification</h3>
+                    <ul>
+                        <li><span class="status completed">✅</span> Confirmation des ingrédients à risque</li>
+                        <li><span class="status completed">✅</span> Alertes de responsabilité</li>
+                        <li><span class="status completed">✅</span> Historique des modifications d'allergènes</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="card">
+            <h2><i class="fas fa-user icon"></i>Fonctionnalités côté Employé</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <h3><i class="fas fa-user-edit icon"></i>Profil utilisateur</h3>
+                    <ul>
+                        <li><span class="status completed">✅</span> Déclarer ses allergies via un formulaire dédié</li>
+                        <li><span class="status completed">✅</span> Modifier ses allergies à tout moment</li>
+                        <li><span class="status completed">✅</span> Niveau de sensibilité configurable</li>
+                    </ul>
+                </div>
+                <div class="feature-card">
+                    <h3><i class="fas fa-exclamation-triangle icon"></i>Alertes</h3>
+                    <ul>
+                        <li><span class="status completed">✅</span> Être alerté lorsqu'un plat contient un allergène enregistré</li>
+                        <li><span class="status completed">✅</span> Marquage visuel des plats à risque</li>
+                        <li><span class="status completed">✅</span> Filtrer les plats sans allergènes personnels</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="card">
+            <h2><i class="fas fa-database icon"></i>Architecture technique</h2>
+            <ul>
+                <li><strong>Tables principales :</strong> allergens, dish_allergen, user_allergen</li>
+                <li><strong>Relations :</strong> 
+                    <ul>
+                        <li>allergens ↔ dish_allergen : relation entre allergènes et plats</li>
+                        <li>allergens ↔ user_allergen : relation entre allergènes et utilisateurs</li>
+                    </ul>
+                </li>
+                <li><strong>Logique de détection :</strong> Comparaison entre les allergènes d'un plat et ceux déclarés par l'utilisateur</li>
+            </ul>
+        </section>
+
+        <section class="card">
+            <h2><i class="fas fa-desktop icon"></i>Interfaces utilisateur</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <h3><i class="fas fa-user-shield icon"></i>Administrateur</h3>
+                    <ul>
+                        <li><span class="status completed">✅</span> Tableau CRUD des allergènes</li>
+                        <li><span class="status completed">✅</span> Visualisation des allergies par utilisateur</li>
+                        <li><span class="status completed">✅</span> Dashboard statistique sur les allergènes</li>
+                    </ul>
+                </div>
+                <div class="feature-card">
+                    <h3><i class="fas fa-utensils icon"></i>Restaurateur</h3>
+                    <ul>
+                        <li><span class="status completed">✅</span> Sélection multi-allergènes par plat</li>
+                        <li><span class="status completed">✅</span> Liste des plats avec allergènes</li>
+                        <li><span class="status completed">✅</span> Alertes de responsabilité</li>
+                    </ul>
+                </div>
+                <div class="feature-card">
+                    <h3><i class="fas fa-user icon"></i>Employé</h3>
+                    <ul>
+                        <li><span class="status completed">✅</span> Profil allergènes avec multi-sélection</li>
+                        <li><span class="status completed">✅</span> Alerte visuelle sur les plats à risque</li>
+                        <li><span class="status completed">✅</span> Filtrage des plats par allergènes</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="card">
+            <h2><i class="fas fa-sync-alt icon"></i>Cycle de vie d'une alerte allergène</h2>
+            <div class="course-content">
+                <ol>
+                    <li><strong>Création</strong> : L'administrateur crée des allergènes dans le système</li>
+                    <li><strong>Association</strong> : Le restaurateur associe des allergènes à ses plats</li>
+                    <li><strong>Déclaration</strong> : L'employé déclare ses allergies personnelles</li>
+                    <li><strong>Détection</strong> : Le système compare les allergènes du plat avec ceux de l'utilisateur</li>
+                    <li><strong>Alerte</strong> : Affichage d'une alerte visuelle sur le plat si correspondance</li>
+                    <li><strong>Protection</strong> : L'utilisateur peut choisir de filtrer les plats avec ses allergènes</li>
+                </ol>
+                <div class="note">
+                    <p><i class="fas fa-info-circle"></i> <strong>Note importante</strong> : Les restaurateurs sont responsables de déclarer correctement les allergènes présents dans leurs plats.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="card">
+            <h2><i class="fas fa-tasks icon"></i>Liens rapides</h2>
+            <div class="course-content">
+                <div class="exercise-list">
+                    <a href="projet.html" class="btn">Retour au projet</a>
+                    <a href="kanban.html" class="btn">Voir le Kanban</a>
+                    <a href="pages-specification.html" class="btn">Spécifications des pages</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // Theme toggle functionality
+        const themeToggle = document.getElementById('theme-toggle');
+        const html = document.documentElement;
+        
+        // Check for saved theme preference
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme) {
+            html.setAttribute('data-theme', savedTheme);
+            updateThemeIcon(savedTheme);
+        }
+
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = html.getAttribute('data-theme');
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+            
+            html.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            updateThemeIcon(newTheme);
+        });
+
+        function updateThemeIcon(theme) {
+            const icon = themeToggle.querySelector('i');
+            icon.className = theme === 'light' ? 'fas fa-moon' : 'fas fa-sun';
+        }
+    </script>
+</body>
+</html> 

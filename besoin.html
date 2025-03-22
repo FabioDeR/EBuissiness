@@ -1,0 +1,321 @@
+👨‍🍳 PANEL RESTAURATEUR — Pages & fonctionnalités frontend
+📄 Dashboard / Accueil
+Objectif : Vue rapide sur les activités du jour
+
+Affichage :
+
+Nombre de commandes aujourd’hui
+
+Heure limite du jour
+
+Statut général (ex: ouvert / fermé)
+
+Données : orders, restaurant_schedules, dishes
+
+📄 Mes plats
+Objectif : Gérer le catalogue
+
+Affichage :
+
+Liste des plats (nom, image, prix, tags, catégories, allergènes)
+
+Bouton créer / éditer
+
+Actions :
+
+Ajouter/modifier/supprimer un plat
+
+Associer des suppléments
+
+Lier des allergènes à chaque plat ✅
+
+Données :
+
+dishes, dish_supplements, restaurant_dish_prices, dish_allergen, allergens
+
+📄 Suppléments
+Objectif : Gérer les suppléments proposés
+
+Affichage :
+
+Liste avec prix et lien aux plats
+
+Actions :
+
+Ajouter/supprimer/modifier un supplément
+
+📄 Disponibilités
+Objectif : Gérer les jours d’ouverture
+
+Affichage :
+
+Jours, heures limites, disponibilités
+
+Actions :
+
+Activer/désactiver un jour
+
+Ajouter un message (ex : fermé pour congé)
+
+Données : restaurant_schedules, days
+
+📄 Commandes
+Objectif : Gérer les commandes du jour
+
+Affichage :
+
+Tableau des commandes (client, plats, statut)
+
+Actions :
+
+Changer le statut (préparation, livré, etc.)
+
+Voir les allergènes associés à chaque commande si besoin
+
+Données : orders, order_items, dishes, dish_allergen, allergens
+
+📄 Paiements
+Objectif : Voir les paiements reçus
+
+Affichage :
+
+Historique, statut, solde, payout demandé
+
+📄 Profil / Mon restaurant
+Objectif : Modifier les infos du resto
+
+Affichage :
+
+Nom, description, image/logo
+
+Sélection des catégories culinaires
+
+Données :
+
+restaurants, restaurant_categories, restaurant_category_pivot
+
+👨‍💼 PANEL EMPLOYÉ — Pages & fonctionnalités frontend
+📄 Accueil / Dashboard
+Objectif : Vue rapide sur la journée
+
+Affichage :
+
+Liste des restaurants ouverts aujourd’hui
+
+Panier actif si existant
+
+📄 Liste des restaurants
+Objectif : Parcourir les restaurants du jour
+
+Affichage :
+
+Cartes resto avec image, heure limite, type de cuisine
+
+Données :
+
+restaurant_schedules, restaurants, restaurant_categories
+
+📄 Menu d’un restaurant
+Objectif : Choisir un plat
+
+Affichage :
+
+Liste des plats avec images, prix, allergènes
+
+Spécial :
+
+✅ Afficher une alerte visuelle si un plat contient un allergène déclaré par l'utilisateur
+
+Données :
+
+dishes, dish_allergen, user_allergen, allergens
+
+📄 Panier
+Objectif : Composer / programmer une commande
+
+Affichage :
+
+Détail plats + suppléments + quantités
+
+Date de livraison possible
+
+Données :
+
+cart_drafts, users.balance
+
+📄 Historique des commandes
+Objectif : Voir ce qui a été commandé
+
+Affichage :
+
+Liste commandes passées (plat, resto, date, statut)
+
+📄 Évaluations
+Objectif : Laisser un avis
+
+Affichage :
+
+Formulaire (note + commentaire)
+
+Historique des avis laissés
+
+📄 Profil utilisateur
+Objectif : Modifier ses infos
+
+Affichage :
+
+Nom, email, mot de passe
+
+✅ Sélection de ses allergies personnelles (checkbox ou multiselect)
+
+Données :
+
+users, user_allergen, allergens
+
+🛠️ PANEL ADMINISTRATEUR — Pages & UI frontend
+📄 Dashboard / Accueil admin
+Objectif : Vue globale de la plateforme
+
+Affichage :
+
+Nombre total d’utilisateurs, restaurants, entreprises
+
+Commandes du jour
+
+Paiements en attente
+
+Plats les plus populaires
+
+Données :
+
+users, orders, restaurants, payments, dishes
+
+📄 Utilisateurs
+Objectif : Gérer les comptes utilisateurs
+
+Affichage :
+
+Tableau avec : nom, email, rôle, statut actif/inactif
+
+Filtres par rôle ou organisation
+
+Actions :
+
+Créer un utilisateur
+
+Modifier / désactiver un utilisateur
+
+Forcer réinitialisation du mot de passe
+
+Données : users, roles (Spatie), organizations
+
+📄 Entreprises (Organisations)
+Objectif : Gérer les entreprises clientes
+
+Affichage :
+
+Liste des entreprises avec leurs employés
+
+Actions :
+
+Ajouter / modifier une organisation
+
+Lier des utilisateurs ou restaurants
+
+Données : organizations, users, restaurants, restaurant_schedules
+
+📄 Restaurants
+Objectif : Gérer les restaurants partenaires
+
+Affichage :
+
+Liste avec nom, adresse, statut, organisation liée
+
+Actions :
+
+Ajouter / modifier un restaurant
+
+Lier à des catégories
+
+Voir les plannings
+
+Données : restaurants, restaurant_categories, restaurant_schedules
+
+📄 Commandes
+Objectif : Suivre les commandes de tous les utilisateurs
+
+Affichage :
+
+Liste avec filtres (date, statut, utilisateur, resto)
+
+Actions :
+
+Voir détail d’une commande
+
+Forcer un statut si problème
+
+Données : orders, order_items, users, restaurants, order_statuses
+
+📄 Paiements & Payouts
+Objectif : Gérer les paiements employés et versements resto
+
+Affichage :
+
+Paiements effectués par les employés
+
+Solde et paiements à verser aux restos
+
+Actions :
+
+Valider ou rejeter un payout
+
+Export CSV pour comptabilité
+
+Données : payments, restaurant_payouts, payment_statuses
+
+📄 Avis / Evaluations
+Objectif : Modérer les retours des utilisateurs
+
+Affichage :
+
+Notes, commentaires par plat ou restaurant
+
+Actions :
+
+Supprimer un avis
+
+Filtrer par note, restaurant, utilisateur
+
+Données : reviews, users, dishes, restaurants
+
+📄 Allergènes
+Objectif : Gérer la liste des allergènes disponibles
+
+Affichage :
+
+Liste simple avec nom
+
+Actions :
+
+Ajouter / supprimer un allergène
+
+Données : allergens
+
+📄 Logs administratifs
+Objectif : Historique des actions des admins
+
+Affichage :
+
+Liste : qui a fait quoi et quand
+
+Données : admin_logs
+
+📄 Paramètres
+Objectif : Config globale de la plateforme
+
+Affichage :
+
+Politique de remboursement, délais, moyens de paiement, etc.
+
+Données : settings
+
