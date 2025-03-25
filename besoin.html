@@ -1,37 +1,71 @@
-👨‍🍳 PANEL RESTAURATEUR — Pages & fonctionnalités frontend
-📄 Dashboard / Accueil
-Objectif : Vue rapide sur les activités du jour
+## 🧩 Pages du panel Restaurateur – Vue par affichage
 
-Affichage :
+### 📊 Tableau de bord (Dashboard)
+Objectif : Donner une vue d’ensemble quotidienne et mensuelle de l’activité du restaurant
 
-Nombre de commandes aujourd’hui
+#### Données affichées :
+- Nombre de plats actifs ✅
+- Nombre de commandes du jour ✅
+- Revenus du mois ✅
+- Évaluation moyenne (note globale sur les plats) ✅
+- Nombre d’entreprises servies aujourd’hui ✅
+- Heure limite de commande globale ✅
+- Statut de disponibilité du jour (restaurant ouvert / fermé) ✅
 
-Heure limite du jour
+#### Sections dynamiques :
+- ✅ **Commandes récentes** : ID, Employé, Entreprise, Heure, Montant, Statut
+- ✅ **Commandes par entreprise** : nom, nombre, montant total, heure limite, disponibilité
+- ✅ **Plats populaires** : classement, nombre de ventes, note, mention de l’entreprise associée (ex: Top chez TechCorp)
 
-Statut général (ex: ouvert / fermé)
+#### Suggestions futures :
+- 🔄 Voir planning global de la semaine (optionnel)
+- 📌 Bouton vers "Voir toutes les commandes"
+- 📌 Bouton vers "Gérer les plats"
+- 📈 Possibilité d’exporter des stats par entreprise
 
-Données : orders, restaurant_schedules, dishes
+---
 
-📄 Mes plats
-Objectif : Gérer le catalogue
+### 🍽️ Mes Plats (Gestion des plats)
+Objectif : Permettre au restaurateur de créer, modifier et gérer ses plats rapidement et efficacement
 
-Affichage :
+#### Fonctionnalités principales :
+- ✅ Liste des plats avec nom, image, prix, description, catégories et allergènes
+- ✅ Statut d’un plat (🟢 Disponible / 🔴 Indisponible)
+- ✅ Recherche textuelle (nom ou description)
+- ✅ Filtrage par catégorie (Entrée, Plat, Dessert, Boisson)
+- ✅ Ajouter un plat via une modale (step-by-step avec MUI Stepper)
+- ✅ Modifier un plat (préremplissage du formulaire)
+- ✅ Supprimer un plat avec confirmation
 
-Liste des plats (nom, image, prix, tags, catégories, allergènes)
+#### Champs du formulaire de plat :
+- ✅ Nom
+- ✅ Description
+- ✅ Prix
+- ✅ Image (upload à implémenter)
+- ✅ Catégories (checkbox ou via liste personnalisée)
+- ✅ Allergènes (checkbox)
+- ✅ Suppléments (checkbox avec prix)
+- ✅ Disponibilité (switch toggle)
 
-Bouton créer / éditer
+#### Améliorations possibles pour gain de temps :
+- 🔁 Activation / désactivation sans suppression
+- ⚠️ Feedback visuel après ajout / édition (toasts)
+- 🧠 Suggestions automatiques de tags / catégories selon le nom du plat
+- 📦 Pagination ou chargement progressif (si grand volume)
+- 🔄 Chargement dynamique des catégories depuis API
+- 🧾 Affichage des suppléments sur la fiche du plat (pas que dans le formulaire)
+- 📝 Permettre aux restaurateurs de **créer eux-mêmes leurs catégories personnalisées**
+- 🧱 Séparer les étapes : base / catégories / suppléments / image & dispo
+- 💡 Prévoir une validation par étape avec contrôle des champs obligatoires
+- ⚡ **Bouton "Suggérer automatiquement"** : coche les suppléments, allergènes, catégories selon le nom du plat (ex: "Pizza 4 fromages")
+- 🧩 **Créer un plat à partir d’un modèle** (ex: plat "Dagobert") avec duplication rapide
+- 📚 **Système de presets prédéfinis** (plats, suppléments, catégories) intégrés via seed ou catalogue visuel dans l’interface
+- ➕ **Ajout rapide d’une catégorie ou supplément** depuis le formulaire (champ + bouton)
+- ⏱️ **Mode encodage rapide** : option "Créer et ajouter un autre plat" à la fin du formulaire
 
-Actions :
+---
 
-Ajouter/modifier/supprimer un plat
 
-Associer des suppléments
-
-Lier des allergènes à chaque plat ✅
-
-Données :
-
-dishes, dish_supplements, restaurant_dish_prices, dish_allergen, allergens
 
 📄 Suppléments
 Objectif : Gérer les suppléments proposés

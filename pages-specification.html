@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Spécifications des pages - PtitGamelle</title>
+    <title>Spécifications des Pages - PtitGamelle</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
 </head>
@@ -46,663 +46,173 @@
 
     <main>
         <div class="card">
-            <h1><i class="fas fa-file-code icon"></i>Spécifications détaillées des pages - PtitGamelle</h1>
-            <p>Ce document présente les besoins fonctionnels de chaque page de l'application, interface par interface, pour guider le développement frontend.</p>
-            <div class="sub-menu">
-                <span class="sub-menu-label">Documentation technique</span>
-                <a href="PtitGamelle_Kanban.html" class="sub-menu-link"><i class="fas fa-clipboard-list"></i> Voir le Kanban technique</a>
-            </div>
+            <h1><i class="fas fa-file-code icon"></i>Spécifications des Pages</h1>
+            <p>Documentation détaillée des fonctionnalités et interfaces de chaque page de l'application.</p>
         </div>
 
         <section class="card">
             <h2><i class="fas fa-utensils icon"></i>Panel Restaurateur</h2>
-            
-            <div class="spec-page">
-                <h3><i class="fas fa-tachometer-alt"></i> Dashboard / Accueil restaurateur</h3>
-                <div class="spec-section">
-                    <h4>📚 Objectif</h4>
-                    <p>Vue d'ensemble du jour pour le restaurateur</p>
-                </div>
-                
-                <div class="spec-section">
-                    <h4>🧩 Composants attendus</h4>
-                    <ul class="spec-list">
-                        <li>Nombre de commandes aujourd'hui</li>
-                        <li>Plats les plus commandés</li>
-                        <li>Prochaine deadline</li>
+            <div class="specification-content">
+                <div class="panel-section">
+                    <h3>Dashboard</h3>
+                    <ul>
+                        <li>Vue d'ensemble des commandes du jour</li>
+                        <li>Statistiques de vente</li>
+                        <li>Alertes et notifications</li>
                     </ul>
                 </div>
-                
-                <div class="spec-section">
-                    <h4>🛠️ Actions côté utilisateur</h4>
-                    <ul class="spec-list">
-                        <li>Accès rapide vers "Mes plats" ou "Commandes"</li>
+
+                <div class="panel-section">
+                    <h3>Mes plats</h3>
+                    <div class="specification-details">
+                        <h4>Fonctionnalités principales :</h4>
+                        <ul>
+                            <li>✅ Liste des plats avec nom, image, prix, description, catégories et allergènes</li>
+                            <li>✅ Statut d'un plat (🟢 Disponible / 🔴 Indisponible)</li>
+                            <li>✅ Recherche textuelle (nom ou description)</li>
+                            <li>✅ Filtrage par catégorie (Entrée, Plat, Dessert, Boisson)</li>
+                            <li>✅ Ajouter un plat via une modale (step-by-step avec MUI Stepper)</li>
+                            <li>✅ Modifier un plat (préremplissage du formulaire)</li>
+                            <li>✅ Supprimer un plat avec confirmation</li>
+                        </ul>
+
+                        <h4>Champs du formulaire de plat :</h4>
+                        <ul>
+                            <li>✅ Nom</li>
+                            <li>✅ Description</li>
+                            <li>✅ Prix</li>
+                            <li>✅ Image (upload à implémenter)</li>
+                            <li>✅ Catégories (checkbox ou via liste personnalisée)</li>
+                            <li>✅ Allergènes (checkbox)</li>
+                            <li>✅ Suppléments (checkbox avec prix)</li>
+                            <li>✅ Disponibilité (switch toggle)</li>
+                        </ul>
+
+                        <h4>Améliorations possibles pour gain de temps :</h4>
+                        <ul>
+                            <li>🔁 Activation / désactivation sans suppression</li>
+                            <li>⚠️ Feedback visuel après ajout / édition (toasts)</li>
+                            <li>🧠 Suggestions automatiques de tags / catégories selon le nom du plat</li>
+                            <li>📦 Pagination ou chargement progressif (si grand volume)</li>
+                            <li>🔄 Chargement dynamique des catégories depuis API</li>
+                            <li>🧾 Affichage des suppléments sur la fiche du plat</li>
+                            <li>📝 Création de catégories personnalisées par les restaurateurs</li>
+                            <li>🧱 Séparation des étapes : base / catégories / suppléments / image & dispo</li>
+                            <li>💡 Validation par étape avec contrôle des champs obligatoires</li>
+                            <li>⚡ Bouton "Suggérer automatiquement" pour les suppléments, allergènes, catégories</li>
+                            <li>🧩 Création de plat à partir d'un modèle</li>
+                            <li>📚 Système de presets prédéfinis</li>
+                            <li>➕ Ajout rapide d'une catégorie ou supplément depuis le formulaire</li>
+                            <li>⏱️ Mode encodage rapide</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="panel-section">
+                    <h3>Disponibilités</h3>
+                    <ul>
+                        <li>Calendrier des jours de service</li>
+                        <li>Horaires de commande</li>
+                        <li>Gestion des exceptions (jours fériés, congés)</li>
                     </ul>
                 </div>
-                
-                <div class="spec-section">
-                    <h4>🧠 Données à afficher</h4>
-                    <p>Commandes du jour, planning, restaurant lié à l'utilisateur</p>
-                </div>
-            </div>
-            
-            <div class="spec-page">
-                <h3><i class="fas fa-hamburger"></i> Mes plats</h3>
-                <div class="spec-section">
-                    <h4>📚 Objectif</h4>
-                    <p>Gérer le catalogue de plats</p>
-                </div>
-                
-                <div class="spec-section">
-                    <h4>🧩 Composants attendus</h4>
-                    <ul class="spec-list">
-                        <li>Liste des plats (nom, prix, tags, image, actions)</li>
-                        <li>Bouton "Créer un plat"</li>
+
+                <div class="panel-section">
+                    <h3>Commandes reçues</h3>
+                    <ul>
+                        <li>Liste des commandes en cours</li>
+                        <li>Détails des commandes</li>
+                        <li>Mise à jour du statut</li>
+                        <li>Historique des commandes</li>
                     </ul>
                 </div>
-                
-                <div class="spec-section">
-                    <h4>🛠️ Actions côté utilisateur</h4>
-                    <ul class="spec-list">
-                        <li>Créer / Modifier / Supprimer</li>
-                        <li>Ajouter une image, une catégorie, des suppléments</li>
+
+                <div class="panel-section">
+                    <h3>Paiements</h3>
+                    <ul>
+                        <li>Vue des paiements reçus</li>
+                        <li>Statistiques de paiement</li>
+                        <li>Historique des transactions</li>
                     </ul>
                 </div>
-                
-                <div class="spec-section">
-                    <h4>🧠 Données à afficher</h4>
-                    <p>dishes, restaurant_dish_prices, categories, supplements</p>
-                </div>
-            </div>
-            
-            <div class="spec-page">
-                <h3><i class="fas fa-calendar-alt"></i> Disponibilités</h3>
-                <div class="spec-section">
-                    <h4>📚 Objectif</h4>
-                    <p>Gérer les jours et heures de commande</p>
-                </div>
-                
-                <div class="spec-section">
-                    <h4>🧩 Composants attendus</h4>
-                    <ul class="spec-list">
-                        <li>Tableau par jour (Lun → Ven)</li>
-                        <li>Heures limites + note d'indisponibilité</li>
+
+                <div class="panel-section">
+                    <h3>Profil</h3>
+                    <ul>
+                        <li>Informations du restaurant</li>
+                        <li>Paramètres de compte</li>
+                        <li>Préférences de notification</li>
                     </ul>
-                </div>
-                
-                <div class="spec-section">
-                    <h4>🛠️ Actions côté utilisateur</h4>
-                    <ul class="spec-list">
-                        <li>Modifier les heures</li>
-                        <li>Ajouter une exception ponctuelle</li>
-                    </ul>
-                </div>
-                
-                <div class="spec-section">
-                    <h4>🧠 Données à afficher</h4>
-                    <p>restaurant_schedules, days</p>
-                </div>
-            </div>
-            
-            <div class="spec-page">
-                <h3><i class="fas fa-list-alt"></i> Commandes reçues</h3>
-                <div class="spec-section">
-                    <h4>📚 Objectif</h4>
-                    <p>Voir toutes les commandes du jour</p>
-                </div>
-                
-                <div class="spec-section">
-                    <h4>🧩 Composants attendus</h4>
-                    <ul class="spec-list">
-                        <li>Liste avec filtres (statut, date, plat)</li>
-                        <li>Détail commande (plats, suppléments, nom client)</li>
-                    </ul>
-                </div>
-                
-                <div class="spec-section">
-                    <h4>🛠️ Actions côté utilisateur</h4>
-                    <ul class="spec-list">
-                        <li>Changer le statut (en préparation → livré)</li>
-                    </ul>
-                </div>
-                
-                <div class="spec-section">
-                    <h4>🧠 Données à afficher</h4>
-                    <p>orders, order_items, order_statuses</p>
-                </div>
-            </div>
-            
-            <div class="spec-page">
-                <h3><i class="fas fa-money-bill-wave"></i> Paiements</h3>
-                <div class="spec-section">
-                    <h4>📚 Objectif</h4>
-                    <p>Voir les paiements reçus</p>
-                </div>
-                
-                <div class="spec-section">
-                    <h4>🧩 Composants attendus</h4>
-                    <ul class="spec-list">
-                        <li>Historique des paiements</li>
-                        <li>Solde cumulé</li>
-                        <li>Demande de virement ?</li>
-                    </ul>
-                </div>
-                
-                <div class="spec-section">
-                    <h4>🧠 Données à afficher</h4>
-                    <p>payments, restaurant_payouts</p>
-                </div>
-            </div>
-            
-            <div class="spec-page">
-                <h3><i class="fas fa-user"></i> Profil</h3>
-                <div class="spec-section">
-                    <h4>📚 Objectif</h4>
-                    <p>Modifier son nom, email, mot de passe, description resto</p>
-                </div>
-                
-                <div class="spec-section">
-                    <h4>🧩 Composants attendus</h4>
-                    <ul class="spec-list">
-                        <li>Formulaire d'infos personnelles</li>
-                        <li>Description du resto + catégories cuisine</li>
-                    </ul>
-                </div>
-                
-                <div class="spec-section">
-                    <h4>🛠️ Actions côté utilisateur</h4>
-                    <ul class="spec-list">
-                        <li>Modifier et sauvegarder</li>
-                    </ul>
-                </div>
-                
-                <div class="spec-section">
-                    <h4>🧠 Données à afficher</h4>
-                    <p>users, restaurants, restaurant_category_pivot</p>
-                </div>
-            </div>
-            
-            <div class="spec-page">
-                <h3><i class="fas fa-allergies"></i> Gestion des allergènes (Restaurateur)</h3>
-                <div class="spec-section">
-                    <h4>📚 Objectif</h4>
-                    <p>Gérer les allergènes associés aux plats du restaurant</p>
-                </div>
-                
-                <div class="spec-section">
-                    <h4>🧩 Composants attendus</h4>
-                    <ul class="spec-list">
-                        <li>Sélection multiple d'allergènes par plat</li>
-                        <li>Interface de gestion visuelle des allergènes</li>
-                        <li>Confirmation des ingrédients à risque</li>
-                        <li>Vue d'ensemble des plats par allergène</li>
-                        <li>Attestation de responsabilité des déclarations</li>
-                    </ul>
-                </div>
-                
-                <div class="spec-section">
-                    <h4>🛠️ Actions côté utilisateur</h4>
-                    <ul class="spec-list">
-                        <li>Ajouter/modifier les allergènes pour chaque plat</li>
-                        <li>Confirmer la présence d'allergènes</li>
-                        <li>Voir tous les plats par allergène</li>
-                        <li>Générer une fiche d'allergènes par plat</li>
-                    </ul>
-                </div>
-                
-                <div class="spec-section">
-                    <h4>🧠 Données à afficher</h4>
-                    <p>allergens, allergen_categories, dish_allergen</p>
                 </div>
             </div>
         </section>
 
         <section class="card">
             <h2><i class="fas fa-user-tie icon"></i>Panel Employé</h2>
-            
-            <div class="spec-page">
-                <h3><i class="fas fa-utensils"></i> Page des Restaurants</h3>
-                <div class="spec-section">
-                    <h4>📚 Objectif</h4>
-                    <p>Voir les restaurants disponibles du jour</p>
-                </div>
-                
-                <div class="spec-section">
-                    <h4>🧩 Composants attendus</h4>
-                    <ul class="spec-list">
-                        <li>Liste des restaurants avec horaires et thème</li>
-                        <li>Indication de l'heure limite de commande</li>
-                        <li>Filtres pour voir seulement certains types de restaurants</li>
+            <div class="specification-content">
+                <div class="panel-section">
+                    <h3>Page des Restaurants</h3>
+                    <ul>
+                        <li>Liste des restaurants disponibles</li>
+                        <li>Filtres par date et type de cuisine</li>
+                        <li>Informations sur les horaires</li>
                     </ul>
                 </div>
-                
-                <div class="spec-section">
-                    <h4>🛠️ Actions côté utilisateur</h4>
-                    <ul class="spec-list">
-                        <li>Sélectionner un restaurant pour voir son menu</li>
-                        <li>Filtrer les restaurants</li>
+
+                <div class="panel-section">
+                    <h3>Menu du restaurant</h3>
+                    <ul>
+                        <li>Affichage des plats par catégorie</li>
+                        <li>Détails des plats et suppléments</li>
+                        <li>Indication des allergènes</li>
+                        <li>Prix et disponibilité</li>
                     </ul>
                 </div>
-                
-                <div class="spec-section">
-                    <h4>🧠 Données à afficher</h4>
-                    <p>restaurants, restaurant_schedules, restaurant_categories</p>
-                </div>
-            </div>
-            
-            <div class="spec-page">
-                <h3><i class="fas fa-clipboard-list"></i> Menu du restaurant</h3>
-                <div class="spec-section">
-                    <h4>📚 Objectif</h4>
-                    <p>Consulter les plats disponibles et leurs détails</p>
-                </div>
-                
-                <div class="spec-section">
-                    <h4>🧩 Composants attendus</h4>
-                    <ul class="spec-list">
-                        <li>Catégories de plats (entrées, plats, desserts)</li>
-                        <li>Fiches détaillées par plat (image, description, prix)</li>
-                        <li>Possibilité de voir les suppléments</li>
-                        <li>Compteur de temps avant l'heure limite de commande</li>
+
+                <div class="panel-section">
+                    <h3>Panier</h3>
+                    <ul>
+                        <li>Ajout/modification des plats</li>
+                        <li>Gestion des suppléments</li>
+                        <li>Calcul du total</li>
+                        <li>Programmation de la livraison</li>
                     </ul>
                 </div>
-                
-                <div class="spec-section">
-                    <h4>🛠️ Actions côté utilisateur</h4>
-                    <ul class="spec-list">
-                        <li>Sélectionner un plat</li>
-                        <li>Ajouter au panier</li>
-                        <li>Choisir des suppléments</li>
+
+                <div class="panel-section">
+                    <h3>Historique des commandes</h3>
+                    <ul>
+                        <li>Liste des commandes passées</li>
+                        <li>Détails de chaque commande</li>
+                        <li>Statut et suivi</li>
+                        <li>Possibilité de récommander</li>
                     </ul>
-                </div>
-                
-                <div class="spec-section">
-                    <h4>🧠 Données à afficher</h4>
-                    <p>dishes, dish_categories, dish_supplements, restaurant_dish_prices</p>
-                </div>
-            </div>
-            
-            <div class="spec-page">
-                <h3><i class="fas fa-shopping-cart"></i> Panier</h3>
-                <div class="spec-section">
-                    <h4>📚 Objectif</h4>
-                    <p>Finaliser une commande</p>
-                </div>
-                
-                <div class="spec-section">
-                    <h4>🧩 Composants attendus</h4>
-                    <ul class="spec-list">
-                        <li>Liste des plats ajoutés avec suppléments</li>
-                        <li>Prix total</li>
-                        <li>Date de livraison</li>
-                        <li>Bouton de paiement</li>
-                    </ul>
-                </div>
-                
-                <div class="spec-section">
-                    <h4>🛠️ Actions côté utilisateur</h4>
-                    <ul class="spec-list">
-                        <li>Modifier les quantités</li>
-                        <li>Supprimer des articles</li>
-                        <li>Choisir une date de livraison</li>
-                        <li>Finaliser la commande</li>
-                    </ul>
-                </div>
-                
-                <div class="spec-section">
-                    <h4>🧠 Données à afficher</h4>
-                    <p>cart_drafts, dishes, supplements, restaurant_schedules</p>
-                </div>
-            </div>
-            
-            <div class="spec-page">
-                <h3><i class="fas fa-history"></i> Historique des commandes</h3>
-                <div class="spec-section">
-                    <h4>📚 Objectif</h4>
-                    <p>Consulter les commandes passées</p>
-                </div>
-                
-                <div class="spec-section">
-                    <h4>🧩 Composants attendus</h4>
-                    <ul class="spec-list">
-                        <li>Liste des commandes (date, restaurant, montant, statut)</li>
-                        <li>Détail d'une commande</li>
-                        <li>Possibilité de laisser un avis</li>
-                    </ul>
-                </div>
-                
-                <div class="spec-section">
-                    <h4>🛠️ Actions côté utilisateur</h4>
-                    <ul class="spec-list">
-                        <li>Voir le détail d'une commande</li>
-                        <li>Évaluer un plat ou restaurant</li>
-                    </ul>
-                </div>
-                
-                <div class="spec-section">
-                    <h4>🧠 Données à afficher</h4>
-                    <p>orders, order_items, order_statuses, reviews</p>
-                </div>
-            </div>
-            
-            <div class="spec-page">
-                <h3><i class="fas fa-allergies"></i> Gestion des allergènes (Employé)</h3>
-                <div class="spec-section">
-                    <h4>📚 Objectif</h4>
-                    <p>Déclarer ses allergies et visualiser les alertes sur les plats</p>
-                </div>
-                
-                <div class="spec-section">
-                    <h4>🧩 Composants attendus</h4>
-                    <ul class="spec-list">
-                        <li>Formulaire de déclaration d'allergies</li>
-                        <li>Alertes visuelles sur les plats contenant des allergènes déclarés</li>
-                        <li>Filtrage des plats par allergènes</li>
-                        <li>Alertes de couleurs différentes selon la sévérité de l'allergie</li>
-                        <li>Système de mémorisation des allergies entre sessions</li>
-                    </ul>
-                </div>
-                
-                <div class="spec-section">
-                    <h4>🛠️ Actions côté utilisateur</h4>
-                    <ul class="spec-list">
-                        <li>Déclarer/modifier ses allergies</li>
-                        <li>Voir les alertes sur les plats</li>
-                        <li>Filtrer les plats sans allergènes personnels</li>
-                        <li>Indiquer le niveau de sévérité de l'allergie</li>
-                        <li>Obtenir des suggestions de plats alternatifs</li>
-                    </ul>
-                </div>
-                
-                <div class="spec-section">
-                    <h4>🧠 Données à afficher</h4>
-                    <p>allergens, allergen_categories, user_allergen, dish_allergen, comparaison automatique</p>
                 </div>
             </div>
         </section>
-        
+
         <section class="card">
             <h2><i class="fas fa-cogs icon"></i>Panel Administrateur</h2>
-            
-            <div class="spec-page">
-                <h3><i class="fas fa-users-cog"></i> Gestion des utilisateurs</h3>
-                <div class="spec-section">
-                    <h4>📚 Objectif</h4>
-                    <p>Administrer les comptes utilisateurs et leurs droits</p>
-                </div>
-                
-                <div class="spec-section">
-                    <h4>🧩 Composants attendus</h4>
-                    <ul class="spec-list">
-                        <li>Liste des utilisateurs avec filtres</li>
-                        <li>Détail d'un utilisateur</li>
-                        <li>Gestion des rôles et permissions</li>
-                    </ul>
-                </div>
-                
-                <div class="spec-section">
-                    <h4>🛠️ Actions côté utilisateur</h4>
-                    <ul class="spec-list">
-                        <li>Créer/modifier/supprimer des utilisateurs</li>
-                        <li>Changer les rôles</li>
-                        <li>Réinitialiser des mots de passe</li>
-                    </ul>
-                </div>
-                
-                <div class="spec-section">
-                    <h4>🧠 Données à afficher</h4>
-                    <p>users, roles, permissions</p>
-                </div>
-            </div>
-            
-            <div class="spec-page">
-                <h3><i class="fas fa-building"></i> Gestion des entreprises</h3>
-                <div class="spec-section">
-                    <h4>📚 Objectif</h4>
-                    <p>Administrer les entreprises clientes</p>
-                </div>
-                
-                <div class="spec-section">
-                    <h4>🧩 Composants attendus</h4>
-                    <ul class="spec-list">
-                        <li>Liste des entreprises</li>
-                        <li>Détail d'une entreprise avec ses employés</li>
-                        <li>Restaurants disponibles pour une entreprise</li>
-                    </ul>
-                </div>
-                
-                <div class="spec-section">
-                    <h4>🛠️ Actions côté utilisateur</h4>
-                    <ul class="spec-list">
-                        <li>Créer/modifier/supprimer des entreprises</li>
-                        <li>Associer des utilisateurs</li>
-                        <li>Lier des restaurants</li>
-                    </ul>
-                </div>
-                
-                <div class="spec-section">
-                    <h4>🧠 Données à afficher</h4>
-                    <p>organizations, users, restaurants</p>
-                </div>
-            </div>
-            
-            <div class="spec-page">
-                <h3><i class="fas fa-allergies"></i> Gestion des allergènes (Admin)</h3>
-                <div class="spec-section">
-                    <h4>📚 Objectif</h4>
-                    <p>Administrer le catalogue d'allergènes du système</p>
-                </div>
-                
-                <div class="spec-section">
-                    <h4>🧩 Composants attendus</h4>
-                    <ul class="spec-list">
-                        <li>Interface CRUD des allergènes</li>
-                        <li>Catégorisation des allergènes</li>
-                        <li>Association d'icônes standardisées</li>
-                        <li>Tableau des utilisateurs par allergène</li>
-                        <li>Interface d'audit des déclarations d'allergènes</li>
-                        <li>Statistiques d'utilisation des allergènes</li>
-                    </ul>
-                </div>
-                
-                <div class="spec-section">
-                    <h4>🛠️ Actions côté utilisateur</h4>
-                    <ul class="spec-list">
-                        <li>Ajouter/modifier/supprimer des allergènes</li>
-                        <li>Voir les statistiques d'allergènes</li>
-                        <li>Vérifier les déclarations d'allergies</li>
-                        <li>Exporter les données sur les allergènes</li>
-                        <li>Alerter les restaurateurs de nouveaux allergènes</li>
-                    </ul>
-                </div>
-                
-                <div class="spec-section">
-                    <h4>🧠 Données à afficher</h4>
-                    <p>allergens, allergen_categories, user_allergen, dish_allergen</p>
-                </div>
-            </div>
-        </section>
-
-        <section class="card">
-            <h2><i class="fas fa-sync-alt icon"></i>Processus transversaux</h2>
-            <div class="spec-page">
-                <h3><i class="fas fa-allergies"></i> Cycle de vie d'une alerte allergène</h3>
-                <div class="spec-section">
-                    <h4>📚 Processus complet</h4>
-                    <ol>
-                        <li><strong>Création</strong> : L'administrateur crée des allergènes dans le système</li>
-                        <li><strong>Catégorisation</strong> : Les allergènes sont classés par type (fruits à coque, lactose, etc.)</li>
-                        <li><strong>Association</strong> : Le restaurateur associe des allergènes à ses plats</li>
-                        <li><strong>Déclaration</strong> : L'employé déclare ses allergies personnelles</li>
-                        <li><strong>Détection</strong> : Le système compare les allergènes du plat avec ceux de l'utilisateur</li>
-                        <li><strong>Alerte</strong> : Affichage d'une alerte visuelle sur le plat si correspondance</li>
-                        <li><strong>Protection</strong> : L'utilisateur peut choisir de filtrer les plats avec ses allergènes</li>
-                        <li><strong>Traçabilité</strong> : Le système enregistre les interactions avec les plats à risque</li>
-                    </ol>
-                </div>
-                
-                <div class="note">
-                    <p><i class="fas fa-info-circle"></i> <strong>Architecture technique</strong> : Le système utilise les tables <code>allergens</code>, <code>allergen_categories</code>, <code>dish_allergen</code> et <code>user_allergen</code> pour gérer les relations entre allergènes, plats et utilisateurs.</p>
-                </div>
-                
-                <div class="note">
-                    <p><i class="fas fa-exclamation-triangle"></i> <strong>Note importante</strong> : Les restaurateurs sont légalement responsables de déclarer correctement les allergènes présents dans leurs plats.</p>
-                </div>
-            </div>
-        </section>
-
-        <section class="card">
-            <h2><i class="fas fa-tasks icon"></i>Liens rapides</h2>
-            <div class="course-content">
-                <div class="exercise-list">
-                    <a href="projet.html" class="btn">Retour au projet</a>
-                    <a href="kanban.html" class="btn">Voir le Kanban</a>
-                    <a href="PtitGamelle_Kanban.html" class="btn">Voir le Kanban technique</a>
-                </div>
-            </div>
-        </section>
-
-        <section class="card">
-            <h2><i class="fas fa-allergies icon"></i>Pages du système d'allergènes</h2>
             <div class="specification-content">
-                <div class="page-spec">
-                    <h3>Gestion des allergènes (Admin)</h3>
-                    <div class="spec-details">
-                        <h4>Objectif</h4>
-                        <p>Permettre à l'administrateur de gérer la liste complète des allergènes disponibles dans le système.</p>
-                        
-                        <h4>Composants</h4>
-                        <ul>
-                            <li>Tableau CRUD des allergènes</li>
-                            <li>Formulaire d'ajout/modification</li>
-                            <li>Système de catégorisation des allergènes</li>
-                            <li>Gestionnaire d'icônes pour allergènes</li>
-                        </ul>
-                        
-                        <h4>Actions utilisateur</h4>
-                        <ul>
-                            <li>Ajouter un nouvel allergène</li>
-                            <li>Modifier un allergène existant</li>
-                            <li>Supprimer un allergène (avec vérification des dépendances)</li>
-                            <li>Filtrer et rechercher des allergènes</li>
-                            <li>Consulter les allergènes déclarés par utilisateur</li>
-                        </ul>
-                        
-                        <h4>Données affichées</h4>
-                        <ul>
-                            <li>Nom de l'allergène</li>
-                            <li>Description</li>
-                            <li>Catégorie</li>
-                            <li>Niveau de danger</li>
-                            <li>Icône associée</li>
-                            <li>Statistiques d'utilisation</li>
-                        </ul>
-                    </div>
+                <div class="panel-section">
+                    <h3>Gestion des utilisateurs</h3>
+                    <ul>
+                        <li>Liste des utilisateurs</li>
+                        <li>Gestion des rôles et permissions</li>
+                        <li>Modification des informations</li>
+                        <li>Désactivation de comptes</li>
+                    </ul>
                 </div>
-                
-                <div class="page-spec">
-                    <h3>Déclaration d'allergènes par plat (Restaurateur)</h3>
-                    <div class="spec-details">
-                        <h4>Objectif</h4>
-                        <p>Permettre au restaurateur d'associer les allergènes pertinents à chacun de ses plats.</p>
-                        
-                        <h4>Composants</h4>
-                        <ul>
-                            <li>Interface de sélection multiple d'allergènes</li>
-                            <li>Prévisualisation du plat avec allergènes</li>
-                            <li>Formulaire de confirmation de responsabilité</li>
-                            <li>Historique des modifications d'allergènes</li>
-                        </ul>
-                        
-                        <h4>Actions utilisateur</h4>
-                        <ul>
-                            <li>Sélectionner/désélectionner des allergènes pour un plat</li>
-                            <li>Confirmer la présence d'allergènes</li>
-                            <li>Consulter l'historique des modifications</li>
-                            <li>Filtrer les plats par allergène</li>
-                        </ul>
-                        
-                        <h4>Données affichées</h4>
-                        <ul>
-                            <li>Liste des allergènes disponibles</li>
-                            <li>Allergènes actuellement associés au plat</li>
-                            <li>Informations sur les allergènes (danger, description)</li>
-                            <li>Message de responsabilité légale</li>
-                        </ul>
-                    </div>
+
+                <div class="panel-section">
+                    <h3>Gestion des entreprises</h3>
+                    <ul>
+                        <li>Liste des entreprises</li>
+                        <li>Gestion des restaurants associés</li>
+                        <li>Paramètres de facturation</li>
+                        <li>Statistiques par entreprise</li>
+                    </ul>
                 </div>
-                
-                <div class="page-spec">
-                    <h3>Profil allergènes (Employé)</h3>
-                    <div class="spec-details">
-                        <h4>Objectif</h4>
-                        <p>Permettre à l'employé de déclarer ses allergies alimentaires et de configurer les alertes.</p>
-                        
-                        <h4>Composants</h4>
-                        <ul>
-                            <li>Formulaire de déclaration d'allergies</li>
-                            <li>Options de niveaux de sensibilité</li>
-                            <li>Configuration des alertes</li>
-                            <li>Historique des déclarations</li>
-                        </ul>
-                        
-                        <h4>Actions utilisateur</h4>
-                        <ul>
-                            <li>Ajouter/supprimer des allergènes personnels</li>
-                            <li>Définir un niveau de sensibilité pour chaque allergène</li>
-                            <li>Configurer les préférences d'affichage des alertes</li>
-                            <li>Consulter l'historique des modifications</li>
-                        </ul>
-                        
-                        <h4>Données affichées</h4>
-                        <ul>
-                            <li>Liste des allergènes disponibles</li>
-                            <li>Allergènes actuellement déclarés</li>
-                            <li>Niveau de sensibilité par allergène</li>
-                            <li>Options de configuration des alertes</li>
-                        </ul>
-                    </div>
-                </div>
-                
-                <div class="page-spec">
-                    <h3>Alerte allergènes (Interface de commande Employé)</h3>
-                    <div class="spec-details">
-                        <h4>Objectif</h4>
-                        <p>Afficher clairement les alertes d'allergènes lors de la consultation des menus et de la commande.</p>
-                        
-                        <h4>Composants</h4>
-                        <ul>
-                            <li>Indicateurs visuels sur les plats à risque</li>
-                            <li>Filtres de plats sans allergènes déclarés</li>
-                            <li>Popups d'alerte pour confirmation</li>
-                            <li>Options d'affichage détaillé des allergènes</li>
-                        </ul>
-                        
-                        <h4>Actions utilisateur</h4>
-                        <ul>
-                            <li>Consulter les détails des allergènes présents dans un plat</li>
-                            <li>Filtrer les plats sans ses allergènes</li>
-                            <li>Confirmer une commande malgré les alertes</li>
-                            <li>Demander des alternatives</li>
-                        </ul>
-                        
-                        <h4>Données affichées</h4>
-                        <ul>
-                            <li>Marquage visuel des plats contenant des allergènes</li>
-                            <li>Liste détaillée des allergènes par plat</li>
-                            <li>Niveau de risque personnalisé</li>
-                            <li>Options de filtrage</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="note">
-                <p><i class="fas fa-info-circle"></i> <strong>Note importante:</strong> Le système d'allergènes est intégré dans l'ensemble des interfaces de l'application, au-delà des pages spécifiques mentionnées ci-dessus.</p>
-            </div>
-            
-            <div class="exercise-list">
-                <a href="allergenes.html" class="btn">Voir la documentation complète du système d'allergènes</a>
             </div>
         </section>
     </main>
