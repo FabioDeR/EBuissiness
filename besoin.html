@@ -1,404 +1,154 @@
-## 🧩 Pages du panel Restaurateur – Vue par affichage
+📆 Disponibilités (restaurant_schedules)
 
-### 📊 Tableau de bord (Dashboard)
-Objectif : Donner une vue d’ensemble quotidienne et mensuelle de l’activité du restaurant
+Objectif : Permettre au restaurateur de gérer son planning de disponibilité hebdomadaire, entreprise par entreprise
 
-#### Données affichées :
-- Nombre de plats actifs ✅
-- Nombre de commandes du jour ✅
-- Revenus du mois ✅
-- Évaluation moyenne (note globale sur les plats) ✅
-- Nombre d’entreprises servies aujourd’hui ✅
-- Heure limite de commande globale ✅
-- Statut de disponibilité du jour (restaurant ouvert / fermé) ✅
+Fonctionnalités principales :
 
-#### Sections dynamiques :
-- ✅ **Commandes récentes** : ID, Employé, Entreprise, Heure, Montant, Statut
-- ✅ **Commandes par entreprise** : nom, nombre, montant total, heure limite, disponibilité
-- ✅ **Plats populaires** : classement, nombre de ventes, note, mention de l’entreprise associée (ex: Top chez TechCorp)
+✅ Définir les jours d’ouverture par défaut (planning global)
 
-#### Suggestions futures :
-- 🔄 Voir planning global de la semaine (optionnel)
-- 📌 Bouton vers "Voir toutes les commandes"
-- 📌 Bouton vers "Gérer les plats"
-- 📈 Possibilité d’exporter des stats par entreprise
+✅ Définir une heure limite de commande pour chaque jour
 
----
+✅ Marquer un jour comme indisponible (fermeture ponctuelle ou congé)
 
-### 🍽️ Mes Plats (Gestion des plats)
-Objectif : Permettre au restaurateur de créer, modifier et gérer ses plats rapidement et efficacement
+✅ Ajouter une note obligatoire en cas d’indisponibilité (ex : "Fermé pour congé")
 
-#### Fonctionnalités principales :
-- ✅ Liste des plats avec nom, image, prix, description, catégories et allergènes
-- ✅ Statut d’un plat (🟢 Disponible / 🔴 Indisponible)
-- ✅ Recherche textuelle (nom ou description)
-- ✅ Filtrage par catégorie (Entrée, Plat, Dessert, Boisson)
-- ✅ Ajouter un plat via une modale (step-by-step avec MUI Stepper)
-- ✅ Modifier un plat (préremplissage du formulaire)
-- ✅ Supprimer un plat avec confirmation
+✅ Définir des disponibilités différentes selon l’organisation cliente
 
-#### Champs du formulaire de plat :
-- ✅ Nom
-- ✅ Description
-- ✅ Prix
-- ✅ Image (upload à implémenter)
-- ✅ Catégories (checkbox ou via liste personnalisée)
-- ✅ Allergènes (checkbox)
-- ✅ Suppléments (checkbox avec prix)
-- ✅ Disponibilité (switch toggle)
+✅ Appliquer un planning par défaut à toutes les entreprises, puis modifier au cas par cas
 
-#### Améliorations possibles pour gain de temps :
-- 🔁 Activation / désactivation sans suppression
-- ⚠️ Feedback visuel après ajout / édition (toasts)
-- 🧠 Suggestions automatiques de tags / catégories selon le nom du plat
-- 📦 Pagination ou chargement progressif (si grand volume)
-- 🔄 Chargement dynamique des catégories depuis API
-- 🧾 Affichage des suppléments sur la fiche du plat (pas que dans le formulaire)
-- 📝 Permettre aux restaurateurs de **créer eux-mêmes leurs catégories personnalisées**
-- 🧱 Séparer les étapes : base / catégories / suppléments / image & dispo
-- 💡 Prévoir une validation par étape avec contrôle des champs obligatoires
-- ⚡ **Bouton "Suggérer automatiquement"** : coche les suppléments, allergènes, catégories selon le nom du plat (ex: "Pizza 4 fromages")
-- 🧩 **Créer un plat à partir d’un modèle** (ex: plat "Dagobert") avec duplication rapide
-- 📚 **Système de presets prédéfinis** (plats, suppléments, catégories) intégrés via seed ou catalogue visuel dans l’interface
-- ➕ **Ajout rapide d’une catégorie ou supplément** depuis le formulaire (champ + bouton)
-- ⏱️ **Mode encodage rapide** : option "Créer et ajouter un autre plat" à la fin du formulaire
+✅ Interface sous forme de tableau avec jours en colonnes et organisations en lignes
 
----
+✅ Composant RestaurantSchedules réutilisable pour planning global et spécifique
 
+Données utilisées :
 
+Table restaurant_schedules
 
-📄 Suppléments
-Objectif : Gérer les suppléments proposés
+restaurant_id
 
-Affichage :
+organization_id (nullable = planning global)
 
-Liste avec prix et lien aux plats
+day_id
 
-Actions :
+order_deadline (heure limite)
 
-Ajouter/supprimer/modifier un supplément
+delivery_time (heure de livraison)
 
-📄 Disponibilités
-Objectif : Gérer les jours d’ouverture
+is_available (booléen)
 
-Affichage :
+note (texte, obligatoire si indisponible)
 
-Jours, heures limites, disponibilités
+is_default (pour savoir si hérite du planning global)
 
-Actions :
+Interface actuelle :
 
-Activer/désactiver un jour
+✅ Switch 🟢/🔴 pour activer/désactiver un jour
 
-Ajouter un message (ex : fermé pour congé)
+✅ Champs modifiables inline pour heures (TextField)
 
-Données : restaurant_schedules, days
+✅ Note requise si indisponible (validation + message d’erreur)
 
-📄 Commandes
-Objectif : Gérer les commandes du jour
+✅ Système de duplication :
 
-Affichage :
+D’un planning par défaut vers toutes les organisations
 
-Tableau des commandes (client, plats, statut)
+D’une semaine vers une autre (avec menu déroulant "Semaine 1 à 4")
 
-Actions :
+✅ Toasts de retour utilisateur (succès/erreur)
 
-Changer le statut (préparation, livré, etc.)
+✅ Icônes de légende (🟢 Disponible / 🔴 Indisponible)
 
-Voir les allergènes associés à chaque commande si besoin
+Améliorations possibles :
 
-Données : orders, order_items, dishes, dish_allergen, allergens
+📅 Rendre les semaines dynamiques (avec date_range ou valid_from à terme)
 
-📄 Paiements
-Objectif : Voir les paiements reçus
+🔄 Ajout d’un bouton "Sauvegarder tout" ou auto-save après modification
 
-Affichage :
+📤 Export du planning (PDF ou CSV) pour usage interne du restaurant
 
-Historique, statut, solde, payout demandé
+🧠 Notification automatique des entreprises en cas de modification
 
-📄 Profil / Mon restaurant
-Objectif : Modifier les infos du resto
+Routes Backend nécessaires :
 
-Affichage :
+GET /api/restaurant-schedules → récupérer le planning global ou par entreprise
 
-Nom, description, image/logo
+PUT /api/restaurant-schedules/{id} → mise à jour d’une ligne de planning (AJAX inline)
 
-Sélection des catégories culinaires
+POST /api/restaurant-schedules/duplicate → dupliquer le planning d’une semaine ou d’une entreprise
 
-Données :
+GET /api/days → récupérer les jours de la semaine (pour correspondance day_id)
 
-restaurants, restaurant_categories, restaurant_category_pivot
+GET /api/organizations → récupérer les entreprises associées au restaurant
 
-👨‍💼 PANEL EMPLOYÉ — Pages & fonctionnalités frontend
-📄 Accueil / Dashboard
-Objectif : Vue rapide sur la journée
+➡️ À venir : sections "Commandes", "Paiements", "Profil du restaurant"
 
-Affichage :
+------------------------------
 
-Liste des restaurants ouverts aujourd’hui
+📊 Tableau de bord (dashboard)
 
-Panier actif si existant
+Objectif : Fournir une vue d’ensemble rapide de l’activité quotidienne et mensuelle du restaurant
 
-📄 Liste des restaurants
-Objectif : Parcourir les restaurants du jour
+Fonctionnalités principales :
 
-Affichage :
+✅ Statistiques clés :
 
-Cartes resto avec image, heure limite, type de cuisine
+Nombre de plats actifs
 
-Données :
+Nombre de commandes du jour
 
-restaurant_schedules, restaurants, restaurant_categories
+Revenus du mois
 
-📄 Menu d’un restaurant
-Objectif : Choisir un plat
+Évaluation moyenne des plats
 
-Affichage :
+Nombre d’entreprises servies aujourd’hui
 
-Liste des plats avec images, prix, allergènes
+Heure limite de commande globale
 
-Spécial :
+Disponibilité du jour
 
-✅ Afficher une alerte visuelle si un plat contient un allergène déclaré par l'utilisateur
+✅ Blocs dynamiques :
 
-Données :
+Commandes récentes (ID, Employé, Entreprise, Heure, Montant, Statut)
 
-dishes, dish_allergen, user_allergen, allergens
+Commandes par entreprise (nombre, montant total, heure limite, statut)
 
-📄 Panier
-Objectif : Composer / programmer une commande
+Plats populaires (nom, ventes, note, entreprise associée)
 
-Affichage :
+Données utilisées :
 
-Détail plats + suppléments + quantités
+dishes (pour stats sur les plats)
 
-Date de livraison possible
+orders + order_statuses
 
-Données :
+payments + payment_statuses
 
-cart_drafts, users.balance
+restaurant_schedules
 
-📄 Historique des commandes
-Objectif : Voir ce qui a été commandé
+reviews
 
-Affichage :
+users + organizations
 
-Liste commandes passées (plat, resto, date, statut)
+restaurant_dish_prices
 
-📄 Évaluations
-Objectif : Laisser un avis
+Améliorations prévues :
 
-Affichage :
+📅 Sélecteur de période (jour, semaine, mois)
 
-Formulaire (note + commentaire)
+📈 Export des données du dashboard (CSV / PDF)
 
-Historique des avis laissés
+📊 Filtrage par entreprise
 
-📄 Profil utilisateur
-Objectif : Modifier ses infos
+Routes Backend nécessaires :
 
-Affichage :
+GET /api/dashboard → retourne un DashboardResponseDTO structuré avec :
 
-Nom, email, mot de passe
+stats: chiffres globaux
 
-✅ Sélection de ses allergies personnelles (checkbox ou multiselect)
+recentOrders[]: dernières commandes avec détails
 
-Données :
+enterpriseOrders[]: résumé des commandes par entreprise
 
-users, user_allergen, allergens
+popularDishes[]: classement des plats les plus vendus
 
-🛠️ PANEL ADMINISTRATEUR — Pages & UI frontend
-📄 Dashboard / Accueil admin
-Objectif : Vue globale de la plateforme
+➡️ À venir : sections "Commandes", "Paiements", "Profil du restaurant"
 
-Affichage :
-
-Nombre total d’utilisateurs, restaurants, entreprises
-
-Commandes du jour
-
-Paiements en attente
-
-Plats les plus populaires
-
-Données :
-
-users, orders, restaurants, payments, dishes
-
-📄 Utilisateurs
-Objectif : Gérer les comptes utilisateurs
-
-Affichage :
-
-Tableau avec : nom, email, rôle, statut actif/inactif
-
-Filtres par rôle ou organisation
-
-Actions :
-
-Créer un utilisateur
-
-Modifier / désactiver un utilisateur
-
-Forcer réinitialisation du mot de passe
-
-Données : users, roles (Spatie), organizations
-
-📄 Entreprises (Organisations)
-Objectif : Gérer les entreprises clientes
-
-Affichage :
-
-Liste des entreprises avec leurs employés
-
-Actions :
-
-Ajouter / modifier une organisation
-
-Lier des utilisateurs ou restaurants
-
-Données : organizations, users, restaurants, restaurant_schedules
-
-📄 Restaurants
-Objectif : Gérer les restaurants partenaires
-
-Affichage :
-
-Liste avec nom, adresse, statut, organisation liée
-
-Actions :
-
-Ajouter / modifier un restaurant
-
-Lier à des catégories
-
-Voir les plannings
-
-Données : restaurants, restaurant_categories, restaurant_schedules
-
-📄 Commandes
-Objectif : Suivre les commandes de tous les utilisateurs
-
-Affichage :
-
-Liste avec filtres (date, statut, utilisateur, resto)
-
-Actions :
-
-Voir détail d’une commande
-
-Forcer un statut si problème
-
-Données : orders, order_items, users, restaurants, order_statuses
-
-📄 Paiements & Payouts
-Objectif : Gérer les paiements employés et versements resto
-
-Affichage :
-
-Paiements effectués par les employés
-
-Solde et paiements à verser aux restos
-
-Actions :
-
-Valider ou rejeter un payout
-
-Export CSV pour comptabilité
-
-Données : payments, restaurant_payouts, payment_statuses
-
-📄 Avis / Evaluations
-Objectif : Modérer les retours des utilisateurs
-
-Affichage :
-
-Notes, commentaires par plat ou restaurant
-
-Actions :
-
-Supprimer un avis
-
-Filtrer par note, restaurant, utilisateur
-
-Données : reviews, users, dishes, restaurants
-
-📄 Allergènes
-Objectif : Gérer la liste des allergènes disponibles
-
-Affichage :
-
-Liste simple avec nom
-
-Actions :
-
-Ajouter / supprimer un allergène
-
-Données : allergens
-
-📄 Logs administratifs
-Objectif : Historique des actions des admins
-
-Affichage :
-
-Liste : qui a fait quoi et quand
-
-Données : admin_logs
-
-📄 Paramètres
-Objectif : Config globale de la plateforme
-
-Affichage :
-
-Politique de remboursement, délais, moyens de paiement, etc.
-
-Données : settings
-
-🛡️ AUTHENTIFICATION & CONNEXION — Fonctionnalités frontend + logiques
-
-📄 Page : Connexion
-Objectif : Permettre à l’utilisateur de se connecter avec les identifiants reçus
-
-Affichage :
-- Email
-- Mot de passe
-- Bouton se connecter
-
-Logique :
-- Authentification via API (token JWT ou session)
-- Gestion des erreurs (mauvais identifiants, compte désactivé)
-- Redirection vers la bonne interface selon le rôle (employé / restaurateur / admin)
-
-Données : `users`, middleware auth
-
----
-
-📄 Page : Réinitialisation du mot de passe (1ère connexion obligatoire)
-Objectif : Forcer l’utilisateur à changer son mot de passe si `must_reset_password` est activé
-
-Affichage :
-- Nouveau mot de passe
-- Confirmation
-- Bouton « Enregistrer »
-
-Logique :
-- Lecture de `must_reset_password` après connexion
-- Si true → redirection automatique vers cette page
-- Mise à jour du mot de passe + désactivation du flag
-
-Données : `users.must_reset_password`, route sécurisée
-
----
-
-📄 Gestion par l’admin
-- Création des comptes utilisateurs avec mot de passe initial par l’admin ✅
-- `must_reset_password` est mis à `true` automatiquement ✅
-- L’utilisateur reçoit ses identifiants (via email ou autre moyen prévu hors app)
-
----
-
-Sécurité :
-- Hash du mot de passe ✅
-- Protection CSRF (si frontend form)
-- Middleware `auth` et `role:{admin|restaurateur|employé}`
-
-Tu peux maintenant implémenter ces écrans sereinement avec les hooks d’auth standard en Laravel 
