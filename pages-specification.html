@@ -6,6 +6,304 @@
     <title>Spécifications des Pages - PtitGamelle</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Styles spécifiques pour la nouvelle structure */
+        :root {
+            --primary-color: #4CAF50;
+            --secondary-color: #2196F3;
+            --accent-color: #FF9800;
+            --success-color: #4CAF50;
+            --warning-color: #FFC107;
+            --danger-color: #F44336;
+            --info-color: #00BCD4;
+        }
+
+        .spec-container {
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .spec-sidebar {
+            position: sticky;
+            top: 100px;
+            height: calc(100vh - 120px);
+            overflow-y: auto;
+            background: var(--card-bg);
+            border-radius: 8px;
+            padding: 1rem;
+            box-shadow: var(--shadow-sm);
+            border-left: 4px solid var(--primary-color);
+            z-index: 10;
+        }
+
+        .spec-sidebar ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .spec-sidebar li {
+            margin: 0.5rem 0;
+        }
+
+        .spec-sidebar a {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            color: var(--text-color);
+            text-decoration: none;
+            border-radius: 4px;
+            transition: all 0.2s;
+        }
+
+        .spec-sidebar a i {
+            width: 20px;
+            text-align: center;
+        }
+
+        .spec-sidebar a:hover,
+        .spec-sidebar a.active {
+            background: var(--primary-color);
+            color: white;
+            transform: translateX(5px);
+        }
+
+        .spec-main {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .spec-section {
+            scroll-margin-top: 100px;
+            position: relative;
+            background: var(--card-bg);
+            border-radius: 8px;
+            padding: 2rem;
+            box-shadow: var(--shadow-sm);
+            border-top: 4px solid var(--primary-color);
+        }
+
+        .spec-section-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid var(--primary-color);
+        }
+
+        .spec-section-header i {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            background: rgba(76, 175, 80, 0.1);
+            padding: 1rem;
+            border-radius: 50%;
+        }
+
+        .spec-section-header h2 {
+            margin: 0;
+            font-size: 1.8rem;
+        }
+
+        .spec-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .spec-card {
+            scroll-margin-top: 100px;
+            position: relative;
+            background: var(--bg-color);
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: var(--shadow-sm);
+            transition: transform 0.2s, box-shadow 0.2s;
+            border-left: 4px solid var(--primary-color);
+        }
+
+        .spec-card:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .spec-card-header {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--primary-color);
+        }
+
+        .spec-card-header i {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            background: rgba(76, 175, 80, 0.1);
+            padding: 0.5rem;
+            border-radius: 50%;
+        }
+
+        .spec-card h3 {
+            margin: 0;
+            font-size: 1.2rem;
+        }
+
+        .spec-features {
+            list-style: none;
+            padding: 0;
+        }
+
+        .spec-features li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.8rem;
+            margin: 0.8rem 0;
+            padding: 0.8rem;
+            background: var(--card-bg);
+            border-radius: 8px;
+            transition: background-color 0.2s;
+        }
+
+        .spec-features li:hover {
+            background: rgba(76, 175, 80, 0.05);
+        }
+
+        .spec-features li i {
+            color: var(--success-color);
+            margin-top: 0.2rem;
+            font-size: 1.2rem;
+        }
+
+        .spec-details {
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 2px solid var(--primary-color);
+        }
+
+        .spec-details h4 {
+            color: var(--primary-color);
+            margin: 1.5rem 0 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .spec-details h4::before {
+            content: "⚡";
+            font-size: 1.2rem;
+        }
+
+        .spec-details ul {
+            list-style: none;
+            padding-left: 1.5rem;
+        }
+
+        .spec-details li {
+            margin: 0.5rem 0;
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .spec-details li::before {
+            content: "•";
+            color: var(--primary-color);
+            position: absolute;
+            left: -1rem;
+            font-size: 1.2rem;
+        }
+
+        .spec-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .spec-tag {
+            background: var(--primary-color);
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        /* Couleurs spécifiques pour les sections */
+        #dashboard .spec-card-header i { color: var(--info-color); }
+        #plats .spec-card-header i { color: var(--accent-color); }
+        #disponibilites .spec-card-header i { color: var(--secondary-color); }
+        #commandes .spec-card-header i { color: var(--warning-color); }
+        #paiements .spec-card-header i { color: var(--success-color); }
+        #profil .spec-card-header i { color: var(--danger-color); }
+
+        /* Animation pour les icônes */
+        .spec-card-header i {
+            transition: transform 0.3s;
+        }
+
+        .spec-card:hover .spec-card-header i {
+            transform: rotate(360deg);
+        }
+
+        @media (max-width: 768px) {
+            .spec-container {
+                grid-template-columns: 1fr;
+            }
+
+            .spec-sidebar {
+                position: static;
+                height: auto;
+                margin-bottom: 2rem;
+            }
+            
+            .spec-section, .spec-card {
+                scroll-margin-top: 80px;
+            }
+        }
+
+        /* Ajout des styles pour la navigation active */
+        .spec-sidebar a.active {
+            background: var(--primary-color);
+            color: white;
+            transform: translateX(5px);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .spec-sidebar a.active i {
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.1);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        /* Style pour la barre de progression */
+        .scroll-progress {
+            position: fixed;
+            top: 60px;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(to right, var(--primary-color) var(--scroll), transparent var(--scroll));
+            z-index: 1000;
+        }
+    </style>
 </head>
 <body>
     <nav class="navbar">
@@ -50,172 +348,302 @@
             <p>Documentation détaillée des fonctionnalités et interfaces de chaque page de l'application.</p>
         </div>
 
-        <section class="card">
-            <h2><i class="fas fa-utensils icon"></i>Panel Restaurateur</h2>
-            <div class="specification-content">
-                <div class="panel-section">
-                    <h3>Dashboard</h3>
-                    <ul>
-                        <li>Vue d'ensemble des commandes du jour</li>
-                        <li>Statistiques de vente</li>
-                        <li>Alertes et notifications</li>
-                    </ul>
-                </div>
+        <div class="spec-container">
+            <!-- Sidebar Navigation -->
+            <aside class="spec-sidebar">
+                <h3><i class="fas fa-compass"></i> Navigation</h3>
+                <ul>
+                    <li><a href="#restaurateur"><i class="fas fa-utensils"></i> Panel Restaurateur</a></li>
+                    <li><a href="#dashboard"><i class="fas fa-chart-line"></i> Dashboard</a></li>
+                    <li><a href="#plats"><i class="fas fa-hamburger"></i> Mes Plats</a></li>
+                    <li><a href="#disponibilites"><i class="fas fa-calendar-check"></i> Disponibilités</a></li>
+                    <li><a href="#commandes"><i class="fas fa-shopping-basket"></i> Commandes</a></li>
+                    <li><a href="#paiements"><i class="fas fa-money-bill-wave"></i> Paiements</a></li>
+                    <li><a href="#profil"><i class="fas fa-user-circle"></i> Profil</a></li>
+                    <li><a href="#employe"><i class="fas fa-user-tie"></i> Panel Employé</a></li>
+                    <li><a href="#admin"><i class="fas fa-shield-alt"></i> Panel Admin</a></li>
+                </ul>
+            </aside>
 
-                <div class="panel-section">
-                    <h3>Mes plats</h3>
-                    <div class="specification-details">
-                        <h4>Fonctionnalités principales :</h4>
-                        <ul>
-                            <li>✅ Liste des plats avec nom, image, prix, description, catégories et allergènes</li>
-                            <li>✅ Statut d'un plat (🟢 Disponible / 🔴 Indisponible)</li>
-                            <li>✅ Recherche textuelle (nom ou description)</li>
-                            <li>✅ Filtrage par catégorie (Entrée, Plat, Dessert, Boisson)</li>
-                            <li>✅ Ajouter un plat via une modale (step-by-step avec MUI Stepper)</li>
-                            <li>✅ Modifier un plat (préremplissage du formulaire)</li>
-                            <li>✅ Supprimer un plat avec confirmation</li>
-                        </ul>
-
-                        <h4>Champs du formulaire de plat :</h4>
-                        <ul>
-                            <li>✅ Nom</li>
-                            <li>✅ Description</li>
-                            <li>✅ Prix</li>
-                            <li>✅ Image (upload à implémenter)</li>
-                            <li>✅ Catégories (checkbox ou via liste personnalisée)</li>
-                            <li>✅ Allergènes (checkbox)</li>
-                            <li>✅ Suppléments (checkbox avec prix)</li>
-                            <li>✅ Disponibilité (switch toggle)</li>
-                        </ul>
-
-                        <h4>Améliorations possibles pour gain de temps :</h4>
-                        <ul>
-                            <li>🔁 Activation / désactivation sans suppression</li>
-                            <li>⚠️ Feedback visuel après ajout / édition (toasts)</li>
-                            <li>🧠 Suggestions automatiques de tags / catégories selon le nom du plat</li>
-                            <li>📦 Pagination ou chargement progressif (si grand volume)</li>
-                            <li>🔄 Chargement dynamique des catégories depuis API</li>
-                            <li>🧾 Affichage des suppléments sur la fiche du plat</li>
-                            <li>📝 Création de catégories personnalisées par les restaurateurs</li>
-                            <li>🧱 Séparation des étapes : base / catégories / suppléments / image & dispo</li>
-                            <li>💡 Validation par étape avec contrôle des champs obligatoires</li>
-                            <li>⚡ Bouton "Suggérer automatiquement" pour les suppléments, allergènes, catégories</li>
-                            <li>🧩 Création de plat à partir d'un modèle</li>
-                            <li>📚 Système de presets prédéfinis</li>
-                            <li>➕ Ajout rapide d'une catégorie ou supplément depuis le formulaire</li>
-                            <li>⏱️ Mode encodage rapide</li>
-                        </ul>
+            <!-- Main Content -->
+            <div class="spec-main">
+                <!-- Panel Restaurateur -->
+                <section id="restaurateur" class="spec-section">
+                    <div class="spec-section-header">
+                        <i class="fas fa-utensils"></i>
+                        <h2>Panel Restaurateur</h2>
                     </div>
-                </div>
 
-                <div class="panel-section">
-                    <h3>Disponibilités</h3>
-                    <ul>
-                        <li>Calendrier des jours de service</li>
-                        <li>Horaires de commande</li>
-                        <li>Gestion des exceptions (jours fériés, congés)</li>
-                    </ul>
-                </div>
+                    <!-- Dashboard -->
+                    <div id="dashboard" class="spec-card">
+                        <div class="spec-card-header">
+                            <i class="fas fa-chart-line"></i>
+                            <h3>Dashboard</h3>
+                        </div>
+                        <div class="spec-features">
+                            <li>
+                                <i class="fas fa-check-circle"></i>
+                                <div>
+                                    <strong>Statistiques clés</strong>
+                                    <ul>
+                                        <li>Nombre de plats actifs</li>
+                                        <li>Commandes du jour</li>
+                                        <li>Revenus mensuels</li>
+                                        <li>Évaluation moyenne</li>
+                                        <li>Entreprises servies</li>
+                                        <li>Heure limite de commande</li>
+                                        <li>Statut de disponibilité</li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li>
+                                <i class="fas fa-check-circle"></i>
+                                <div>
+                                    <strong>Blocs dynamiques</strong>
+                                    <ul>
+                                        <li>Commandes récentes</li>
+                                        <li>Commandes par entreprise</li>
+                                        <li>Plats populaires</li>
+                                    </ul>
+                                </div>
+                            </li>
+                        </div>
+                        <div class="spec-details">
+                            <h4>Améliorations prévues</h4>
+                            <ul>
+                                <li>📅 Sélecteur de période</li>
+                                <li>📈 Export des données</li>
+                                <li>📊 Filtrage par entreprise</li>
+                            </ul>
+                            <h4>Données utilisées</h4>
+                            <ul>
+                                <li>dishes</li>
+                                <li>orders + order_statuses</li>
+                                <li>payments + payment_statuses</li>
+                                <li>restaurant_schedules</li>
+                                <li>reviews</li>
+                                <li>users + organizations</li>
+                                <li>restaurant_dish_prices</li>
+                            </ul>
+                        </div>
+                    </div>
 
-                <div class="panel-section">
-                    <h3>Commandes reçues</h3>
-                    <ul>
-                        <li>Liste des commandes en cours</li>
-                        <li>Détails des commandes</li>
-                        <li>Mise à jour du statut</li>
-                        <li>Historique des commandes</li>
-                    </ul>
-                </div>
+                    <!-- Mes Plats -->
+                    <div id="plats" class="spec-card">
+                        <div class="spec-card-header">
+                            <i class="fas fa-utensils"></i>
+                            <h3>Mes Plats</h3>
+                        </div>
+                        <div class="spec-features">
+                            <li>
+                                <i class="fas fa-check-circle"></i>
+                                <div>
+                                    <strong>Gestion des plats</strong>
+                                    <ul>
+                                        <li>Liste avec nom, image, prix, description</li>
+                                        <li>Statut de disponibilité</li>
+                                        <li>Recherche et filtrage</li>
+                                        <li>Ajout/Modification/Suppression</li>
+                                    </ul>
+                                </div>
+                            </li>
+                        </div>
+                        <div class="spec-details">
+                            <h4><i class="fas fa-code"></i> Endpoints API</h4>
+                            <ul>
+                                <li><i class="fas fa-database"></i> GET /api/restaurants/{restaurantId}/dishes</li>
+                                <li><i class="fas fa-plus-circle"></i> POST /api/restaurants/{restaurantId}/dishes</li>
+                                <li><i class="fas fa-edit"></i> PUT /api/restaurants/{restaurantId}/dishes/{dishId}</li>
+                                <li><i class="fas fa-trash-alt"></i> DELETE /api/restaurants/{restaurantId}/dishes/{dishId}</li>
+                            </ul>
+                            <h4><i class="fas fa-check-double"></i> Règles de validation</h4>
+                            <ul>
+                                <li><i class="fas fa-font"></i> Nom : 3-100 caractères</li>
+                                <li><i class="fas fa-align-left"></i> Description : min 10 caractères</li>
+                                <li><i class="fas fa-euro-sign"></i> Prix : positif et < 1000€</li>
+                                <li><i class="fas fa-image"></i> Image : max 5MB, JPG/PNG</li>
+                            </ul>
+                        </div>
+                    </div>
 
-                <div class="panel-section">
-                    <h3>Paiements</h3>
-                    <ul>
-                        <li>Vue des paiements reçus</li>
-                        <li>Statistiques de paiement</li>
-                        <li>Historique des transactions</li>
-                    </ul>
-                </div>
+                    <!-- Disponibilités -->
+                    <div id="disponibilites" class="spec-card">
+                        <div class="spec-card-header">
+                            <i class="fas fa-calendar-alt"></i>
+                            <h3>Disponibilités</h3>
+                        </div>
+                        <div class="spec-features">
+                            <li>
+                                <i class="fas fa-check-circle"></i>
+                                <div>
+                                    <strong>Gestion du planning</strong>
+                                    <ul>
+                                        <li>Planning hebdomadaire par défaut</li>
+                                        <li>Heures limites de commande</li>
+                                        <li>Jours d'indisponibilité</li>
+                                        <li>Notes obligatoires</li>
+                                        <li>Planning par organisation</li>
+                                    </ul>
+                                </div>
+                            </li>
+                        </div>
+                        <div class="spec-details">
+                            <h4>Interface</h4>
+                            <ul>
+                                <li>Switch 🟢/🔴 pour disponibilité</li>
+                                <li>Champs inline pour heures</li>
+                                <li>Validation des notes</li>
+                                <li>Système de duplication</li>
+                            </ul>
+                            <h4>Routes Backend</h4>
+                            <ul>
+                                <li>GET /api/restaurant-schedules</li>
+                                <li>PUT /api/restaurant-schedules/{id}</li>
+                                <li>POST /api/restaurant-schedules/duplicate</li>
+                                <li>GET /api/days</li>
+                                <li>GET /api/organizations</li>
+                            </ul>
+                        </div>
+                    </div>
 
-                <div class="panel-section">
-                    <h3>Profil</h3>
-                    <ul>
-                        <li>Informations du restaurant</li>
-                        <li>Paramètres de compte</li>
-                        <li>Préférences de notification</li>
-                    </ul>
-                </div>
+                    <!-- Autres sections du Panel Restaurateur -->
+                    <div class="spec-grid">
+                        <div id="commandes" class="spec-card">
+                            <div class="spec-card-header">
+                                <i class="fas fa-shopping-cart"></i>
+                                <h3>Commandes</h3>
+                            </div>
+                            <ul class="spec-features">
+                                <li><i class="fas fa-check-circle"></i> Liste des commandes en cours</li>
+                                <li><i class="fas fa-check-circle"></i> Détails des commandes</li>
+                                <li><i class="fas fa-check-circle"></i> Mise à jour du statut</li>
+                                <li><i class="fas fa-check-circle"></i> Historique des commandes</li>
+                            </ul>
+                        </div>
+
+                        <div id="paiements" class="spec-card">
+                            <div class="spec-card-header">
+                                <i class="fas fa-money-bill-wave"></i>
+                                <h3>Paiements</h3>
+                            </div>
+                            <ul class="spec-features">
+                                <li><i class="fas fa-check-circle"></i> Vue des paiements reçus</li>
+                                <li><i class="fas fa-check-circle"></i> Statistiques de paiement</li>
+                                <li><i class="fas fa-check-circle"></i> Historique des transactions</li>
+                            </ul>
+                        </div>
+
+                        <div id="profil" class="spec-card">
+                            <div class="spec-card-header">
+                                <i class="fas fa-user-circle"></i>
+                                <h3>Profil</h3>
+                            </div>
+                            <ul class="spec-features">
+                                <li><i class="fas fa-check-circle"></i> Informations du restaurant</li>
+                                <li><i class="fas fa-check-circle"></i> Paramètres de compte</li>
+                                <li><i class="fas fa-check-circle"></i> Préférences de notification</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Panel Employé -->
+                <section id="employe" class="spec-section">
+                    <div class="spec-section-header">
+                        <i class="fas fa-user-tie"></i>
+                        <h2>Panel Employé</h2>
+                    </div>
+                    <div class="spec-grid">
+                        <div class="spec-card">
+                            <div class="spec-card-header">
+                                <i class="fas fa-store"></i>
+                                <h3>Restaurants</h3>
+                            </div>
+                            <ul class="spec-features">
+                                <li><i class="fas fa-check-circle"></i> Liste des restaurants</li>
+                                <li><i class="fas fa-check-circle"></i> Filtres par date et type</li>
+                                <li><i class="fas fa-check-circle"></i> Informations horaires</li>
+                            </ul>
+                        </div>
+
+                        <div class="spec-card">
+                            <div class="spec-card-header">
+                                <i class="fas fa-utensils"></i>
+                                <h3>Menu</h3>
+                            </div>
+                            <ul class="spec-features">
+                                <li><i class="fas fa-check-circle"></i> Plats par catégorie</li>
+                                <li><i class="fas fa-check-circle"></i> Détails et suppléments</li>
+                                <li><i class="fas fa-check-circle"></i> Allergènes</li>
+                                <li><i class="fas fa-check-circle"></i> Prix et disponibilité</li>
+                            </ul>
+                        </div>
+
+                        <div class="spec-card">
+                            <div class="spec-card-header">
+                                <i class="fas fa-shopping-cart"></i>
+                                <h3>Panier</h3>
+                            </div>
+                            <ul class="spec-features">
+                                <li><i class="fas fa-check-circle"></i> Gestion des plats</li>
+                                <li><i class="fas fa-check-circle"></i> Suppléments</li>
+                                <li><i class="fas fa-check-circle"></i> Calcul du total</li>
+                                <li><i class="fas fa-check-circle"></i> Programmation livraison</li>
+                            </ul>
+                        </div>
+
+                        <div class="spec-card">
+                            <div class="spec-card-header">
+                                <i class="fas fa-history"></i>
+                                <h3>Historique</h3>
+                            </div>
+                            <ul class="spec-features">
+                                <li><i class="fas fa-check-circle"></i> Commandes passées</li>
+                                <li><i class="fas fa-check-circle"></i> Détails et suivi</li>
+                                <li><i class="fas fa-check-circle"></i> Recommandations</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Panel Administrateur -->
+                <section id="admin" class="spec-section">
+                    <div class="spec-section-header">
+                        <i class="fas fa-cogs"></i>
+                        <h2>Panel Administrateur</h2>
+                    </div>
+                    <div class="spec-grid">
+                        <div class="spec-card">
+                            <div class="spec-card-header">
+                                <i class="fas fa-users"></i>
+                                <h3>Utilisateurs</h3>
+                            </div>
+                            <ul class="spec-features">
+                                <li><i class="fas fa-check-circle"></i> Gestion des comptes</li>
+                                <li><i class="fas fa-check-circle"></i> Rôles et permissions</li>
+                                <li><i class="fas fa-check-circle"></i> Désactivation</li>
+                            </ul>
+                        </div>
+
+                        <div class="spec-card">
+                            <div class="spec-card-header">
+                                <i class="fas fa-building"></i>
+                                <h3>Entreprises</h3>
+                            </div>
+                            <ul class="spec-features">
+                                <li><i class="fas fa-check-circle"></i> Liste des entreprises</li>
+                                <li><i class="fas fa-check-circle"></i> Restaurants associés</li>
+                                <li><i class="fas fa-check-circle"></i> Facturation</li>
+                                <li><i class="fas fa-check-circle"></i> Statistiques</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
             </div>
-        </section>
-
-        <section class="card">
-            <h2><i class="fas fa-user-tie icon"></i>Panel Employé</h2>
-            <div class="specification-content">
-                <div class="panel-section">
-                    <h3>Page des Restaurants</h3>
-                    <ul>
-                        <li>Liste des restaurants disponibles</li>
-                        <li>Filtres par date et type de cuisine</li>
-                        <li>Informations sur les horaires</li>
-                    </ul>
-                </div>
-
-                <div class="panel-section">
-                    <h3>Menu du restaurant</h3>
-                    <ul>
-                        <li>Affichage des plats par catégorie</li>
-                        <li>Détails des plats et suppléments</li>
-                        <li>Indication des allergènes</li>
-                        <li>Prix et disponibilité</li>
-                    </ul>
-                </div>
-
-                <div class="panel-section">
-                    <h3>Panier</h3>
-                    <ul>
-                        <li>Ajout/modification des plats</li>
-                        <li>Gestion des suppléments</li>
-                        <li>Calcul du total</li>
-                        <li>Programmation de la livraison</li>
-                    </ul>
-                </div>
-
-                <div class="panel-section">
-                    <h3>Historique des commandes</h3>
-                    <ul>
-                        <li>Liste des commandes passées</li>
-                        <li>Détails de chaque commande</li>
-                        <li>Statut et suivi</li>
-                        <li>Possibilité de récommander</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-
-        <section class="card">
-            <h2><i class="fas fa-cogs icon"></i>Panel Administrateur</h2>
-            <div class="specification-content">
-                <div class="panel-section">
-                    <h3>Gestion des utilisateurs</h3>
-                    <ul>
-                        <li>Liste des utilisateurs</li>
-                        <li>Gestion des rôles et permissions</li>
-                        <li>Modification des informations</li>
-                        <li>Désactivation de comptes</li>
-                    </ul>
-                </div>
-
-                <div class="panel-section">
-                    <h3>Gestion des entreprises</h3>
-                    <ul>
-                        <li>Liste des entreprises</li>
-                        <li>Gestion des restaurants associés</li>
-                        <li>Paramètres de facturation</li>
-                        <li>Statistiques par entreprise</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
+        </div>
     </main>
+
+    <div class="scroll-progress"></div>
 
     <script>
         // Theme toggle functionality
@@ -262,6 +690,86 @@
                     link.classList.add('active');
                 }
             });
+
+            // Smooth scroll for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+        });
+
+        // Système de navigation active amélioré
+        document.addEventListener('DOMContentLoaded', () => {
+            const navbarHeight = 60; // Hauteur de la navbar
+            const offset = 100; // Offset supplémentaire pour le défilement
+
+            // Création de l'Intersection Observer avec des marges ajustées
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const id = entry.target.getAttribute('id');
+                        const navLinks = document.querySelectorAll('.spec-sidebar a');
+                        
+                        navLinks.forEach(link => {
+                            link.classList.remove('active');
+                            if (link.getAttribute('href') === `#${id}`) {
+                                link.classList.add('active');
+                            }
+                        });
+                    }
+                });
+            }, {
+                rootMargin: `-${navbarHeight + offset}px 0px -${window.innerHeight - navbarHeight - offset}px 0px`
+            });
+
+            // Observation de toutes les sections
+            document.querySelectorAll('section[id], div[id]').forEach(section => {
+                observer.observe(section);
+            });
+
+            // Barre de progression de défilement ajustée
+            const progressBar = document.querySelector('.scroll-progress');
+            window.addEventListener('scroll', () => {
+                const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+                const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+                const scrolled = (winScroll / height) * 100;
+                progressBar.style.setProperty('--scroll', `${scrolled}%`);
+            });
+
+            // Défilement fluide amélioré avec offset
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        const elementPosition = target.getBoundingClientRect().top;
+                        const offsetPosition = elementPosition + window.pageYOffset - navbarHeight - offset;
+
+                        window.scrollTo({
+                            top: offsetPosition,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+
+            // Mise à jour initiale de la navigation active
+            const initialSection = document.querySelector('section[id], div[id]');
+            if (initialSection) {
+                const id = initialSection.getAttribute('id');
+                const navLink = document.querySelector(`.spec-sidebar a[href="#${id}"]`);
+                if (navLink) {
+                    navLink.classList.add('active');
+                }
+            }
         });
     </script>
 </body>
