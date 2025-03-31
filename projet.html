@@ -537,6 +537,9 @@
 
         // Créer un conteneur temporaire invisible pour y insérer le contenu
         const container = document.createElement('div');
+        container.style.fontFamily = 'Arial, sans-serif';
+                container.style.backgroundColor = 'white';
+                container.style.color = 'black';
         container.innerHTML = htmlContent;
        
         document.body.appendChild(container);
