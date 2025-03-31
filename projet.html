@@ -49,6 +49,13 @@
         <section class="card">
             <h2><i class="fas fa-utensils icon"></i>PtitGamelle - La solution digitale de repas pour les entreprises</h2>
             
+            <div class="download-section">
+                <button class="download-btn">
+                    <i class="fas fa-file-pdf"></i>
+                    Télécharger le projet en PDF
+                </button>
+            </div>
+            
             <div class="pitch-section">
                 <div class="pitch-header">
                     <h3><i class="fas fa-rocket"></i> Pitch en une phrase</h3>
@@ -314,6 +321,7 @@
             <div class="carousel-dots"></div>
         </div>
     </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 
     <script>
         // Theme toggle functionality
@@ -507,6 +515,78 @@
             modal.classList.add('active');
             goToSlide(0);
         });
+
+        async function convertToPDF() {
+            try {
+                const downloadBtn = document.querySelector('.download-btn');
+                const originalText = downloadBtn.innerHTML;
+
+                // Afficher spinner et désactiver le bouton
+                downloadBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Génération du PDF...';
+                downloadBtn.disabled = true;
+
+        // Charger le contenu HTML depuis le fichier (même dossier)
+        const response = await fetch('projet_content.html');
+
+        // Vérification de la requête
+        if (!response.ok) {
+            throw new Error(`Erreur lors du chargement de projet_content.html (status ${response.status})`);
+        }
+
+        const htmlContent = await response.text();
+
+        // Créer un conteneur temporaire invisible pour y insérer le contenu
+        const container = document.createElement('div');
+        container.innerHTML = htmlContent;
+       
+        document.body.appendChild(container);
+
+        // Générer le PDF à partir de ce contenu
+        await html2pdf().set({
+            margin: 10,
+            filename: 'projet_ptitgamelle.pdf',
+            image: { type: 'jpeg', quality: 0.98 },
+            html2canvas: {
+                scale: 2,
+                useCORS: true,
+                backgroundColor: '#ffffff'
+            },
+            jsPDF: {
+                unit: 'mm',
+                format: 'a4',
+                orientation: 'portrait'
+            }
+        }).from(container).save();
+
+        // Nettoyage du DOM
+        document.body.removeChild(container);
+
+        // Restaurer le bouton
+        downloadBtn.innerHTML = originalText;
+        downloadBtn.disabled = false;
+        alert('PDF généré avec succès !');
+    } catch (error) {
+        console.error('Erreur PDF:', error);
+        alert('Une erreur est survenue lors de la génération du PDF.');
+
+                // Restaurer le bouton
+                const downloadBtn = document.querySelector('.download-btn');
+                downloadBtn.innerHTML = '<i class="fas fa-file-pdf"></i> Télécharger le projet en PDF';
+                downloadBtn.disabled = false;
+            }
+        }
+
+        // Attacher l'événement au clic du bouton PDF
+        document.addEventListener('DOMContentLoaded', () => {
+            const btn = document.querySelector('.download-btn');
+            if (btn) {
+                btn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    convertToPDF();
+                });
+            }
+        });
     </script>
 </body>
+
 </html> 
