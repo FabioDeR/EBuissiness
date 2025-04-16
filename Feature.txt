@@ -1,203 +1,69 @@
-.search-component {
-    padding: 1rem;
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-}
+<div class="container">
+    <div class="vertical-line"></div>
 
-.search-field-container {
-    display: flex;
-    gap: 1rem;
-    position: relative;
-}
-
-.vertical-line {
-    width: 2px;
-    background-color: #e9ecef;
-    position: relative;
-    margin-left: 1rem;
-}
-
-.vertical-line.active {
-    background-color: #0d6efd;
-}
-
-.line-dot {
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    background-color: #e9ecef;
-    position: absolute;
-    left: -5px;
-    top: 1rem;
-}
-
-.vertical-line.active .line-dot {
-    background-color: #0d6efd;
-}
-
-.search-field {
-    flex-grow: 1;
-    padding: 1rem;
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-}
-
-.description-field {
-    position: relative;
-}
-
-.char-count {
-    position: absolute;
-    bottom: 0.5rem;
-    right: 0.5rem;
-    font-size: 0.8rem;
-    color: #6c757d;
-}
-
-.add-search-container {
-    margin-left: 3rem;
-}
-
-/* Styles pour les composants Radzen */
-::deep .rz-textbox,
-::deep .rz-textarea {
-    width: 100%;
-    border: 1px solid #ced4da;
-    border-radius: 4px;
-    padding: 0.5rem;
-}
-
-::deep .rz-button {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0.5rem;
-    border-radius: 4px;
-    transition: all 0.2s ease;
-}
-
-::deep .rz-button:hover {
-    background-color: #e9ecef;
-}
-
-::deep .search-button,
-::deep .remove-button {
-    min-width: 40px;
-    height: 40px;
-}
-
-::deep .add-button {
-    background-color: transparent;
-    color: #0d6efd;
-    border: 1px dashed #0d6efd;
-}
-
-::deep .add-button:hover {
-    background-color: rgba(13, 110, 253, 0.1);
-}
-
-.selected-items {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-    margin-bottom: 1rem;
-}
-
-.selected-item {
-    background-color: #f8f9fa;
-    transition: all 0.3s ease;
-}
-
-.selected-item:hover {
-    background-color: #e9ecef;
-}
-
-.search-container {
-    margin-top: 1rem;
-}
-
-::deep .rz-card {
-    border: none;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-} 
-
-
-<div class="search-component">
-    @foreach (var searchField in searchFields)
+    @foreach (var contact in ExternalContacts)
     {
-        <div class="search-field-container">
-            <div class="vertical-line @(searchField.IsActive ? "active" : "")">
-                <div class="line-dot"></div>
-            </div>
-            <div class="search-field">
-                <div class="d-flex gap-2 align-items-center w-100">
-                    <RadzenTextBox @bind-Value="@searchField.Text"
-                                 Placeholder="Rechercher..."
-                                 Class="flex-grow-1" />
-                    <RadzenButton ButtonStyle="ButtonStyle.Light"
-                                Icon="search"
-                                Class="search-button" />
-                    <RadzenButton ButtonStyle="ButtonStyle.Light"
-                                Icon="close"
-                                Class="remove-button"
-                                Click="@(() => RemoveSearchField(searchField))" />
-                </div>
-                @if (searchField.ShowDescription)
-                {
-                    <div class="description-field mt-2">
-                        <RadzenTextArea @bind-Value="@searchField.Description"
-                                      Placeholder="Spécifiez le nom et la fonction..."
-                                      Rows="2"
-                                      Class="w-100" />
-                        <div class="char-count">@(searchField.Description?.Length ?? 0)/500</div>
-                    </div>
-                }
-            </div>
+        <div class="contact-box">
+            <!-- ton dropdown, ton switch, etc -->
+            <RadzenDropDown ... />
+            <RadzenSwitch @bind-Value="contact.ShowDelegation" />
+            @if (contact.ShowDelegation)
+            {
+                <RadzenTextArea Placeholder="Specify the name and function of PO" />
+            }
         </div>
     }
 
-    <div class="add-search-container">
-        <RadzenButton Click="@AddSearchField"
-                     ButtonStyle="ButtonStyle.Secondary"
-                     Icon="add"
-                     Text="Ajouter une recherche"
-                     Class="add-button" />
+    <div class="add-button-wrapper">
+        <RadzenButton Icon="add_circle" Click="@AddContact" />
     </div>
 </div>
 
-@code {
-    private List<SearchFieldModel> searchFields = new List<SearchFieldModel>();
+.container {
+    position: relative;
+    margin-left: 40px; /* espace pour la colonne */
+}
 
-    private class SearchFieldModel
-    {
-        public string Text { get; set; } = "";
-        public string Description { get; set; } = "";
-        public bool IsActive { get; set; } = false;
-        public bool ShowDescription { get; set; } = false;
-    }
+.vertical-line {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 10px;
+    width: 2px;
+    background-color: #ccc;
+    z-index: 0;
+}
 
-    private void AddSearchField()
-    {
-        // Désactiver tous les autres champs
-        foreach (var field in searchFields)
-        {
-            field.IsActive = false;
-        }
+.add-button-wrapper {
+    position: relative;
+    margin: 20px 0;
+    z-index: 1;
+}
 
-        // Ajouter un nouveau champ actif
-        searchFields.Add(new SearchFieldModel 
-        { 
-            IsActive = true,
-            ShowDescription = searchFields.Count == 1 // Activer la description pour le deuxième champ
-        });
-        StateHasChanged();
-    }
+.add-button-wrapper::before {
+    content: "";
+    position: absolute;
+    left: -30px;
+    top: 50%;
+    width: 30px;
+    height: 2px;
+    background-color: #ccc;
+}
 
-    private void RemoveSearchField(SearchFieldModel field)
-    {
-        searchFields.Remove(field);
-        StateHasChanged();
-    }
-} 
+.contact-box {
+    position: relative;
+    padding-left: 20px;
+    margin-bottom: 2rem;
+    border-left: 2px solid #ccc;
+}
+
+.contact-box::before {
+    content: "";
+    position: absolute;
+    left: -30px;
+    top: 20px;
+    width: 30px;
+    height: 2px;
+    background-color: #ccc;
+    border-top-left-radius: 10px;
+}
