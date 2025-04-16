@@ -4,66 +4,105 @@
     @foreach (var contact in ExternalContacts)
     {
         <div class="contact-box">
-            <!-- ton dropdown, ton switch, etc -->
-            <RadzenDropDown ... />
-            <RadzenSwitch @bind-Value="contact.ShowDelegation" />
+            <RadzenDropDown @bind-Value="contact.Name"
+                            Data="AllContacts"
+                            Placeholder="Select contact"
+                            Style="width: 100%; margin-bottom: 10px;" />
+
+            <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px;">
+                <RadzenSwitch @bind-Value="contact.ShowDelegation" />
+                <label>Delegation for the external contact</label>
+            </div>
+
             @if (contact.ShowDelegation)
             {
-                <RadzenTextArea Placeholder="Specify the name and function of PO" />
+                <RadzenTextArea @bind-Value="contact.PONameFunction"
+                                Placeholder="Specify the name and function of PO"
+                                MaxLength="500"
+                                Style="width: 100%; margin-bottom: 10px;" />
             }
+
+            <div style="display: flex; gap: 10px; align-items: center;">
+                <RadzenButton Icon="search" Size="ButtonSize.Small" Click="() => contact.ShowDelegation = !contact.ShowDelegation" />
+                <RadzenButton Icon="close" ButtonStyle="ButtonStyle.Danger" Size="ButtonSize.Small" Click="() => RemoveContact(contact)" />
+            </div>
         </div>
     }
 
     <div class="add-button-wrapper">
-        <RadzenButton Icon="add_circle" Click="@AddContact" />
+        <RadzenButton Icon="add_circle" Click="AddContact" />
     </div>
 </div>
 
-.container {
-    position: relative;
-    margin-left: 40px; /* espace pour la colonne */
-}
+<style>
+    .container {
+        position: relative;
+        margin-left: 40px;
+    }
 
-.vertical-line {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 10px;
-    width: 2px;
-    background-color: #ccc;
-    z-index: 0;
-}
+    .vertical-line {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 10px;
+        width: 2px;
+        background-color: #ccc;
+        z-index: 0;
+    }
 
-.add-button-wrapper {
-    position: relative;
-    margin: 20px 0;
-    z-index: 1;
-}
+    .add-button-wrapper {
+        position: relative;
+        margin: 20px 0;
+        z-index: 1;
+    }
 
-.add-button-wrapper::before {
-    content: "";
-    position: absolute;
-    left: -30px;
-    top: 50%;
-    width: 30px;
-    height: 2px;
-    background-color: #ccc;
-}
+    .add-button-wrapper::before {
+        content: "";
+        position: absolute;
+        left: -30px;
+        top: 50%;
+        width: 30px;
+        height: 2px;
+        background-color: #ccc;
+    }
 
-.contact-box {
-    position: relative;
-    padding-left: 20px;
-    margin-bottom: 2rem;
-    border-left: 2px solid #ccc;
-}
+    .contact-box {
+        position: relative;
+        padding-left: 20px;
+        margin-bottom: 2rem;
+        border-left: 2px solid #ccc;
+    }
 
-.contact-box::before {
-    content: "";
-    position: absolute;
-    left: -30px;
-    top: 20px;
-    width: 30px;
-    height: 2px;
-    background-color: #ccc;
-    border-top-left-radius: 10px;
+    .contact-box::before {
+        content: "";
+        position: absolute;
+        left: -30px;
+        top: 20px;
+        width: 30px;
+        height: 2px;
+        background-color: #ccc;
+        border-top-left-radius: 10px;
+    }
+</style>
+
+@code {
+    public class ExternalContact
+    {
+        public string? Name { get; set; }
+        public bool ShowDelegation { get; set; } = false;
+        public string? PONameFunction { get; set; }
+    }
+
+    private List<ExternalContact> ExternalContacts = new();
+    private List<string> AllContacts = new() { "Pharmatic - Paul Emik" };
+
+    private void AddContact()
+    {
+        ExternalContacts.Add(new ExternalContact());
+    }
+
+    private void RemoveContact(ExternalContact contact)
+    {
+        ExternalContacts.Remove(contact);
+    }
 }
