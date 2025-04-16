@@ -1,29 +1,37 @@
+@page "/external-contacts"
+@using System.ComponentModel.DataAnnotations
+@using Radzen
+@using Radzen.Blazor
+
 <div class="container">
     <div class="vertical-line"></div>
 
     @foreach (var contact in ExternalContacts)
     {
         <div class="contact-box">
-            <RadzenDropDown @bind-Value="contact.Name"
-                            Data="AllContacts"
-                            Placeholder="Select contact"
-                            Style="width: 100%; margin-bottom: 10px;" />
-
-            <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px;">
-                <RadzenSwitch @bind-Value="contact.ShowDelegation" />
-                <label>Delegation for the external contact</label>
-            </div>
-
-            @if (contact.ShowDelegation)
+            @if (contact.Expanded)
             {
-                <RadzenTextArea @bind-Value="contact.PONameFunction"
-                                Placeholder="Specify the name and function of PO"
-                                MaxLength="500"
-                                Style="width: 100%; margin-bottom: 10px;" />
+                <div class="sub-contact-box">
+                    <RadzenTextBox @bind-Value="contact.SubName" Placeholder="Sub contact name" Style="width: 200px; margin-right: 10px;" />
+                    <RadzenDatePicker @bind-Value="contact.SelectedDate" Style="width: 150px; margin-right: 10px;" />
+                    <RadzenIcon Icon="info" Style="margin-right: 10px;" />
+                    <RadzenButton Icon="close" ButtonStyle="ButtonStyle.Danger" Size="ButtonSize.Small" Click="() => contact.Expanded = false" />
+                    <div style="margin-top: 10px;">
+                        <RadzenSwitch @bind-Value="contact.ShowPO" />
+                    </div>
+                    @if (contact.ShowPO)
+                    {
+                        <RadzenTextBox @bind-Value="contact.PONameFunction" Placeholder="Specify the name and function of PO" Style="width: 100%; margin-top: 10px;" />
+                    }
+                </div>
             }
 
-            <div style="display: flex; gap: 10px; align-items: center;">
-                <RadzenButton Icon="search" Size="ButtonSize.Small" Click="() => contact.ShowDelegation = !contact.ShowDelegation" />
+            <div class="main-contact-box">
+                <RadzenTextBox @bind-Value="contact.Name" Placeholder="Enter external contact" Style="width: 200px; margin-right: 10px;" />
+                <RadzenButton Icon="search" Size="ButtonSize.Small" Click="() => contact.Expanded = true" />
+            </div>
+
+            <div class="remove-button-wrapper">
                 <RadzenButton Icon="close" ButtonStyle="ButtonStyle.Danger" Size="ButtonSize.Small" Click="() => RemoveContact(contact)" />
             </div>
         </div>
@@ -77,11 +85,27 @@
         content: "";
         position: absolute;
         left: -30px;
-        top: 20px;
+        top: auto;
+        bottom: 0;
         width: 30px;
         height: 2px;
         background-color: #ccc;
-        border-top-left-radius: 10px;
+        border-bottom-left-radius: 10px;
+    }
+
+    .sub-contact-box {
+        padding-left: 20px;
+        margin-bottom: 10px;
+    }
+
+    .main-contact-box {
+        display: flex;
+        align-items: center;
+        margin-bottom: 5px;
+    }
+
+    .remove-button-wrapper {
+        margin-top: 5px;
     }
 </style>
 
@@ -89,12 +113,14 @@
     public class ExternalContact
     {
         public string? Name { get; set; }
-        public bool ShowDelegation { get; set; } = false;
+        public string? SubName { get; set; }
+        public DateTime? SelectedDate { get; set; }
+        public bool ShowPO { get; set; } = false;
+        public bool Expanded { get; set; } = false;
         public string? PONameFunction { get; set; }
     }
 
     private List<ExternalContact> ExternalContacts = new();
-    private List<string> AllContacts = new() { "Pharmatic - Paul Emik" };
 
     private void AddContact()
     {
