@@ -1,168 +1,203 @@
-﻿📌 Fonctionnalités de l'Admin Panel — Version mise à jour
-1️⃣ Gestion des utilisateurs & rôles
-✅ Créer, modifier et supprimer des utilisateurs
-✅ Activer/désactiver des comptes utilisateurs
-✅ Gérer les rôles des utilisateurs via Spatie Laravel Permission
-✅ Forcer la réinitialisation du mot de passe à la première connexion
-✅ Suivre les actions critiques via les logs admin (admin_logs)
+.search-component {
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
 
-2️⃣ Gestion des entreprises (Organisations)
-✅ Créer, modifier et supprimer des entreprises
-✅ Lier les utilisateurs à une entreprise
-✅ Visualiser les restaurants disponibles pour une entreprise
-✅ Affecter des créateurs/modificateurs à chaque entité
+.search-field-container {
+    display: flex;
+    gap: 1rem;
+    position: relative;
+}
 
-3️⃣ Gestion des restaurants
-✅ Ajouter, modifier et supprimer des restaurants
-✅ Associer un restaurant à une entreprise
-✅ Gérer les disponibilités hebdomadaires (restaurant_schedules)
-✅ Lier un utilisateur de type restaurateur à un restaurant
-✅ Visualiser les commandes associées
+.vertical-line {
+    width: 2px;
+    background-color: #e9ecef;
+    position: relative;
+    margin-left: 1rem;
+}
 
-4️⃣ Gestion des plats & suppléments
-✅ Ajouter, modifier et supprimer des plats
-✅ Gérer les descriptions, images, et tags (à implémenter via front)
-✅ Lier des suppléments à un plat
-✅ Définir les prix des plats et suppléments par restaurant (restaurant_dish_prices, restaurant_supplement_prices)
+.vertical-line.active {
+    background-color: #0d6efd;
+}
 
-5️⃣ Gestion des commandes
-✅ Suivre toutes les commandes passées
-✅ Filtrer par statut (order_statuses)
-✅ Modifier le statut d’une commande
-✅ Consulter l’historique des commandes par utilisateur
-✅ Ajouter des notes/commentaires aux commandes (à ajouter si besoin)
+.line-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: #e9ecef;
+    position: absolute;
+    left: -5px;
+    top: 1rem;
+}
 
-6️⃣ Gestion des paiements
-✅ Suivre les paiements des employés (payments)
-✅ Suivre les versements aux restaurants (restaurant_payouts)
-✅ Gérer les méthodes et statuts de paiement
-✅ Exporter les données (à faire côté back ou via admin UI)
+.vertical-line.active .line-dot {
+    background-color: #0d6efd;
+}
 
-7️⃣ Gestion des évaluations
-✅ Voir les avis et notes laissés sur les plats ou restaurants (reviews)
-✅ Modérer ou supprimer les avis inappropriés
-✅ Identifier les restaurants ou plats les mieux notés
+.search-field {
+    flex-grow: 1;
+    padding: 1rem;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
 
-8️⃣ Gestion des logs administratifs
-✅ Historiser toutes les actions importantes des admins (admin_logs)
-✅ Capturer l’IP et l’agent utilisateur pour chaque action
-✅ Suivre les interventions manuelles sur les comptes, commandes ou paiements
-🧠 Modules à venir (non encore migrés mais utiles)
+.description-field {
+    position: relative;
+}
+
+.char-count {
+    position: absolute;
+    bottom: 0.5rem;
+    right: 0.5rem;
+    font-size: 0.8rem;
+    color: #6c757d;
+}
+
+.add-search-container {
+    margin-left: 3rem;
+}
+
+/* Styles pour les composants Radzen */
+::deep .rz-textbox,
+::deep .rz-textarea {
+    width: 100%;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    padding: 0.5rem;
+}
+
+::deep .rz-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+}
+
+::deep .rz-button:hover {
+    background-color: #e9ecef;
+}
+
+::deep .search-button,
+::deep .remove-button {
+    min-width: 40px;
+    height: 40px;
+}
+
+::deep .add-button {
+    background-color: transparent;
+    color: #0d6efd;
+    border: 1px dashed #0d6efd;
+}
+
+::deep .add-button:hover {
+    background-color: rgba(13, 110, 253, 0.1);
+}
+
+.selected-items {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.selected-item {
+    background-color: #f8f9fa;
+    transition: all 0.3s ease;
+}
+
+.selected-item:hover {
+    background-color: #e9ecef;
+}
+
+.search-container {
+    margin-top: 1rem;
+}
+
+::deep .rz-card {
+    border: none;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+} 
 
 
-🔔 Système de notifications (envoi ciblé + rappels auto)
-⚙️ Table settings pour la configuration globale (paiement, délais, politiques)
-📬 Journal des notifications envoyées
-📝 Historique des actions utilisateurs (audit global)
+<div class="search-component">
+    @foreach (var searchField in searchFields)
+    {
+        <div class="search-field-container">
+            <div class="vertical-line @(searchField.IsActive ? "active" : "")">
+                <div class="line-dot"></div>
+            </div>
+            <div class="search-field">
+                <div class="d-flex gap-2 align-items-center w-100">
+                    <RadzenTextBox @bind-Value="@searchField.Text"
+                                 Placeholder="Rechercher..."
+                                 Class="flex-grow-1" />
+                    <RadzenButton ButtonStyle="ButtonStyle.Light"
+                                Icon="search"
+                                Class="search-button" />
+                    <RadzenButton ButtonStyle="ButtonStyle.Light"
+                                Icon="close"
+                                Class="remove-button"
+                                Click="@(() => RemoveSearchField(searchField))" />
+                </div>
+                @if (searchField.ShowDescription)
+                {
+                    <div class="description-field mt-2">
+                        <RadzenTextArea @bind-Value="@searchField.Description"
+                                      Placeholder="Spécifiez le nom et la fonction..."
+                                      Rows="2"
+                                      Class="w-100" />
+                        <div class="char-count">@(searchField.Description?.Length ?? 0)/500</div>
+                    </div>
+                }
+            </div>
+        </div>
+    }
 
------
+    <div class="add-search-container">
+        <RadzenButton Click="@AddSearchField"
+                     ButtonStyle="ButtonStyle.Secondary"
+                     Icon="add"
+                     Text="Ajouter une recherche"
+                     Class="add-button" />
+    </div>
+</div>
 
-🍽️ Fonctionnalités du Panel Restaurateur
-1️⃣ Gestion du menu
-✅ Créer, modifier, supprimer des plats
-✅ Ajouter une description, une image et des tags (mots-clés)
-✅ Associer un plat à une catégorie (ex: Plat, Dessert, Vegan…) pour faciliter la recherche
-✅ Lier des suppléments à un plat
-✅ Définir les prix des plats et des suppléments par restaurant
+@code {
+    private List<SearchFieldModel> searchFields = new List<SearchFieldModel>();
 
-2️⃣ Gestion de la disponibilité
-✅ Définir les jours d’ouverture par défaut et les modifier à tout moment
-✅ Définir une heure limite de commande pour chaque jour
-✅ Marquer un jour comme indisponible (ex: congé, fermeture exceptionnelle)
-✅ Ajouter une note obligatoire en cas d’indisponibilité (ex: "Fermé pour congé")
-✅ Lier une disponibilité à une ou plusieurs entreprises clientes
+    private class SearchFieldModel
+    {
+        public string Text { get; set; } = "";
+        public string Description { get; set; } = "";
+        public bool IsActive { get; set; } = false;
+        public bool ShowDescription { get; set; } = false;
+    }
 
-3️⃣ Suivi des commandes
-✅ Voir les commandes reçues par jour
-✅ Modifier le statut des commandes (En attente, Acceptée, En préparation, Livrée)
-✅ Consulter le détail de chaque commande : utilisateur, plat, suppléments, montant
+    private void AddSearchField()
+    {
+        // Désactiver tous les autres champs
+        foreach (var field in searchFields)
+        {
+            field.IsActive = false;
+        }
 
-4️⃣ Paiements & versements
-✅ Voir les paiements reçus (par commande)
-✅ Suivre les versements versés par l’admin (payouts)
-✅ Vérifier l’historique des paiements avec leur statut (en attente, validé, etc.)
+        // Ajouter un nouveau champ actif
+        searchFields.Add(new SearchFieldModel 
+        { 
+            IsActive = true,
+            ShowDescription = searchFields.Count == 1 // Activer la description pour le deuxième champ
+        });
+        StateHasChanged();
+    }
 
-5️⃣ Statistiques & évaluations
-✅ Consulter les avis laissés par les clients (plats ou restaurant)
-✅ Identifier les plats les plus populaires selon l’historique des commandes
-
-6️⃣ Compte restaurateur
-✅ Modifier les informations de son profil (nom, contact, adresse)
-✅ Changer son mot de passe
-
----------
-
-👨‍💼 Fonctionnalités du Panel Employé
-1️⃣ Consultation des restaurants et menus
-✅ Voir les restaurants disponibles chaque jour
-✅ Consulter les menus avec plats, suppléments, catégories, images et tags
-✅ Visualiser les horaires limites de commande
-
-2️⃣ Commandes & planification
-✅ Créer un panier pour composer son repas
-✅ Programmer des commandes à l’avance (par jour de la semaine)
-✅ Modifier ou valider son panier avant la deadline
-✅ Passer commande et recevoir une confirmation
-✅ Historique des commandes consultable à tout moment
-
-3️⃣ Paiements
-✅ Payer avec son solde utilisateur
-✅ Utiliser différents moyens de paiement (préconfigurés par admin)
-✅ Consulter l’historique de ses paiements
-
-4️⃣ Compte utilisateur
-✅ Modifier ses informations personnelles
-✅ Définir ses préférences alimentaires ou allergies (JSON libre)
-✅ Recharger son solde (prochainement via intégration)
-
-5️⃣ Notifications & rappels (en cours)
-🔧 Recevoir un email ou message de rappel si aucune commande n’est passée avant l’heure limite
-🔧 Être notifié lorsqu’un plat favori revient au menu (à développer)
-
-6️⃣ Évaluations & retours
-✅ Laisser une note ou un avis sur un plat ou un restaurant
-✅ Consulter ses évaluations précédentes
-
----------
-
-🧑‍💼 PANEL EMPLOYÉ
-Fonctionnalité	État	Détails techniques
-Voir les restaurants du jour	✅	restaurant_schedules, days
-Voir le menu et les suppléments	✅	dishes, dish_supplements, categories
-Créer un panier	✅	cart_drafts
-Programmer des commandes à l'avance	✅	cart_drafts.delivery_date
-Valider le panier en commande	✅	transition vers orders
-Respecter une heure limite	✅	restaurant_schedules.order_deadline
-Payer une commande	✅	payments, payment_methods, balance
-Voir ses commandes passées	✅	orders, filtré par user_id
-Laisser un avis (plat ou restaurant)	✅	reviews
-Voir/modifier son profil	✅	users
-Gérer ses préférences (ex : allergies)	✅	users.preferences (champ JSON)
-Recevoir un rappel avant la deadline (email)	🔧	À faire via notification_reminders
-Recharger son solde	🔧	À faire via intégration ou admin panel
-🍽️ PANEL RESTAURATEUR
-Fonctionnalité	État	Détails techniques
-Gérer ses plats (nom, description, image, tags)	✅	dishes, image_url, tags, category_id
-Gérer les suppléments liés à un plat	✅	dish_supplements
-Définir les prix (plats + suppléments)	✅	restaurant_dish_prices, restaurant_supplement_prices
-Gérer ses disponibilités (jours, horaires, exceptions)	✅	restaurant_schedules + is_default, note
-Indiquer une fermeture avec raison	✅	restaurant_schedules.note + is_available
-Voir ses commandes	✅	orders
-Modifier le statut d’une commande	✅	orders.order_status_id
-Voir les paiements et versements	✅	payments, restaurant_payouts
-Consulter les évaluations	✅	reviews
-Modifier ses infos de profil	✅	users.restaurant_id
-🛠️ PANEL ADMINISTRATEUR
-Fonctionnalité	État	Détails techniques
-Gérer les utilisateurs, rôles et permissions	✅	users, Spatie roles, permissions
-Gérer les entreprises	✅	organizations
-Gérer les restaurants	✅	restaurants
-Associer restaurants à entreprises	✅	restaurant_schedules.organization_id
-Gérer les plats, suppléments et prix	✅	dishes, supplements, restaurant_dish_prices
-Suivre toutes les commandes	✅	orders, order_statuses
-Gérer les paiements employés + versements restaurants	✅	payments, restaurant_payouts
-Voir/modérer les avis	✅	reviews
-Suivre les logs administratifs	✅	admin_logs
-Voir les statistiques (via dashboard)	✅	calculable via orders, users, restaurants
-Envoyer des notifications/rappels	🔧	notification_reminders (à intégrer)
-Gérer les paramètres globaux	🔧	settings (non encore implémenté)
+    private void RemoveSearchField(SearchFieldModel field)
+    {
+        searchFields.Remove(field);
+        StateHasChanged();
+    }
+} 
