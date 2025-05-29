@@ -108,7 +108,7 @@
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
         }
 
-        video {
+        audio {
             width: 100%;
             border-radius: 15px;
             box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
@@ -252,21 +252,21 @@
         </h1>
         
         <p class="subtitle">
-            Une vidéo spéciale pour accompagner ta marche 💕
+            Un fichier audio spécial pour accompagner ta marche 💕
         </p>
         
         <div class="romantic-note">
             <i class="fas fa-quote-left"></i>
             Chaque pas que tu fais illumine mon monde. 
-            Écoute cette vidéo pendant ta marche et pense à moi ! 
+            Écoute cet audio pendant ta marche et pense à moi ! 
             <i class="fas fa-quote-right"></i>
         </div>
         
         <div class="video-container">
-            <video id="videoPlayer" controls>
-                <source src="documents/courstrat.mp3" type="video/mp4">
-                Votre navigateur ne supporte pas la lecture vidéo.
-            </video>
+            <audio id="audioPlayer" controls>
+                <source src="documents/courstrat.mp3" type="audio/mp3">
+                Votre navigateur ne supporte pas la lecture audio.
+            </audio>
         </div>
         
         <div class="time-display" id="timeDisplay">
@@ -302,14 +302,14 @@
     </div>
 
     <script>
-        const video = document.getElementById('videoPlayer');
+        const audio = document.getElementById('audioPlayer');
         const playIcon = document.getElementById('playIcon');
         const playText = document.getElementById('playText');
         const volumeSlider = document.getElementById('volumeSlider');
         const timeDisplay = document.getElementById('timeDisplay');
 
         // Initialiser le volume
-        video.volume = 0.7;
+        audio.volume = 0.7;
 
         // Créer des cœurs flottants
         function createHeart() {
@@ -332,12 +332,12 @@
 
         // Fonction play/pause
         function playPause() {
-            if (video.paused) {
-                video.play();
+            if (audio.paused) {
+                audio.play();
                 playIcon.className = 'fas fa-pause';
                 playText.textContent = 'Pause';
             } else {
-                video.pause();
+                audio.pause();
                 playIcon.className = 'fas fa-play';
                 playText.textContent = 'Lecture';
             }
@@ -345,21 +345,21 @@
 
         // Fonction restart
         function restart() {
-            video.currentTime = 0;
-            video.play();
+            audio.currentTime = 0;
+            audio.play();
             playIcon.className = 'fas fa-pause';
             playText.textContent = 'Pause';
         }
 
         // Contrôle du volume
         volumeSlider.addEventListener('input', function() {
-            video.volume = this.value / 100;
+            audio.volume = this.value / 100;
         });
 
         // Mise à jour du temps
-        video.addEventListener('timeupdate', function() {
-            const current = formatTime(video.currentTime);
-            const duration = formatTime(video.duration || 0);
+        audio.addEventListener('timeupdate', function() {
+            const current = formatTime(audio.currentTime);
+            const duration = formatTime(audio.duration || 0);
             timeDisplay.textContent = `${current} / ${duration}`;
         });
 
@@ -370,8 +370,8 @@
             return `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
         }
 
-        // Mettre à jour l'icône quand la vidéo se termine
-        video.addEventListener('ended', function() {
+        // Mettre à jour l'icône quand l'audio se termine
+        audio.addEventListener('ended', function() {
             playIcon.className = 'fas fa-play';
             playText.textContent = 'Lecture';
         });
