@@ -14,12 +14,21 @@
 
         body {
             font-family: 'Georgia', serif;
-            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #fecfef 100%);
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #f5576c 75%, #4facfe 100%);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
             min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
             overflow-x: hidden;
+            position: relative;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
 
         .floating-hearts {
@@ -34,9 +43,10 @@
 
         .heart {
             position: absolute;
-            color: rgba(255, 192, 203, 0.6);
+            color: rgba(255, 255, 255, 0.8);
             font-size: 20px;
-            animation: float 6s infinite ease-in-out;
+            animation: float 8s infinite ease-in-out;
+            filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.5));
         }
 
         .heart:nth-child(odd) {
@@ -49,117 +59,300 @@
 
         @keyframes float {
             0% {
-                transform: translateY(100vh) rotate(0deg);
+                transform: translateY(100vh) rotate(0deg) scale(0);
                 opacity: 0;
             }
             10% {
                 opacity: 1;
+                transform: translateY(90vh) rotate(45deg) scale(1);
             }
             90% {
                 opacity: 1;
+                transform: translateY(-10vh) rotate(315deg) scale(1.2);
             }
             100% {
-                transform: translateY(-100px) rotate(360deg);
+                transform: translateY(-20vh) rotate(360deg) scale(0);
                 opacity: 0;
             }
         }
 
         .container {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(20px);
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(30px);
             border-radius: 30px;
             padding: 40px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            box-shadow: 
+                0 20px 40px rgba(0, 0, 0, 0.1),
+                0 0 0 1px rgba(255, 255, 255, 0.2),
+                inset 0 0 0 1px rgba(255, 255, 255, 0.1);
             text-align: center;
-            max-width: 600px;
+            max-width: 700px;
             width: 90%;
             position: relative;
             z-index: 2;
-            border: 2px solid rgba(255, 192, 203, 0.3);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .container:hover {
+            transform: translateY(-5px);
+            box-shadow: 
+                0 30px 60px rgba(0, 0, 0, 0.15),
+                0 0 0 1px rgba(255, 255, 255, 0.3),
+                inset 0 0 0 1px rgba(255, 255, 255, 0.2);
         }
 
         .title {
-            color: #d63384;
-            font-size: 2.5rem;
+            color: #ffffff;
+            font-size: 2.8rem;
             margin-bottom: 10px;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
-            animation: pulse 2s infinite;
+            text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+            animation: titleGlow 3s ease-in-out infinite alternate;
+            background: linear-gradient(45deg, #ff6b6b, #ffa8a8, #ff6b6b);
+            background-size: 200% 200%;
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: titleShimmer 3s ease-in-out infinite;
         }
 
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
+        @keyframes titleGlow {
+            0% { text-shadow: 0 0 20px rgba(255, 255, 255, 0.5); }
+            100% { text-shadow: 0 0 30px rgba(255, 255, 255, 0.8), 0 0 40px rgba(255, 107, 107, 0.6); }
+        }
+
+        @keyframes titleShimmer {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
 
         .subtitle {
-            color: #6f42c1;
-            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.3rem;
             margin-bottom: 30px;
             font-style: italic;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
         }
 
-        .video-container {
+        .audio-container {
             position: relative;
-            background: linear-gradient(45deg, #ff6b6b, #ffa8a8);
-            border-radius: 20px;
-            padding: 20px;
+            background: linear-gradient(145deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.05));
+            border-radius: 25px;
+            padding: 30px;
             margin: 30px 0;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+            box-shadow: 
+                0 15px 35px rgba(0, 0, 0, 0.1),
+                inset 0 1px 0 rgba(255, 255, 255, 0.3),
+                inset 0 -1px 0 rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            overflow: hidden;
         }
 
-        audio {
+        .audio-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
             width: 100%;
-            border-radius: 15px;
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            animation: shimmer 3s infinite;
         }
 
-        .controls {
-            margin: 20px 0;
+        @keyframes shimmer {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+
+        /* Cache l'audio par défaut pour créer des contrôles personnalisés */
+        #audioPlayer {
+            display: none;
+        }
+
+        .custom-audio-player {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .audio-visualizer {
             display: flex;
             justify-content: center;
-            gap: 15px;
-            flex-wrap: wrap;
+            align-items: end;
+            height: 100px;
+            gap: 3px;
+            margin: 20px 0;
+        }
+
+        .visualizer-bar {
+            width: 4px;
+            background: linear-gradient(to top, #ff6b6b, #ffa8a8, #ffffff);
+            border-radius: 2px;
+            transition: height 0.1s ease;
+            animation: pulse 0.5s ease-in-out infinite alternate;
+        }
+
+        .visualizer-bar:nth-child(odd) {
+            animation-delay: 0.1s;
+        }
+
+        .visualizer-bar:nth-child(even) {
+            animation-delay: 0.3s;
+        }
+
+        @keyframes pulse {
+            0% { height: 10px; }
+            100% { height: 60px; }
+        }
+
+        .audio-progress {
+            position: relative;
+            height: 8px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 4px;
+            cursor: pointer;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, #ff6b6b, #ffa8a8, #ff6b6b);
+            background-size: 200% 100%;
+            border-radius: 4px;
+            width: 0%;
+            transition: width 0.1s ease;
+            animation: progressShimmer 2s ease-in-out infinite;
+            position: relative;
+        }
+
+        .progress-bar::after {
+            content: '';
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 12px;
+            height: 12px;
+            background: #ffffff;
+            border-radius: 50%;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+        }
+
+        @keyframes progressShimmer {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .audio-controls {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            margin: 20px 0;
         }
 
         .control-btn {
-            background: linear-gradient(45deg, #ff6b6b, #ffa8a8);
+            background: linear-gradient(145deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.05));
             color: white;
-            border: none;
-            border-radius: 50px;
-            padding: 12px 24px;
-            font-size: 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            font-size: 1.5rem;
             cursor: pointer;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 12px rgba(255, 107, 107, 0.3);
             display: flex;
             align-items: center;
-            gap: 8px;
+            justify-content: center;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
         }
 
         .control-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 16px rgba(255, 107, 107, 0.4);
-            background: linear-gradient(45deg, #ff5252, #ff8a80);
+            transform: translateY(-3px) scale(1.1);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+            background: linear-gradient(145deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.1));
         }
 
-        .volume-container {
+        .control-btn:active {
+            transform: translateY(-1px) scale(1.05);
+        }
+
+        .play-btn {
+            width: 80px;
+            height: 80px;
+            font-size: 2rem;
+            background: linear-gradient(145deg, #ff6b6b, #ff5252);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .play-btn:hover {
+            background: linear-gradient(145deg, #ff5252, #ff4444);
+            box-shadow: 0 0 30px rgba(255, 107, 107, 0.6);
+        }
+
+        .loop-btn.active {
+            background: linear-gradient(145deg, #4CAF50, #45a049);
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            animation: loopPulse 2s ease-in-out infinite;
+        }
+
+        .loop-btn.active i {
+            animation: loopRotate 2s linear infinite;
+        }
+
+        @keyframes loopPulse {
+            0% { box-shadow: 0 0 0 0 rgba(76, 175, 80, 0.7); }
+            70% { box-shadow: 0 0 0 10px rgba(76, 175, 80, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(76, 175, 80, 0); }
+        }
+
+        @keyframes loopRotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .loop-indicator {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            width: 20px;
+            height: 20px;
+            background: linear-gradient(145deg, #4CAF50, #45a049);
+            border-radius: 50%;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            color: white;
+            animation: bounce 1s ease-in-out infinite;
+        }
+
+        .loop-btn.active .loop-indicator {
+            display: flex;
+        }
+
+        .volume-control {
             display: flex;
             align-items: center;
             gap: 10px;
-            background: rgba(255, 255, 255, 0.9);
-            padding: 10px 20px;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 15px 20px;
             border-radius: 25px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
 
         .volume-slider {
-            width: 100px;
+            width: 120px;
             height: 6px;
             border-radius: 3px;
-            background: #ddd;
+            background: rgba(255, 255, 255, 0.2);
             outline: none;
             cursor: pointer;
+            appearance: none;
         }
 
         .volume-slider::-webkit-slider-thumb {
@@ -167,92 +360,61 @@
             width: 18px;
             height: 18px;
             border-radius: 50%;
-            background: #ff6b6b;
+            background: linear-gradient(145deg, #ffffff, #ffa8a8);
             cursor: pointer;
-            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
-        }
-
-        .message {
-            background: linear-gradient(45deg, #ffeaa7, #fab1a0);
-            border-radius: 15px;
-            padding: 20px;
-            margin: 20px 0;
-            color: #2d3436;
-            font-size: 1.1rem;
-            line-height: 1.6;
-            border-left: 4px solid #e17055;
-        }
-
-        .romantic-note {
-            background: rgba(255, 192, 203, 0.2);
-            border-radius: 15px;
-            padding: 15px;
-            margin: 20px 0;
-            color: #d63384;
-            font-style: italic;
-            border: 1px solid rgba(255, 192, 203, 0.5);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            border: 2px solid rgba(255, 255, 255, 0.5);
         }
 
         .time-display {
-            background: rgba(0, 0, 0, 0.7);
+            background: rgba(0, 0, 0, 0.3);
             color: white;
-            padding: 5px 15px;
+            padding: 8px 16px;
             border-radius: 20px;
             font-family: 'Courier New', monospace;
-            margin: 10px 0;
+            margin: 15px 0;
             display: inline-block;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
         }
 
-        @media (max-width: 768px) {
-            .container {
-                padding: 20px;
-                margin: 20px;
-            }
-            
-            .title {
-                font-size: 2rem;
-            }
-            
-            .controls {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            .volume-container {
-                justify-content: center;
-            }
+        .love-messages {
+            margin: 20px 0;
+            min-height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
-        .decorative-border {
-            position: absolute;
-            top: -2px;
-            left: -2px;
-            right: -2px;
-            bottom: -2px;
-            border-radius: 32px;
-            background: linear-gradient(45deg, #ff6b6b, #ffa8a8, #ff6b6b);
-            z-index: -1;
-            animation: borderGlow 3s ease-in-out infinite alternate;
+        .love-message {
+            color: rgba(255, 255, 255, 0.9);
+            font-style: italic;
+            font-size: 1.1rem;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.8s ease;
+            text-align: center;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
         }
 
-        @keyframes borderGlow {
-            0% { opacity: 0.5; }
-            100% { opacity: 1; }
+        .love-message.active {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         .backup-section {
-            margin-top: 20px;
-            padding: 20px;
-            background: linear-gradient(135deg, rgba(255, 192, 203, 0.2), rgba(255, 255, 255, 0.9));
+            margin-top: 25px;
+            padding: 25px;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.05));
             backdrop-filter: blur(20px);
             border-radius: 20px;
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-            border: 1px solid rgba(255, 192, 203, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.2);
             text-align: center;
         }
 
         .backup-note {
-            color: #d63384;
+            color: #ffffff;
             font-size: 1.2rem;
             margin-bottom: 10px;
             font-weight: bold;
@@ -267,7 +429,7 @@
         }
 
         .backup-section p {
-            color: #6f42c1;
+            color: rgba(255, 255, 255, 0.8);
             font-style: italic;
             margin: 15px 0;
         }
@@ -277,20 +439,21 @@
             color: white;
             text-decoration: none;
             border-radius: 50px;
-            padding: 12px 24px;
+            padding: 15px 30px;
             font-size: 1.1rem;
             cursor: pointer;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 12px rgba(255, 0, 0, 0.3);
+            box-shadow: 0 8px 16px rgba(255, 0, 0, 0.3);
             display: inline-flex;
             align-items: center;
-            gap: 8px;
+            gap: 10px;
             font-weight: bold;
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
 
         .youtube-btn:hover {
-            transform: translateY(-2px) scale(1.05);
-            box-shadow: 0 6px 16px rgba(255, 0, 0, 0.5);
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 12px 24px rgba(255, 0, 0, 0.5);
             background: linear-gradient(45deg, #cc0000, #ff3333);
         }
 
@@ -308,6 +471,203 @@
             }
             60% {
                 transform: translateY(-1px);
+            }
+        }
+
+        .message {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.05));
+            border-radius: 20px;
+            padding: 25px;
+            margin: 25px 0;
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.1rem;
+            line-height: 1.8;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(15px);
+        }
+
+        .romantic-note {
+            background: linear-gradient(135deg, rgba(255, 182, 193, 0.3), rgba(255, 192, 203, 0.1));
+            border-radius: 20px;
+            padding: 20px;
+            margin: 25px 0;
+            color: #ffffff;
+            font-style: italic;
+            border: 1px solid rgba(255, 192, 203, 0.4);
+            backdrop-filter: blur(15px);
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 25px;
+                margin: 20px;
+            }
+            
+            .title {
+                font-size: 2.2rem;
+            }
+            
+            .audio-controls {
+                flex-wrap: wrap;
+                gap: 15px;
+            }
+            
+            .volume-control {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .volume-slider {
+                width: 100px;
+            }
+        }
+
+        /* Effet de particules interactives */
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 50%;
+            pointer-events: none;
+            animation: particleFloat 3s ease-out forwards;
+        }
+
+        @keyframes particleFloat {
+            0% {
+                opacity: 1;
+                transform: scale(0);
+            }
+            50% {
+                opacity: 0.8;
+                transform: scale(1);
+            }
+            100% {
+                opacity: 0;
+                transform: scale(0) translateY(-100px);
+            }
+        }
+
+        .chat-bubble {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 20px 20px 5px 20px;
+            padding: 8px 12px;
+            font-size: 12px;
+            color: #d63384;
+            font-weight: bold;
+            animation: chatFloat 12s infinite ease-in-out;
+            max-width: 120px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 192, 203, 0.3);
+            z-index: 1;
+        }
+
+        .chat-bubble::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 10px;
+            width: 0;
+            height: 0;
+            border: 5px solid transparent;
+            border-top-color: rgba(255, 255, 255, 0.9);
+        }
+
+        .chat-bubble:nth-child(3n) {
+            animation-delay: -3s;
+            border-radius: 20px 20px 20px 5px;
+        }
+
+        .chat-bubble:nth-child(3n)::after {
+            left: auto;
+            right: 10px;
+        }
+
+        .chat-bubble:nth-child(4n) {
+            animation-delay: -6s;
+            background: rgba(255, 182, 193, 0.9);
+            color: #ffffff;
+        }
+
+        .chat-bubble:nth-child(5n) {
+            animation-delay: -9s;
+            background: linear-gradient(45deg, rgba(255, 107, 107, 0.9), rgba(255, 168, 168, 0.9));
+            color: #ffffff;
+        }
+
+        @keyframes chatFloat {
+            0% {
+                transform: translateY(100vh) rotate(-5deg) scale(0);
+                opacity: 0;
+            }
+            5% {
+                opacity: 1;
+                transform: translateY(95vh) rotate(0deg) scale(1);
+            }
+            25% {
+                transform: translateY(75vh) rotate(3deg) scale(1.1);
+            }
+            50% {
+                transform: translateY(50vh) rotate(-2deg) scale(1);
+            }
+            75% {
+                transform: translateY(25vh) rotate(2deg) scale(0.9);
+            }
+            95% {
+                opacity: 1;
+                transform: translateY(5vh) rotate(-1deg) scale(0.8);
+            }
+            100% {
+                transform: translateY(-10vh) rotate(0deg) scale(0);
+                opacity: 0;
+            }
+        }
+
+        .cat {
+            position: absolute;
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 24px;
+            animation: catFloat 10s infinite ease-in-out;
+            filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.4));
+            z-index: 1;
+        }
+
+        .cat:nth-child(odd) {
+            animation-delay: -3s;
+        }
+
+        .cat:nth-child(even) {
+            animation-delay: -6s;
+        }
+
+        @keyframes catFloat {
+            0% {
+                transform: translateY(100vh) rotate(-10deg) scale(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+                transform: translateY(90vh) rotate(5deg) scale(1);
+            }
+            30% {
+                transform: translateY(70vh) rotate(-8deg) scale(1.1);
+            }
+            50% {
+                transform: translateY(50vh) rotate(3deg) scale(1);
+            }
+            70% {
+                transform: translateY(30vh) rotate(-5deg) scale(0.9);
+            }
+            90% {
+                opacity: 1;
+                transform: translateY(10vh) rotate(2deg) scale(0.8);
+            }
+            100% {
+                transform: translateY(-15vh) rotate(0deg) scale(0);
+                opacity: 0;
             }
         }
     </style>
@@ -333,11 +693,61 @@
             <i class="fas fa-quote-right"></i>
         </div>
         
-        <div class="video-container">
+        <div class="audio-container">
             <audio id="audioPlayer" controls>
                 <source src="https://github.com/FabioDeR/EBuissiness/blob/master/documents/courstrat.mp3?raw=true" type="audio/mp3">
                 Votre navigateur ne supporte pas la lecture audio.
             </audio>
+            
+            <div class="custom-audio-player">
+                <!-- Visualiseur audio -->
+                <div class="audio-visualizer" id="visualizer">
+                    <!-- Les barres seront générées par JavaScript -->
+                </div>
+                
+                <!-- Barre de progression personnalisée -->
+                <div class="audio-progress" id="audioProgress">
+                    <div class="progress-bar" id="progressBar"></div>
+                </div>
+                
+                <!-- Contrôles audio personnalisés -->
+                <div class="audio-controls">
+                    <button class="control-btn" onclick="restart()" title="Recommencer">
+                        <i class="fas fa-redo"></i>
+                    </button>
+                    
+                    <button class="control-btn play-btn" onclick="playPause()" title="Lecture/Pause">
+                        <i class="fas fa-play" id="playIcon"></i>
+                    </button>
+                    
+                    <button class="control-btn" onclick="skip(10)" title="Avancer 10s">
+                        <i class="fas fa-forward"></i>
+                    </button>
+                    
+                    <button class="control-btn loop-btn" onclick="toggleLoop()" title="Mode boucle" id="loopBtn">
+                        <i class="fas fa-repeat" id="loopIcon"></i>
+                        <div class="loop-indicator">∞</div>
+                    </button>
+                </div>
+                
+                <!-- Contrôle du volume -->
+                <div class="volume-control">
+                    <i class="fas fa-volume-down"></i>
+                    <input type="range" class="volume-slider" id="volumeSlider" min="0" max="100" value="70">
+                    <i class="fas fa-volume-up"></i>
+                </div>
+            </div>
+        </div>
+        
+        <div class="time-display" id="timeDisplay">
+            00:00 / 00:00
+        </div>
+        
+        <!-- Messages d'amour qui changent -->
+        <div class="love-messages">
+            <div class="love-message active" id="loveMessage">
+                "Chaque seconde de cette musique me rappelle combien tu illumines ma vie ✨"
+            </div>
         </div>
         
         <div class="backup-section">
@@ -350,28 +760,6 @@
                 <i class="fab fa-youtube"></i>
                 Ouvrir sur YouTube
             </a>
-        </div>
-        
-        <div class="time-display" id="timeDisplay">
-            00:00 / 00:00
-        </div>
-        
-        <div class="controls">
-            <button class="control-btn" onclick="playPause()">
-                <i class="fas fa-play" id="playIcon"></i>
-                <span id="playText">Lecture</span>
-            </button>
-            
-            <button class="control-btn" onclick="restart()">
-                <i class="fas fa-redo"></i>
-                Recommencer
-            </button>
-            
-            <div class="volume-container">
-                <i class="fas fa-volume-down"></i>
-                <input type="range" class="volume-slider" id="volumeSlider" min="0" max="100" value="70">
-                <i class="fas fa-volume-up"></i>
-            </div>
         </div>
         
         <div class="message">
@@ -387,51 +775,209 @@
     <script>
         const audio = document.getElementById('audioPlayer');
         const playIcon = document.getElementById('playIcon');
-        const playText = document.getElementById('playText');
         const volumeSlider = document.getElementById('volumeSlider');
         const timeDisplay = document.getElementById('timeDisplay');
+        const progressBar = document.getElementById('progressBar');
+        const audioProgress = document.getElementById('audioProgress');
+        const visualizer = document.getElementById('visualizer');
+        const loveMessage = document.getElementById('loveMessage');
+        const loopBtn = document.getElementById('loopBtn');
+        const loopIcon = document.getElementById('loopIcon');
+
+        // Messages d'amour qui changent
+        const loveMessages = [
+            "Chaque seconde de cette musique me rappelle combien tu illumines ma vie ✨",
+            "Tu es la mélodie la plus douce de mon cœur 💕",
+            "Pendant ta marche, sache que tu es dans toutes mes pensées 🌟",
+            "Cette musique voyage avec toi, comme mon amour 💖",
+            "Chaque pas que tu fais résonne dans mon âme 👣",
+            "Tu es ma source d'inspiration et de bonheur 🌸",
+            "L'harmonie de cette mélodie égale celle de notre amour 🎵",
+            "Tu emportes mon cœur dans chacune de tes aventures 💫"
+        ];
+
+        // Messages courts pour les bulles de chat
+        const chatMessages = [
+            "Je t'aime 💕",
+            "Tu me manques 🥺",
+            "Mon cœur ❤️",
+            "Ma beauté 🌹",
+            "Tu es parfaite ✨",
+            "Bisous 😘",
+            "Mon âme sœur 👫",
+            "À jamais 💍",
+            "Ma princesse 👸",
+            "Mon soleil ☀️",
+            "Tendresse 💝",
+            "Ma vie 🌟",
+            "Douce 🍯",
+            "Mon ange 😇",
+            "Câlins 🤗",
+            "Unique 💎",
+            "Ma muse 🎨",
+            "Précieuse 💐",
+            "Mon rêve 💭",
+            "Adorable 🥰"
+        ];
+
+        let currentMessageIndex = 0;
+        let isPlaying = false;
+        let isLooping = false;
+        let visualizerBars = [];
 
         // Initialiser le volume
         audio.volume = 0.7;
 
-        // Créer des cœurs flottants
+        // Créer le visualiseur audio
+        function createVisualizer() {
+            for (let i = 0; i < 50; i++) {
+                const bar = document.createElement('div');
+                bar.className = 'visualizer-bar';
+                bar.style.height = Math.random() * 30 + 10 + 'px';
+                bar.style.animationDelay = Math.random() * 2 + 's';
+                visualizer.appendChild(bar);
+                visualizerBars.push(bar);
+            }
+        }
+
+        // Animer le visualiseur
+        function animateVisualizer() {
+            if (isPlaying) {
+                visualizerBars.forEach((bar, index) => {
+                    const height = Math.random() * 80 + 20;
+                    bar.style.height = height + 'px';
+                    bar.style.animationDuration = (Math.random() * 0.5 + 0.3) + 's';
+                });
+                setTimeout(animateVisualizer, 100);
+            } else {
+                visualizerBars.forEach(bar => {
+                    bar.style.height = '10px';
+                });
+            }
+        }
+
+        // Créer des cœurs flottants améliorés
         function createHeart() {
             const heart = document.createElement('div');
             heart.className = 'heart';
-            heart.innerHTML = '💖';
+            const hearts = ['💖', '💕', '💗', '💝', '💘', '🌹', '✨', '⭐'];
+            heart.innerHTML = hearts[Math.floor(Math.random() * hearts.length)];
             heart.style.left = Math.random() * 100 + '%';
-            heart.style.animationDuration = (Math.random() * 3 + 3) + 's';
-            heart.style.fontSize = (Math.random() * 10 + 15) + 'px';
+            heart.style.animationDuration = (Math.random() * 5 + 5) + 's';
+            heart.style.fontSize = (Math.random() * 15 + 15) + 'px';
             
             document.getElementById('heartsContainer').appendChild(heart);
             
             setTimeout(() => {
                 heart.remove();
-            }, 6000);
+            }, 8000);
         }
 
-        // Créer des cœurs toutes les 2 secondes
-        setInterval(createHeart, 2000);
+        // Créer des bulles de chat flottantes
+        function createChatBubble() {
+            const bubble = document.createElement('div');
+            bubble.className = 'chat-bubble';
+            bubble.innerHTML = chatMessages[Math.floor(Math.random() * chatMessages.length)];
+            bubble.style.left = Math.random() * 85 + 5 + '%'; // Éviter les bords
+            bubble.style.animationDuration = (Math.random() * 4 + 10) + 's';
+            
+            // Variation de taille
+            const size = Math.random() * 0.4 + 0.8; // Entre 0.8 et 1.2
+            bubble.style.transform = `scale(${size})`;
+            
+            document.getElementById('heartsContainer').appendChild(bubble);
+            
+            setTimeout(() => {
+                bubble.remove();
+            }, 12000);
+        }
 
-        // Fonction play/pause
+        // Créer des petits chats flottants
+        function createCat() {
+            const cat = document.createElement('div');
+            cat.className = 'cat';
+            const cats = ['🐱', '😸', '😻', '🙀', '😽', '😺', '😹', '😼'];
+            cat.innerHTML = cats[Math.floor(Math.random() * cats.length)];
+            cat.style.left = Math.random() * 100 + '%';
+            cat.style.animationDuration = (Math.random() * 4 + 8) + 's';
+            cat.style.fontSize = (Math.random() * 10 + 20) + 'px';
+            
+            document.getElementById('heartsContainer').appendChild(cat);
+            
+            setTimeout(() => {
+                cat.remove();
+            }, 10000);
+        }
+
+        // Créer des particules interactives
+        function createParticles(x, y) {
+            for (let i = 0; i < 8; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = x + 'px';
+                particle.style.top = y + 'px';
+                particle.style.transform = `translate(${(Math.random() - 0.5) * 100}px, ${(Math.random() - 0.5) * 100}px)`;
+                
+                document.body.appendChild(particle);
+                
+                setTimeout(() => {
+                    particle.remove();
+                }, 3000);
+            }
+        }
+
+        // Changer les messages d'amour
+        function changeLoveMessage() {
+            loveMessage.style.opacity = '0';
+            loveMessage.style.transform = 'translateY(20px)';
+            
+            setTimeout(() => {
+                currentMessageIndex = (currentMessageIndex + 1) % loveMessages.length;
+                loveMessage.textContent = loveMessages[currentMessageIndex];
+                loveMessage.style.opacity = '1';
+                loveMessage.style.transform = 'translateY(0)';
+            }, 800);
+        }
+
+        // Créer des cœurs toutes les 3 secondes
+        setInterval(createHeart, 3000);
+
+        // Créer des bulles de chat toutes les 4 secondes
+        setInterval(createChatBubble, 4000);
+
+        // Créer des petits chats toutes les 5 secondes
+        setInterval(createCat, 5000);
+
+        // Changer le message d'amour toutes les 10 secondes
+        setInterval(changeLoveMessage, 10000);
+
+        // Fonction play/pause améliorée
         function playPause() {
             if (audio.paused) {
                 audio.play();
                 playIcon.className = 'fas fa-pause';
-                playText.textContent = 'Pause';
+                isPlaying = true;
+                animateVisualizer();
             } else {
                 audio.pause();
                 playIcon.className = 'fas fa-play';
-                playText.textContent = 'Lecture';
+                isPlaying = false;
+                animateVisualizer();
             }
         }
 
         // Fonction restart
         function restart() {
             audio.currentTime = 0;
-            audio.play();
-            playIcon.className = 'fas fa-pause';
-            playText.textContent = 'Pause';
+            if (isPlaying) {
+                audio.play();
+            }
+            createParticles(window.innerWidth / 2, window.innerHeight / 2);
+        }
+
+        // Fonction skip
+        function skip(seconds) {
+            audio.currentTime = Math.min(audio.currentTime + seconds, audio.duration);
         }
 
         // Contrôle du volume
@@ -439,11 +985,29 @@
             audio.volume = this.value / 100;
         });
 
-        // Mise à jour du temps
+        // Mise à jour de la progression
         audio.addEventListener('timeupdate', function() {
             const current = formatTime(audio.currentTime);
             const duration = formatTime(audio.duration || 0);
             timeDisplay.textContent = `${current} / ${duration}`;
+            
+            // Mettre à jour la barre de progression
+            if (audio.duration) {
+                const progress = (audio.currentTime / audio.duration) * 100;
+                progressBar.style.width = progress + '%';
+            }
+        });
+
+        // Clic sur la barre de progression
+        audioProgress.addEventListener('click', function(e) {
+            const rect = this.getBoundingClientRect();
+            const clickX = e.clientX - rect.left;
+            const width = rect.width;
+            const clickTime = (clickX / width) * audio.duration;
+            audio.currentTime = clickTime;
+            
+            // Effet de particules au clic
+            createParticles(e.clientX, e.clientY);
         });
 
         // Formater le temps
@@ -456,12 +1020,120 @@
         // Mettre à jour l'icône quand l'audio se termine
         audio.addEventListener('ended', function() {
             playIcon.className = 'fas fa-play';
-            playText.textContent = 'Lecture';
+            isPlaying = false;
+            animateVisualizer();
+            changeLoveMessage(); // Nouveau message à la fin
         });
 
-        // Créer quelques cœurs au chargement
-        for (let i = 0; i < 5; i++) {
-            setTimeout(createHeart, i * 1000);
+        // Effet de particules sur les boutons
+        document.querySelectorAll('.control-btn').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                const rect = this.getBoundingClientRect();
+                const x = rect.left + rect.width / 2;
+                const y = rect.top + rect.height / 2;
+                createParticles(x, y);
+            });
+        });
+
+        // Effet de particules sur les clics
+        document.addEventListener('click', function(e) {
+            if (Math.random() < 0.3) { // 30% de chance
+                createParticles(e.clientX, e.clientY);
+            }
+        });
+
+        // Initialisation
+        document.addEventListener('DOMContentLoaded', function() {
+            createVisualizer();
+            
+            // Créer quelques cœurs au chargement
+            for (let i = 0; i < 8; i++) {
+                setTimeout(createHeart, i * 1000);
+            }
+            
+            // Créer quelques bulles de chat au chargement
+            for (let i = 0; i < 5; i++) {
+                setTimeout(createChatBubble, i * 1500 + 2000); // Décaler par rapport aux cœurs
+            }
+            
+            // Créer quelques petits chats au chargement
+            for (let i = 0; i < 4; i++) {
+                setTimeout(createCat, i * 2000 + 3000); // Décaler encore plus
+            }
+            
+            // Message d'amour initial avec délai
+            setTimeout(() => {
+                loveMessage.style.opacity = '1';
+                loveMessage.style.transform = 'translateY(0)';
+            }, 500);
+        });
+
+        // Gestion des erreurs audio
+        audio.addEventListener('error', function(e) {
+            console.error('Erreur audio:', e);
+            timeDisplay.textContent = 'Erreur de chargement';
+        });
+
+        // Préchargement intelligent
+        audio.addEventListener('canplaythrough', function() {
+            timeDisplay.textContent = '00:00 / ' + formatTime(audio.duration);
+        });
+
+        // Mode plein écran sur double-clic
+        document.querySelector('.container').addEventListener('dblclick', function() {
+            if (document.fullscreenElement) {
+                document.exitFullscreen();
+            } else {
+                this.requestFullscreen();
+            }
+        });
+
+        // Fonction toggleLoop améliorée
+        function toggleLoop() {
+            isLooping = !isLooping;
+            audio.loop = isLooping;
+            
+            if (isLooping) {
+                loopBtn.classList.add('active');
+                loopBtn.title = 'Mode boucle activé ∞';
+                
+                // Message spécial pour le mode boucle
+                loveMessage.style.opacity = '0';
+                setTimeout(() => {
+                    loveMessage.textContent = "Mode boucle activé ! Cette mélodie va t'accompagner à l'infini, comme mon amour 💕∞";
+                    loveMessage.style.opacity = '1';
+                }, 800);
+                
+                // Effet de particules spécial
+                const rect = loopBtn.getBoundingClientRect();
+                for (let i = 0; i < 12; i++) {
+                    setTimeout(() => {
+                        createParticles(rect.left + rect.width / 2, rect.top + rect.height / 2);
+                    }, i * 100);
+                }
+                
+                // Son de notification (vibration si disponible)
+                if (navigator.vibrate) {
+                    navigator.vibrate([100, 50, 100]);
+                }
+                
+            } else {
+                loopBtn.classList.remove('active');
+                loopBtn.title = 'Mode boucle désactivé';
+                
+                // Retour au message normal
+                loveMessage.style.opacity = '0';
+                setTimeout(() => {
+                    loveMessage.textContent = loveMessages[currentMessageIndex];
+                    loveMessage.style.opacity = '1';
+                }, 800);
+            }
+            
+            // Animation du bouton
+            loopBtn.style.transform = 'scale(1.2)';
+            setTimeout(() => {
+                loopBtn.style.transform = 'scale(1)';
+            }, 200);
         }
     </script>
 </body>
