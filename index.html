@@ -3,27 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>E-Business - Cours et Projets</title>
+    <title>PtitGamelle - Projet E-Business</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <nav class="navbar">
         <div class="nav-container">
-            <h1>E-Business</h1>
+            <h1>PtitGamelle</h1>
             <button class="mobile-toggle" id="mobile-toggle">
                 <i class="fas fa-bars"></i>
             </button>
             <div class="two-tier-nav" id="two-tier-nav">
                 <div class="nav-top-tier">
-                    <div class="nav-category">Cours</div>
+                    <div class="nav-category">Navigation</div>
                     <ul class="nav-links">
                         <li><a href="index.html" class="active"><i class="fas fa-home"></i> Accueil</a></li>
-                        <li><a href="cours1.html"><i class="fas fa-book"></i> Cours 1</a></li>
-                        <li><a href="cours2.html"><i class="fas fa-book"></i> Cours 2</a></li>
-                        <li><a href="cours4.html"><i class="fas fa-book"></i> Cours 4</a></li>
-                        <li><a href="cours5.html"><i class="fas fa-book"></i> Cours 5</a></li>
-                        <li><a href="exercice.html"><i class="fas fa-tasks"></i> Exercices</a></li>
+                        <li><a href="audio_page.html"><i class="fas fa-heart"></i> Page Audio</a></li>
                     </ul>
                 </div>
                 <div class="nav-bottom-tier">
@@ -32,6 +28,7 @@
                         <li><a href="projet.html"><i class="fas fa-project-diagram"></i> Projet</a></li>
                         <li><a href="business-plan.html"><i class="fas fa-file-alt"></i> Business Plan</a></li>
                         <li><a href="kanban.html"><i class="fas fa-clipboard-list"></i> Kanban</a></li>
+                        <li><a href="PtitGamelle_Kanban.html"><i class="fas fa-clipboard-list"></i> Kanban Technique</a></li>
                         <li><a href="pages-specification.html"><i class="fas fa-file-code"></i> Spécifications</a></li>
                         <li><a href="allergenes.html"><i class="fas fa-allergies"></i> Allergènes</a></li>
                     </ul>
@@ -45,41 +42,50 @@
 
     <main>
         <div class="card">
-            <h1><i class="fas fa-graduation-cap icon"></i>Bienvenue sur le site E-Business</h1>
-            <p>Ce site contient mes résumés de cours et projets en e-business. Explorez les différentes sections pour accéder aux cours, exercices et au projet final.</p>
+            <h1><i class="fas fa-utensils icon"></i>PtitGamelle - Projet E-Business</h1>
+            <p>Bienvenue sur le site de PtitGamelle, la solution digitale de repas pour les entreprises. Découvrez notre projet complet qui révolutionne la pause déjeuner en entreprise.</p>
         </div>
 
-        <div class="card">
-            <h2><i class="fas fa-list icon"></i>Navigation rapide</h2>
-            <ul>
-                <li><a href="#cours">Les cours</a></li>
-                <li><a href="#exercices">Les exercices</a></li>
-                <li><a href="#projet">Le projet</a></li>
-            </ul>
+        <div class="features-grid">
+            <div class="feature-card">
+                <h2><i class="fas fa-project-diagram icon"></i>Le Projet Principal</h2>
+                <p>Découvrez PtitGamelle, une plateforme complète qui connecte restaurants locaux et entreprises pour une livraison quotidienne de repas variés et personnalisés.</p>
+                <div class="card-buttons">
+                    <a href="projet.html" class="btn">Voir le projet</a>
+                    <a href="business-plan.html" class="btn">Business Plan</a>
+                </div>
+            </div>
+
+            <div class="feature-card">
+                <h2><i class="fas fa-heart icon"></i>Page Audio Spéciale</h2>
+                <p>Une page audio romantique créée avec amour pour accompagner les moments spéciaux. Design élégant avec cœurs flottants et contrôles personnalisés.</p>
+                <div class="card-buttons">
+                    <a href="audio_page.html" class="btn">Ouvrir la page audio</a>
+                </div>
+            </div>
         </div>
 
-        <section id="cours" class="card">
-            <h2><i class="fas fa-book icon"></i>Les cours</h2>
+        <section class="card">
+            <h2><i class="fas fa-cogs icon"></i>Documentation Technique</h2>
+            <div class="exercise-list">
+                <a href="pages-specification.html" class="btn">Spécifications des pages</a>
+                <a href="kanban.html" class="btn">Kanban Projet</a>
+                <a href="PtitGamelle_Kanban.html" class="btn">Kanban Technique</a>
+                <a href="allergenes.html" class="btn">Système d'allergènes</a>
+                <a href="besoin.html" class="btn">Besoins du projet</a>
+            </div>
+        </section>
+
+        <section class="card">
+            <h2><i class="fas fa-info-circle icon"></i>À propos du projet</h2>
+            <p>PtitGamelle est un projet E-Business complet développé avec des technologies modernes :</p>
             <ul>
-                <li><a href="cours1.html">Cours 1 : Introduction au E-Business</a></li>
-                <li><a href="cours2.html">Cours 2 : Modèles d'affaires en ligne</a></li>
-                <li><a href="cours4.html">Cours 4 : Marketing digital</a></li>
-                <li><a href="cours5.html">Cours 5 : Sécurité et paiement en ligne</a></li>
+                <li><strong>Frontend :</strong> React.js, TypeScript, Material-UI</li>
+                <li><strong>Backend :</strong> Laravel (API RESTful)</li>
+                <li><strong>Base de données :</strong> Relationnelle optimisée</li>
+                <li><strong>Sécurité :</strong> JWT/Sanctum</li>
             </ul>
-        </section>
-
-        <section id="exercices" class="card">
-            <h2><i class="fas fa-tasks icon"></i>Les exercices</h2>
-            <p>Consultez les exercices pratiques pour mettre en application les concepts appris dans les cours.</p>
-            <a href="exercice.html" class="btn">Voir les exercices</a>
-        </section>
-
-        <section id="projet" class="project-section">
-            <h2><i class="fas fa-project-diagram icon"></i>Le Projet</h2>
-            <p>Découvrez mon projet final qui met en pratique tous les concepts appris dans les cours.</p>
-            <a href="projet.html" class="btn">Voir le projet</a>
-            <a href="kanban.html" class="btn">Voir le Kanban</a>
-            <a href="pages-specification.html" class="btn">Voir les spécifications des pages</a>
+            <p>Le projet comprend des interfaces pour les employés, restaurateurs et administrateurs, avec un système complet de gestion des plats, allergènes et disponibilités.</p>
         </section>
     </main>
 
@@ -127,16 +133,6 @@
                 if (linkHref === currentPage || (currentPage === '' && linkHref === 'index.html')) {
                     link.classList.add('active');
                 }
-            });
-        });
-
-        // Smooth scroll for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
             });
         });
     </script>
