@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pour Mon Amour 💕</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #fecfef 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow-x: hidden;
+        }
+
+        .floating-hearts {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .heart {
+            position: absolute;
+            color: rgba(255, 192, 203, 0.6);
+            font-size: 20px;
+            animation: float 6s infinite ease-in-out;
+        }
+
+        .heart:nth-child(odd) {
+            animation-delay: -2s;
+        }
+
+        .heart:nth-child(even) {
+            animation-delay: -4s;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-radius: 30px;
+            padding: 40px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            max-width: 600px;
+            width: 90%;
+            position: relative;
+            z-index: 2;
+            border: 2px solid rgba(255, 192, 203, 0.3);
+        }
+
+        .title {
+            color: #d63384;
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        .subtitle {
+            color: #6f42c1;
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            font-style: italic;
+        }
+
+        .video-container {
+            position: relative;
+            background: linear-gradient(45deg, #ff6b6b, #ffa8a8);
+            border-radius: 20px;
+            padding: 20px;
+            margin: 30px 0;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        video {
+            width: 100%;
+            border-radius: 15px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .controls {
+            margin: 20px 0;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .control-btn {
+            background: linear-gradient(45deg, #ff6b6b, #ffa8a8);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            padding: 12px 24px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(255, 107, 107, 0.3);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .control-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(255, 107, 107, 0.4);
+            background: linear-gradient(45deg, #ff5252, #ff8a80);
+        }
+
+        .volume-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 10px 20px;
+            border-radius: 25px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .volume-slider {
+            width: 100px;
+            height: 6px;
+            border-radius: 3px;
+            background: #ddd;
+            outline: none;
+            cursor: pointer;
+        }
+
+        .volume-slider::-webkit-slider-thumb {
+            appearance: none;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: #ff6b6b;
+            cursor: pointer;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+        }
+
+        .message {
+            background: linear-gradient(45deg, #ffeaa7, #fab1a0);
+            border-radius: 15px;
+            padding: 20px;
+            margin: 20px 0;
+            color: #2d3436;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            border-left: 4px solid #e17055;
+        }
+
+        .romantic-note {
+            background: rgba(255, 192, 203, 0.2);
+            border-radius: 15px;
+            padding: 15px;
+            margin: 20px 0;
+            color: #d63384;
+            font-style: italic;
+            border: 1px solid rgba(255, 192, 203, 0.5);
+        }
+
+        .time-display {
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-family: 'Courier New', monospace;
+            margin: 10px 0;
+            display: inline-block;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+                margin: 20px;
+            }
+            
+            .title {
+                font-size: 2rem;
+            }
+            
+            .controls {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .volume-container {
+                justify-content: center;
+            }
+        }
+
+        .decorative-border {
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            border-radius: 32px;
+            background: linear-gradient(45deg, #ff6b6b, #ffa8a8, #ff6b6b);
+            z-index: -1;
+            animation: borderGlow 3s ease-in-out infinite alternate;
+        }
+
+        @keyframes borderGlow {
+            0% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <div class="floating-hearts" id="heartsContainer"></div>
+    
+    <div class="container">
+        <div class="decorative-border"></div>
+        
+        <h1 class="title">
+            <i class="fas fa-heart"></i> Pour Mon Amour <i class="fas fa-heart"></i>
+        </h1>
+        
+        <p class="subtitle">
+            Une vidéo spéciale pour accompagner ta marche 💕
+        </p>
+        
+        <div class="romantic-note">
+            <i class="fas fa-quote-left"></i>
+            Chaque pas que tu fais illumine mon monde. 
+            Écoute cette vidéo pendant ta marche et pense à moi ! 
+            <i class="fas fa-quote-right"></i>
+        </div>
+        
+        <div class="video-container">
+            <video id="videoPlayer" controls>
+                <source src="documents/courstrat.mp4" type="video/mp4">
+                Votre navigateur ne supporte pas la lecture vidéo.
+            </video>
+        </div>
+        
+        <div class="time-display" id="timeDisplay">
+            00:00 / 00:00
+        </div>
+        
+        <div class="controls">
+            <button class="control-btn" onclick="playPause()">
+                <i class="fas fa-play" id="playIcon"></i>
+                <span id="playText">Lecture</span>
+            </button>
+            
+            <button class="control-btn" onclick="restart()">
+                <i class="fas fa-redo"></i>
+                Recommencer
+            </button>
+            
+            <div class="volume-container">
+                <i class="fas fa-volume-down"></i>
+                <input type="range" class="volume-slider" id="volumeSlider" min="0" max="100" value="70">
+                <i class="fas fa-volume-up"></i>
+            </div>
+        </div>
+        
+        <div class="message">
+            <i class="fas fa-walking"></i>
+            <strong>Conseils pour ta marche :</strong><br>
+            • Mets tes écouteurs pour une expérience optimale<br>
+            • Ajuste le volume selon ton environnement<br>
+            • Profite de chaque moment, mon cœur !<br>
+            • N'oublie pas de boire de l'eau <i class="fas fa-tint"></i>
+        </div>
+    </div>
+
+    <script>
+        const video = document.getElementById('videoPlayer');
+        const playIcon = document.getElementById('playIcon');
+        const playText = document.getElementById('playText');
+        const volumeSlider = document.getElementById('volumeSlider');
+        const timeDisplay = document.getElementById('timeDisplay');
+
+        // Initialiser le volume
+        video.volume = 0.7;
+
+        // Créer des cœurs flottants
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.className = 'heart';
+            heart.innerHTML = '💖';
+            heart.style.left = Math.random() * 100 + '%';
+            heart.style.animationDuration = (Math.random() * 3 + 3) + 's';
+            heart.style.fontSize = (Math.random() * 10 + 15) + 'px';
+            
+            document.getElementById('heartsContainer').appendChild(heart);
+            
+            setTimeout(() => {
+                heart.remove();
+            }, 6000);
+        }
+
+        // Créer des cœurs toutes les 2 secondes
+        setInterval(createHeart, 2000);
+
+        // Fonction play/pause
+        function playPause() {
+            if (video.paused) {
+                video.play();
+                playIcon.className = 'fas fa-pause';
+                playText.textContent = 'Pause';
+            } else {
+                video.pause();
+                playIcon.className = 'fas fa-play';
+                playText.textContent = 'Lecture';
+            }
+        }
+
+        // Fonction restart
+        function restart() {
+            video.currentTime = 0;
+            video.play();
+            playIcon.className = 'fas fa-pause';
+            playText.textContent = 'Pause';
+        }
+
+        // Contrôle du volume
+        volumeSlider.addEventListener('input', function() {
+            video.volume = this.value / 100;
+        });
+
+        // Mise à jour du temps
+        video.addEventListener('timeupdate', function() {
+            const current = formatTime(video.currentTime);
+            const duration = formatTime(video.duration || 0);
+            timeDisplay.textContent = `${current} / ${duration}`;
+        });
+
+        // Formater le temps
+        function formatTime(seconds) {
+            const mins = Math.floor(seconds / 60);
+            const secs = Math.floor(seconds % 60);
+            return `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+        }
+
+        // Mettre à jour l'icône quand la vidéo se termine
+        video.addEventListener('ended', function() {
+            playIcon.className = 'fas fa-play';
+            playText.textContent = 'Lecture';
+        });
+
+        // Créer quelques cœurs au chargement
+        for (let i = 0; i < 5; i++) {
+            setTimeout(createHeart, i * 1000);
+        }
+    </script>
+</body>
+</html> 
